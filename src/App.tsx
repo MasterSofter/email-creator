@@ -46,7 +46,7 @@ function App(): JSX.Element {
                         <Row style={ {height : "2vh" , width : "50vw"} }/>
                         <Row style={{height:"44vh", width:"50vw"}}>
                             <Col>
-                                <EditorElement/>
+                                <EditorElement letterData={letterData} setLetterData={setLetterData}/>
                             </Col>
                         </Row>
                     </Tab.Container>
