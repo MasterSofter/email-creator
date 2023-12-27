@@ -1,10 +1,10 @@
 import React from "react";
 
 type Props = {
-    body: string;
+    text: string;
 }
 
-export default function BodyLetter({body} : Props) : React.JSX.Element{
+export function Paragraph({text} : Props) : React.JSX.Element{
     return (
         <tr style={{ margin: 0, padding: 0 }}>
             <td style={{ margin: 0, padding: 0 }}>
@@ -22,7 +22,7 @@ export default function BodyLetter({body} : Props) : React.JSX.Element{
                     }}
                 >
                     <tbody>
-                    {body && (
+                    {text && (
                         <tr style={{ margin: 0, padding: 0 }}>
                             <td style={{ margin: 0, padding: 0 }}>
                                 <table
@@ -37,7 +37,7 @@ export default function BodyLetter({body} : Props) : React.JSX.Element{
                                 >
                                     <tbody>
 
-                                    {body && (
+                                    {text && (
                                         <tr style={{ margin: 0, padding: 0 }}>
                                             <td style={{ margin: 0, padding: 0 }}>
                                                 <div
@@ -54,7 +54,7 @@ export default function BodyLetter({body} : Props) : React.JSX.Element{
                                                         marginBottom: '30px',
                                                         maxWidth: '600px'
                                                     }}
-                                                    dangerouslySetInnerHTML={{__html: body}}
+                                                    dangerouslySetInnerHTML={{__html: text}}
                                                 />
                                             </td>
                                         </tr>
@@ -70,3 +70,4 @@ export default function BodyLetter({body} : Props) : React.JSX.Element{
         </tr>
     );
 }
+

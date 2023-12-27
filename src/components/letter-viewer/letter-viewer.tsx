@@ -1,16 +1,18 @@
 import React from "react";
-import { LetterData } from "../../types/types";
+
 import Logo from "./components/logo/logo";
-import Hero from "./components/hero/hero";
 import Title from "./components/title/title";
-import BodyLetter from "./components/body-letter/body-letter";
+import {BigImageElement , EmailElement , LetterData , ParagraphElement , TitleElement} from "../../types/types";
+import {BigImage} from "./components/bigimage/bigimage";
+import {Paragraph} from "./components/paragraph/paragraph";
+
 
 type Props = {
     letterData : LetterData;
 }
 
 export default function LetterViewer ({letterData} : Props) : React.JSX.Element{
-   return (
+    return (
        <div style={ {
            width : '100%' ,
            margin : 0 ,
@@ -33,10 +35,17 @@ export default function LetterViewer ({letterData} : Props) : React.JSX.Element{
                   } }
            >
                <tbody>
-                    <Logo/>
-                    <Hero image={ letterData.image }/>
-                    <Title title={ letterData.title }/>
-                    <BodyLetter body={ letterData.body }/>
+                   <Logo/>
+                   {
+                       letterData.elements.map((value, key) => {
+                           if(value instanceof (TitleElement))
+                               return <Title key={key} title={ value.getValue() }/>
+                           else if(value instanceof (BigImageElement))
+                               return <BigImage key={key} url={value.getValue()}/>
+                           else if(value instanceof (ParagraphElement))
+                               return <Paragraph key={key} text={value.getValue()}/>
+                       })
+                   }
                </tbody>
            </table>
        </div>

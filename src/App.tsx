@@ -1,35 +1,65 @@
-import React, {useRef, useState} from 'react';
+import React , {useEffect , useRef , useState} from 'react';
 
+import {
+    EmailElement ,
+    LetterData ,
+    TitleElement ,
+    BigImageElement ,
+    ParagraphElement
+} from "./types/types";
+import {Tab, Col , Container , Row} from "react-bootstrap";
+
+
+import EditorStructure from "./components/letter-builder/components/editor-structure/editor-structure";
+import EditorElement from "./components/letter-builder/components/editor-element/editor-element";
 import LetterViewer from "./components/letter-viewer/letter-viewer";
-import LetterBuilder from "./components/letter-builder/letter-builder";
-import {LetterData} from "./types/types";
-import {Col, Container, Row} from "react-bootstrap";
+
 
 // Подключение стиилей
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-quill/dist/quill.snow.css';
 
+
 function App(): JSX.Element {
 
     const letter = useRef<null | HTMLDivElement>(null);
     const [letterData, setLetterData] = useState<LetterData>({
-        title: 'Привет ✨',
-        image: '/images/hero.png',
-        body:  'Как создавать шедевры с помощью Midjorney, вы узнаете в другом месте. ' +
-               'А мы расскажем, с чего вообще началось генеративное искусство и кто научил нейросети «рисовать».'
+        elements : Array<EmailElement>(
+            new BigImageElement('/images/hero.png'),
+            new TitleElement('Привет ✨'),
+            new ParagraphElement('Как создавать шедевры с помощью Midjorney, вы узнаете в другом месте. ' +
+                'А мы расскажем, с чего вообще началось генеративное искусство и кто научил нейросети «рисовать».')),
+        activeElement: null
     });
+
     return (
-        <Container className="h-100" fluid>
-            <Row className="py-5 my-5">
-                <Col className="bg-transparent h-100 w-100">
-                    <LetterBuilder letter={letter} letterData={letterData} setLetterData={setLetterData}/>
+        <Container style={{width:"100vw", maxWidth:"100wv"}} fluid>
+            <Row   style={{height: "5vh", width: "100vw"}}/>
+            <Row   style={{height: "90vh", width: "100vw" , alignItems: "top"}}>
+                <Col style={{height:"90vh", width:"50vw"}}>
+                    <Tab.Container id="list-group-tabs-example" >
+                        <Row style={{height:"44vh", width:"50vw"}}>
+                            <Col style={{height:"44vh", width:"50vw"}}>
+                                <EditorStructure letterData={letterData} setLetterData={setLetterData}/>
+                            </Col>
+                        </Row>
+                        <Row style={ {height : "2vh" , width : "50vw"} }/>
+                        <Row style={{height:"44vh", width:"50vw"}}>
+                            <Col>
+                                <EditorElement/>
+                            </Col>
+                        </Row>
+                    </Tab.Container>
                 </Col>
-                <Col>
-                    <div ref={letter} className={"border rounded-3 overflow-hidden"}>
-                        <LetterViewer letterData={letterData}/>
+                <Col style={{height:"90wh", width:"50vw"}} className={"border rounded-3 overflow-hidden"}>
+                    <div ref={letter} >
+
+                            <LetterViewer letterData={letterData}/>
+
                     </div>
                 </Col>
             </Row>
+            <Row style={{height: "5vh", width: "100vw"}}/>
         </Container>
     );
 }

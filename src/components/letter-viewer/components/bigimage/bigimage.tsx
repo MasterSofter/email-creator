@@ -1,10 +1,9 @@
 import React from "react";
 
 type Props = {
-    image: string;
+    url : string
 }
-
-export default function Hero({image} : Props) : React.JSX.Element {
+export function BigImage({url} : Props) : React.JSX.Element {
     return (
         <tr style={{ margin: 0, padding: 0}}>
             <td style={{ margin: 0, padding: 0 }}>
@@ -25,7 +24,7 @@ export default function Hero({image} : Props) : React.JSX.Element {
                         <td align="center" style={{ margin: 0, padding: 0 }}>
                             <a href="https://mai.ru" target="_blank" rel="noreferrer">
                                 <img
-                                    src={"/images/hero.png"}
+                                    src={url}
                                     alt="Hero"
                                     style={{ width: '100%' }}
                                 />
