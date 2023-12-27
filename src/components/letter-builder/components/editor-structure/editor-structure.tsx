@@ -1,7 +1,7 @@
 import React from "react";
 import {Col , Row , Card , Tab , CardBody , CardHeader , ListGroup , Button} from "react-bootstrap";
 import ListEmailElements from "./components/list-email-elements/list-email-elements";
-import {LetterData} from "../../../../types/types";
+import {EmptyElement , LetterData} from "../../../../types/types";
 
 
 type Props = {
@@ -26,14 +26,20 @@ export default function EditorStructure({letterData, setLetterData} : Props) : R
                             variant="primary"
                             size="lg"
                             style={{marginRight:"2%"}}
-                            onClick={() => {}}
+                            onClick={() => {
+                                letterData.elements.splice(letterData.elements.indexOf(letterData.activeElement),1);
+                                setLetterData({...letterData, elements: letterData.elements});
+                            }}
                         >
                             Удалить
                         </Button>
                         <Button
                             variant="outline-primary"
                             size="lg"
-                            onClick={() => {}}
+                            onClick={() => {
+                                letterData.elements.push(new EmptyElement(letterData.elements.length));
+                                setLetterData({...letterData, elements: letterData.elements});
+                            }}
                         >
                             Добавить...
                         </Button>

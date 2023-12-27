@@ -3,7 +3,7 @@ import React from "react";
 import {GripVertical} from "react-bootstrap-icons";
 import {
     BigImageElement ,
-    EmailElement ,
+    EmailElement , EmptyElement ,
     LetterData ,
     ParagraphElement ,
     TitleElement
@@ -42,9 +42,8 @@ export default function ListEmailElements({letterData, setLetterData} : PropLett
 
     return (
         <ListGroup id={"list-email-elements"} style={{maxHeight:"100%", overflowY:"auto"}}>
-
             {
-                letterData.elements.map((value : EmailElement,key:number) : React.JSX.Element => {
+                letterData.elements.map((value : EmailElement, key:number) : React.JSX.Element => {
 
                     let titleItem : string = "";
                     if(value instanceof (TitleElement))
@@ -53,12 +52,14 @@ export default function ListEmailElements({letterData, setLetterData} : PropLett
                         titleItem = "Большая картинка";
                     else if(value instanceof (ParagraphElement))
                         titleItem = "Параграф";
+                    else if (value instanceof (EmptyElement))
+                        titleItem = "Пустой элемент"
 
                     return (
                         <ListGroup.Item onClick={ () => { setLetterData({...letterData, activeElement: value} ) } }
                                         action
                                         key={"element-" + key}
-                                        eventKey={value.getType()}
+                                        eventKey={value.getElementKey()}
                                         className={"d-flex flex-row justify-content-between align-items-center"}
                                         draggable
                                         onDragStart={(e) => onDragStart(e, key)}
@@ -70,11 +71,8 @@ export default function ListEmailElements({letterData, setLetterData} : PropLett
                             <GripVertical size={ 32 }/>
                         </ListGroup.Item>
                     )
-
                 })
             }
-
-
         </ListGroup>
     );
 }

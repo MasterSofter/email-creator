@@ -5,7 +5,7 @@ import {
     LetterData ,
     TitleElement ,
     BigImageElement ,
-    ParagraphElement
+    ParagraphElement , EmptyElement
 } from "./types/types";
 import {Tab, Col , Container , Row} from "react-bootstrap";
 
@@ -25,11 +25,11 @@ function App(): JSX.Element {
     const letter = useRef<null | HTMLDivElement>(null);
     const [letterData, setLetterData] = useState<LetterData>({
         elements : Array<EmailElement>(
-            new BigImageElement('/images/hero.png'),
-            new TitleElement('Привет ✨'),
+            new BigImageElement('/images/hero.png',0),
+            new TitleElement('Привет ✨',1),
             new ParagraphElement('Как создавать шедевры с помощью Midjorney, вы узнаете в другом месте. ' +
-                'А мы расскажем, с чего вообще началось генеративное искусство и кто научил нейросети «рисовать».')),
-        activeElement: null
+                'А мы расскажем, с чего вообще началось генеративное искусство и кто научил нейросети «рисовать».',2)),
+        activeElement: new EmptyElement(-1)
     });
 
     return (
