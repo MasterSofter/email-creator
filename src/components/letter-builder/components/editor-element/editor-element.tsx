@@ -1,4 +1,4 @@
-import {Button , Card , CardBody , CardHeader , Col , ListGroup , Row , Tab} from "react-bootstrap";
+import {Card , CardBody , CardHeader , Col , ListGroup , Row , Tab} from "react-bootstrap";
 import React from "react";
 import {
     BigImageElement ,
@@ -9,6 +9,8 @@ import {
     TitleElement
 } from "../../../../types/types";
 import ParagraphInput from "../paragraph-input/paragraph-input";
+import BigImageInput from "../big-image-input/big-image-input";
+import TitleInput from "../title-input/title-input";
 
 type Props = {
     letterData: LetterData;
@@ -22,15 +24,13 @@ export default function EditorElement({letterData, setLetterData} : Props) : Rea
             <CardBody>
                 <Tab.Content>
 
-
                     {
                         letterData.elements.map((value : EmailElement, key:number) : React.JSX.Element => {
                             if(value instanceof (TitleElement))
                             {
                                 return (
                                     <Tab.Pane eventKey={value.getElementKey()}>
-                                        {value.getElementKey()}
-
+                                        <TitleInput element={(value)} letterData={letterData} setLetterData={setLetterData}/>
                                     </Tab.Pane>
                                 );
                             }
@@ -38,8 +38,7 @@ export default function EditorElement({letterData, setLetterData} : Props) : Rea
                             {
                                 return (
                                     <Tab.Pane eventKey={value.getElementKey()}>
-                                        {value.getElementKey()}
-
+                                        <BigImageInput element={(value)} letterData={letterData} setLetterData={setLetterData}/>
                                     </Tab.Pane>
                                 );
                             }

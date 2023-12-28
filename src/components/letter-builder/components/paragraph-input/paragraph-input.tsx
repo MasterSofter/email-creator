@@ -1,7 +1,7 @@
 import ReactQuill from "react-quill";
 import React from "react";
 import {FormGroup, FormLabel} from "react-bootstrap";
-import {EmailElement , LetterData , ParagraphElement} from "../../../../types/types";
+import {LetterData , ParagraphElement} from "../../../../types/types";
 
 
 type Props = {
