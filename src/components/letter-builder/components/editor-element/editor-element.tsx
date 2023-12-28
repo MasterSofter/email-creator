@@ -11,6 +11,7 @@ import {
 import ParagraphInput from "../paragraph-input/paragraph-input";
 import BigImageInput from "../big-image-input/big-image-input";
 import TitleInput from "../title-input/title-input";
+import {TypeElementInput} from "../type-element-input/type-element-input";
 
 type Props = {
     letterData: LetterData;
@@ -23,13 +24,13 @@ export default function EditorElement({letterData, setLetterData} : Props) : Rea
             <CardHeader className="fw-bold h5 py-3">Редактор элемента письма</CardHeader>
             <CardBody>
                 <Tab.Content>
-
                     {
-                        letterData.elements.map((value : EmailElement, key:number) : React.JSX.Element => {
+                        letterData.elements.map((value : EmailElement, index:number) : React.JSX.Element => {
                             if(value instanceof (TitleElement))
                             {
                                 return (
-                                    <Tab.Pane eventKey={value.getElementKey()}>
+                                    <Tab.Pane key={"tab-" + index} eventKey={value.getElementKey(index)}>
+                                        <TypeElementInput letterData={letterData} setLetterData={setLetterData}/>
                                         <TitleInput element={(value)} letterData={letterData} setLetterData={setLetterData}/>
                                     </Tab.Pane>
                                 );
@@ -37,7 +38,8 @@ export default function EditorElement({letterData, setLetterData} : Props) : Rea
                             else if(value instanceof (BigImageElement))
                             {
                                 return (
-                                    <Tab.Pane eventKey={value.getElementKey()}>
+                                    <Tab.Pane key={"tab-" + index} eventKey={value.getElementKey(index)}>
+                                        <TypeElementInput letterData={letterData} setLetterData={setLetterData}/>
                                         <BigImageInput element={(value)} letterData={letterData} setLetterData={setLetterData}/>
                                     </Tab.Pane>
                                 );
@@ -45,7 +47,8 @@ export default function EditorElement({letterData, setLetterData} : Props) : Rea
                             else if(value instanceof (ParagraphElement))
                             {
                                 return (
-                                    <Tab.Pane eventKey={value.getElementKey()}>
+                                    <Tab.Pane key={"tab-" + index} eventKey={value.getElementKey(index)}>
+                                        <TypeElementInput letterData={letterData} setLetterData={setLetterData}/>
                                         <ParagraphInput element={(value)} letterData={letterData} setLetterData={setLetterData}/>
                                     </Tab.Pane>
                                 );
@@ -53,19 +56,13 @@ export default function EditorElement({letterData, setLetterData} : Props) : Rea
                             else
                             {
                                 return (
-                                    <Tab.Pane eventKey={value.getElementKey()}>Tab pane content 1
-
-
+                                    <Tab.Pane key={"tab-" + index} eventKey={value.getElementKey(index)}>
+                                        <TypeElementInput letterData={letterData} setLetterData={setLetterData}/>
                                     </Tab.Pane>
                                 );
                             }
                         })
                     }
-
-
-
-
-                    <Tab.Pane eventKey="#link2">Tab pane content 2</Tab.Pane>
                 </Tab.Content>
             </CardBody>
         </Card>

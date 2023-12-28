@@ -43,7 +43,7 @@ export default function ListEmailElements({letterData, setLetterData} : PropLett
     return (
         <ListGroup id={"list-email-elements"} style={{maxHeight:"100%", overflowY:"auto"}}>
             {
-                letterData.elements.map((value : EmailElement, key:number) : React.JSX.Element => {
+                letterData.elements.map((value : EmailElement, index:number) : React.JSX.Element => {
 
                     let titleItem : string = "";
                     if(value instanceof (TitleElement))
@@ -58,13 +58,13 @@ export default function ListEmailElements({letterData, setLetterData} : PropLett
                     return (
                         <ListGroup.Item onClick={ () => { setLetterData({...letterData, activeElement: value} ) } }
                                         action
-                                        key={"element-" + key}
-                                        eventKey={value.getElementKey()}
+                                        key={"element-" + index}
+                                        eventKey={value.getElementKey(index)}
                                         className={"d-flex flex-row justify-content-between align-items-center"}
                                         draggable
-                                        onDragStart={(e) => onDragStart(e, key)}
-                                        onDragEnter={(e) => onDragEnter(e, key)}
-                                        onDragEnd={(e) => onDragEnd(e, key)}
+                                        onDragStart={(e) => onDragStart(e, index)}
+                                        onDragEnter={(e) => onDragEnter(e, index)}
+                                        onDragEnd={(e) => onDragEnd(e, index)}
                                         onDragOver={(e) => e.preventDefault()}
                         >
                             <h3>{titleItem}</h3>

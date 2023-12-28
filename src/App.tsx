@@ -25,11 +25,10 @@ function App(): JSX.Element {
     const letter = useRef<null | HTMLDivElement>(null);
     const [letterData, setLetterData] = useState<LetterData>({
         elements : Array<EmailElement>(
-            new BigImageElement('/images/hero.png',0),
-            new TitleElement('Привет ✨',1),
-            new ParagraphElement('Как создавать шедевры с помощью Midjorney, вы узнаете в другом месте. ' +
-                'А мы расскажем, с чего вообще началось генеративное искусство и кто научил нейросети «рисовать».',2)),
-        activeElement: new EmptyElement(-1)
+            new BigImageElement(),
+            new TitleElement(),
+            new ParagraphElement()),
+        activeElement: new EmptyElement()
     });
 
     return (
@@ -53,9 +52,7 @@ function App(): JSX.Element {
                 </Col>
                 <Col style={{height:"90wh", width:"50vw"}} className={"border rounded-3 overflow-hidden"}>
                     <div ref={letter} >
-
                             <LetterViewer letterData={letterData}/>
-
                     </div>
                 </Col>
             </Row>

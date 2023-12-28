@@ -1,18 +1,12 @@
 
 export interface EmailElement {
-    setElementkey(index : number) : void;
-    getElementKey() : string;
+    getElementKey(index : number) : string;
     getValue() : string;
     setValue(value:string) : void;
+    getName() : string;
 }
 
 export class EmptyElement implements EmailElement {
-    private index : number = -1;
-
-    constructor(index : number) {
-        this.index = index;
-    }
-
     getValue(): string {
         return "";
     }
@@ -20,22 +14,20 @@ export class EmptyElement implements EmailElement {
     setValue(value: string): void {
     }
 
-    getElementKey(): string {
-        return `element-${this.index}`;
+    getElementKey(index : number): string {
+        return `element-${index}`;
     }
 
-    setElementkey(index : number): void {
-        this.index = index;
+    getName(): string {
+        return "Пустой элемент";
     }
 }
 
 export class TitleElement implements EmailElement {
     private value: string = "";
-    private index : number = -1;
 
-    constructor(initVal : string, index : number) {
-        this.value = initVal;
-        this.index = index;
+    constructor() {
+        this.value = 'Привет ✨';
     }
 
     public getValue(): string {
@@ -46,22 +38,21 @@ export class TitleElement implements EmailElement {
         this.value = value;
     }
 
-    getElementKey(): string {
-        return `element-${this.index}`;
+    getElementKey(index : number): string {
+        return `element-${index}`;
     }
 
-    setElementkey(index : number): void {
-        this.index = index;
+    getName(): string {
+        return "Заголовок";
     }
+
 }
 
 export class BigImageElement implements EmailElement {
     private url: string = "";
-    private index : number = -1;
 
-    constructor(initVal : string, index : number) {
-        this.url = initVal;
-        this.index = index;
+    constructor() {
+        this.url = '/images/hero.png';
     }
 
     public getValue(): string {
@@ -72,22 +63,22 @@ export class BigImageElement implements EmailElement {
         this.url = value;
     }
 
-    getElementKey(): string {
-        return `element-${this.index}`;
+    getElementKey(index : number): string {
+        return `element-${index}`;
     }
 
-    setElementkey(index : number): void {
-        this.index = index;
+    getName(): string {
+        return "Большая картинка";
     }
 }
 
+
 export class ParagraphElement implements EmailElement {
     private value: string = "";
-    private index : number = -1;
 
-    constructor(initVal : string, index : number) {
-        this.value = initVal;
-        this.index = index;
+    constructor() {
+        this.value = 'Как создавать шедевры с помощью Midjorney, вы узнаете в другом месте. ' +
+            'А мы расскажем, с чего вообще началось генеративное искусство и кто научил нейросети «рисовать».';
     }
 
     getValue(): string {
@@ -98,12 +89,12 @@ export class ParagraphElement implements EmailElement {
         this.value = value;
     }
 
-    getElementKey(): string {
-        return `element-${this.index}`;
+    getElementKey(index : number): string {
+        return `element-${index}`;
     }
 
-    setElementkey(index : number): void {
-        this.index = index;
+    getName(): string {
+        return "Параграф";
     }
 }
 

@@ -37,7 +37,7 @@ export default function EditorStructure({letterData, setLetterData} : Props) : R
                             variant="outline-primary"
                             size="lg"
                             onClick={() => {
-                                letterData.elements.push(new EmptyElement(letterData.elements.length));
+                                letterData.elements.push(new EmptyElement());
                                 setLetterData({...letterData, elements: letterData.elements});
                             }}
                         >
