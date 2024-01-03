@@ -19,7 +19,7 @@ export default function TitleInput( {element, letterData, setLetterData}: Props 
                 id="titleInput"
                 onChange={(value) => {
                     element.setValue(value.currentTarget.value)
-                    setLetterData({...letterData, elements: letterData.elements});
+                    setLetterData([...letterData]);
                 } }
                 required/>
         </FormGroup>

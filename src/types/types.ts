@@ -1,12 +1,19 @@
+import React from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 export interface EmailElement {
-    getElementKey(index : number) : string;
+    getElementKey() : string;
     getValue() : string;
     setValue(value:string) : void;
     getName() : string;
 }
 
 export class EmptyElement implements EmailElement {
+    index : string = "";
+    constructor() {
+        this.index = uuidv4();
+    }
+
     getValue(): string {
         return "";
     }
@@ -14,8 +21,8 @@ export class EmptyElement implements EmailElement {
     setValue(value: string): void {
     }
 
-    getElementKey(index : number): string {
-        return `element-${index}`;
+    getElementKey(): string {
+        return `element-${this.index}`;
     }
 
     getName(): string {
@@ -24,9 +31,11 @@ export class EmptyElement implements EmailElement {
 }
 
 export class TitleElement implements EmailElement {
+    index : string = "";
     private value: string = "";
 
     constructor() {
+        this.index = uuidv4();
         this.value = 'Привет ✨';
     }
 
@@ -38,8 +47,8 @@ export class TitleElement implements EmailElement {
         this.value = value;
     }
 
-    getElementKey(index : number): string {
-        return `element-${index}`;
+    getElementKey(): string {
+        return `element-${this.index}`;
     }
 
     getName(): string {
@@ -49,9 +58,11 @@ export class TitleElement implements EmailElement {
 }
 
 export class BigImageElement implements EmailElement {
+    index : string = "";
     private url: string = "";
 
     constructor() {
+        this.index = uuidv4();
         this.url = '/images/hero.png';
     }
 
@@ -63,8 +74,8 @@ export class BigImageElement implements EmailElement {
         this.url = value;
     }
 
-    getElementKey(index : number): string {
-        return `element-${index}`;
+    getElementKey(): string {
+        return `element-${this.index}`;
     }
 
     getName(): string {
@@ -74,9 +85,11 @@ export class BigImageElement implements EmailElement {
 
 
 export class ParagraphElement implements EmailElement {
+    index : string = "";
     private value: string = "";
 
     constructor() {
+        this.index = uuidv4();
         this.value = 'Как создавать шедевры с помощью Midjorney, вы узнаете в другом месте. ' +
             'А мы расскажем, с чего вообще началось генеративное искусство и кто научил нейросети «рисовать».';
     }
@@ -89,8 +102,8 @@ export class ParagraphElement implements EmailElement {
         this.value = value;
     }
 
-    getElementKey(index : number): string {
-        return `element-${index}`;
+    getElementKey(): string {
+        return `element-${this.index}`;
     }
 
     getName(): string {
@@ -98,7 +111,7 @@ export class ParagraphElement implements EmailElement {
     }
 }
 
-export type LetterData = {
-    elements : EmailElement[];
-    activeElement : EmailElement;
-}
+
+
+export type LetterData = Array<EmailElement>;
+

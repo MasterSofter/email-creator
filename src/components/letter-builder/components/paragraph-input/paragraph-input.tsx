@@ -21,7 +21,7 @@ export default function ParagraphInput({element, letterData, setLetterData} : Pr
                 id="reactQuill"
                 onChange={(value) => {
                     element.setValue(value)
-                    setLetterData({...letterData, elements: letterData.elements});
+                    setLetterData([...letterData]);
                 } }/>
         </FormGroup>
     );

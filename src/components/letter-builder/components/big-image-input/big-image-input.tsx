@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from "react";
+import React from "react";
 import {FormControl, FormGroup, FormLabel} from "react-bootstrap";
 import {BigImageElement , LetterData} from "../../../../types/types";
 
@@ -19,7 +19,7 @@ export default function BigImageInput({element, letterData, setLetterData}: Prop
                 id="imageInput"
                 onChange={(value) => {
                     element.setValue(value.currentTarget.value)
-                    setLetterData({...letterData, elements: letterData.elements});
+                    setLetterData([...letterData]);
                 } }
                 required/>
         </FormGroup>
