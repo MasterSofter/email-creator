@@ -7,9 +7,10 @@ import {Paragraph} from "./components/paragraph/paragraph";
 
 type Props = {
     letterData: LetterData;
+    is_builtLetter : boolean;
 }
 
-export default function LetterViewer({letterData}: Props): React.JSX.Element {
+export default function LetterViewer({letterData, is_builtLetter}: Props): React.JSX.Element {
     return (
         <div style={ {
             width : '100%' ,
@@ -33,13 +34,13 @@ export default function LetterViewer({letterData}: Props): React.JSX.Element {
                    } }
             >
                 <tbody>
-                <Logo/>
+                <Logo is_builtLetter={is_builtLetter}/>
                 {
                     letterData.map((value , key) => {
                         if (value instanceof (TitleElement))
                             return <Title key={ key } title={ value.getValue() }/>
                         else if (value instanceof (BigImageElement))
-                            return <BigImage key={ key } url={ value.getValue() }/>
+                            return <BigImage key={ key } url={ value.getValue() } is_builtLetter={is_builtLetter}/>
                         else if (value instanceof (ParagraphElement))
                             return <Paragraph key={ key } text={ value.getValue() }/>
                     })

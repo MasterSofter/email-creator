@@ -63,7 +63,7 @@ export class BigImageElement implements EmailElement {
 
     constructor() {
         this.index = uuidv4();
-        this.url = '/images/hero.png';
+        this.url = "";
     }
 
     public getValue(): string {

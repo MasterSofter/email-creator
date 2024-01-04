@@ -21,6 +21,7 @@ export default function App(): React.JSX.Element {
     const letter = useRef<HTMLDivElement>(null);
     const [letterData , setLetterData] = useState<Array<EmailElement>>(initialItems);
     const [selectedTab , setSelectedTab] = useState<EmailElement>(letterData[0]);
+    const [is_builtLetter, set_is_BuiltLetter] = useState<boolean>(false);
 
     return (
         <Container style={ {width : "100vw" , maxWidth : "100wv"} } fluid>
@@ -43,14 +44,14 @@ export default function App(): React.JSX.Element {
                     <Row style={ {height : "2vh" , width : "50vw"} }/>
                     <Row style={ {height : "4vh" , width : "50vw"} }>
                         <Col className={ "text-end" }>
-                            { (letter.current && <SaveButtons letter={ letter.current }/>) || (!letter.current &&
+                            { (letter.current && <SaveButtons letter={ letter.current } set_is_BuiltLetter={set_is_BuiltLetter}/>) || (!letter.current &&
                                 <p className={ "text-secondary" }>Внесите изменения, для того чтобы сохранить...</p>) }
                         </Col>
                     </Row>
                 </Col>
                 <Col style={ {height : "90wh" , width : "50vw"} } className={ "border rounded-3 overflow-hidden" }>
                     <div ref={ letter }>
-                        <LetterViewer letterData={ letterData }/>
+                        <LetterViewer letterData={ letterData } is_builtLetter={is_builtLetter}/>
                     </div>
                 </Col>
             </Row>

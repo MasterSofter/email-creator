@@ -1,4 +1,5 @@
 import {Button} from "react-bootstrap";
+import React , {useEffect , useState} from "react";
 
 const nodeToString = (node: HTMLDivElement): string => {
     const tmpNode = document.createElement('div');
@@ -25,22 +26,49 @@ export const downloadFile = (html: HTMLDivElement): void => {
 
 type Props = {
     letter: HTMLDivElement;
+    set_is_BuiltLetter: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function SaveButtons({letter}: Props): JSX.Element {
+export default function SaveButtons({letter, set_is_BuiltLetter}: Props): JSX.Element {
+    const [onClickDownload, setOnClickDownload] = useState<boolean>(false)
+    const [onClickCopy, setOnClickCopy] = useState<boolean>(false);
+
+    useEffect(() => {
+        if(onClickDownload)
+        {
+            downloadFile(letter);
+            set_is_BuiltLetter(false);
+            setOnClickDownload(false);
+        }
+        }, [onClickDownload]);
+
+    useEffect(() => {
+        if(onClickCopy){
+            copyToClipboard(letter);
+            set_is_BuiltLetter(false);
+            setOnClickCopy(false);
+        }
+        }, [onClickCopy]);
+
     return (<div className="my-auto text-end">
             <Button
                 variant="primary"
                 size="lg"
                 className="me-3"
-                onClick={ () => copyToClipboard(letter) }
+                onClick={ () => {
+                    set_is_BuiltLetter(true);
+                    setOnClickCopy(true);
+                    } }
             >
                 Скопировать
             </Button>
             <Button
                 variant="outline-primary"
                 size="lg"
-                onClick={ () => downloadFile(letter) }
+                onClick={ () => {
+                    set_is_BuiltLetter(true);
+                    setOnClickDownload(true);
+                    } }
             >
                 Сохранить файл
             </Button>
