@@ -1,10 +1,12 @@
-import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
+
+export const Stations = [{name : "м. Молодежная", imageUrl :"metro-molodeznaya.png"},
+                        {name : "м. Войковская", imageUrl: "metro-voykovskaya.png"}];
 
 export interface EmailElement {
     getElementKey() : string;
-    getValue() : string;
-    setValue(value:string) : void;
+    getValue() : any;
+    setValue(value:any) : void;
     getName() : string;
 }
 
@@ -14,7 +16,7 @@ export class EmptyElement implements EmailElement {
         this.index = uuidv4();
     }
 
-    getValue(): string {
+    getValue(): any {
         return "";
     }
 
@@ -27,6 +29,67 @@ export class EmptyElement implements EmailElement {
 
     getName(): string {
         return "Пустой элемент";
+    }
+}
+
+
+export class InfoItemSignUpElement implements EmailElement {
+    index : string;
+    private title: string;
+    private text: string;
+    private imageUrl: string;
+    private age : string;
+    private amountOfDays : string;
+    private metroStation : {name : string, imageUrl : string};
+    private periods : Array<string>;
+
+    constructor() {
+        this.index = uuidv4();
+        this.title = 'Minecraft-каникулы';
+        this.text = 'Ребята создадут и анимируют объекты для своих игровых миров, на самом популярном языке программирования!';
+        this.imageUrl = "";
+        this.age = "8-17 лет";
+        this.amountOfDays = "5 дней";
+        this.metroStation = Stations[0];
+        this.periods = ["30 окт — 3 ноя", "20 — 24 ноя"];
+    }
+
+    public getValue(): any {
+        return {
+            title: this.title,
+            text: this.text,
+            imageUrl: this.imageUrl,
+            age : this.age,
+            amountOfDays : this.amountOfDays,
+            metroStation: this.metroStation,
+            periods: this.periods
+        };
+    }
+
+    public setValue( value: {
+                         title: string,
+                         text: string,
+                         imageUrl: string,
+                         age : string,
+                         amountOfDays : string,
+                         metroStation: {name : string, imageUrl : string },
+                         periods : Array<string> }
+        ): void {
+        this.title = value.title;
+        this.text = value.text;
+        this.imageUrl = value.imageUrl;
+        this.age = value.age;
+        this.amountOfDays = value.amountOfDays;
+        this.metroStation = value.metroStation;
+        this.periods = value.periods;
+    }
+
+    getElementKey(): string {
+        return `element-${this.index}`;
+    }
+
+    getName(): string {
+        return "Блок \"Записаться\"";
     }
 }
 

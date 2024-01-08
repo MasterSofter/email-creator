@@ -2,7 +2,14 @@ import React from "react";
 import {FormGroup , FormLabel} from "react-bootstrap";
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
-import {BigImageElement , EmailElement , LetterData , ParagraphElement , TitleElement} from "../../../../types/types";
+import {
+    BigImageElement,
+    EmailElement,
+    InfoItemSignUpElement,
+    LetterData,
+    ParagraphElement,
+    TitleElement
+} from "../../../../types/types";
 
 type Props = {
     letterData : LetterData;
@@ -12,7 +19,7 @@ type Props = {
 }
 
 export function TypeElementInput({letterData, setLetterData, selectedTab, setSelectedTab} : Props) : React.JSX.Element {
-    const types : string[] = ["Заголовок", "Параграф", "Баольшая картинка"];
+    const types : string[] = ["Заголовок", "Параграф", "Баольшая картинка", "Блок \"Записаться\""];
 
     return (
         <FormGroup className={"mb-3"}>
@@ -40,6 +47,11 @@ export function TypeElementInput({letterData, setLetterData, selectedTab, setSel
                                         case "Баольшая картинка" :
                                         {
                                             letterData[indexElement] = new BigImageElement();
+                                            break;
+                                        }
+                                        case "Блок \"Записаться\"" :
+                                        {
+                                            letterData[indexElement] = new InfoItemSignUpElement();
                                             break;
                                         }
                                     }

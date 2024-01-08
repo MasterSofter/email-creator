@@ -1,5 +1,11 @@
 import React , {useRef , useState} from 'react';
-import {BigImageElement , EmailElement , ParagraphElement , TitleElement} from "./types/types";
+import {
+    BigImageElement,
+    EmailElement,
+    InfoItemSignUpElement,
+    ParagraphElement,
+    TitleElement
+} from "./types/types";
 import {Col , Container , Row} from "react-bootstrap";
 import EditorStructure from "./components/letter-builder/components/editor-structure/editor-structure";
 import EditorElement from "./components/letter-builder/components/editor-element/editor-element";
@@ -14,7 +20,8 @@ import "./App.css"
 const initialItems = [
     new BigImageElement() ,
     new TitleElement() ,
-    new ParagraphElement()
+    new ParagraphElement(),
+    new InfoItemSignUpElement()
 ];
 
 export default function App(): React.JSX.Element {
