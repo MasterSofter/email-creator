@@ -97,7 +97,7 @@ export default function InfoItemSignUpInput({element, letterData, setLetterData}
                                         key = {"dropDownItem-" + index}
                                         onClick={(value) => {
                                             for(let i = 0; i < Stations.length; i++){
-                                                if(value.currentTarget.title == Stations[i].name)
+                                                if(value.currentTarget.title === Stations[i].name)
                                                     element.setValue({...element.getValue(), metroStation : Stations[i]});
                                             }
                                             setLetterData([...letterData]);

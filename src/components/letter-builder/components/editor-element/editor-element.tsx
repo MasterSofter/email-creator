@@ -1,5 +1,4 @@
 import React from "react";
-import {Card , CardBody , CardHeader} from "react-bootstrap";
 import {
     BigImageElement,
     EmailElement,
@@ -15,50 +14,39 @@ import {TypeElementInput} from "../type-element-input/type-element-input";
 import InfoItemSignUpInput from "../info-item-sign-up-input/info-item-sign-up-input";
 
 type Props = {
+    element : EmailElement;
     letterData: LetterData;
     setLetterData: React.Dispatch<React.SetStateAction<LetterData>>;
-    selectedTab: EmailElement;
-    setSelectedTab: React.Dispatch<React.SetStateAction<EmailElement>>;
 }
 
-
-
-
-export default function EditorElement({ letterData , setLetterData , selectedTab , setSelectedTab
-                                      }: Props): JSX.Element {
-
+export default function EditorElement({element, letterData , setLetterData }: Props): JSX.Element {
     const renderList: Array<React.JSX.Element> = new Array<React.JSX.Element>();
-    if (selectedTab) {
+    if (element) {
         renderList.push(
-            <TypeElementInput letterData={ letterData } setLetterData={ setLetterData } selectedTab={ selectedTab }
-                              setSelectedTab={ setSelectedTab }/>
+            <TypeElementInput element={element} letterData={ letterData } setLetterData={ setLetterData }/>
         );
 
-        if (selectedTab instanceof (TitleElement)) {
+        if (element instanceof (TitleElement)) {
             renderList.push(
-                <TitleInput element={ (selectedTab) } letterData={ letterData } setLetterData={ setLetterData }/>
+                <TitleInput element={ (element) } letterData={ letterData } setLetterData={ setLetterData }/>
             );
-        } else if (selectedTab instanceof (BigImageElement)) {
+        } else if (element instanceof (BigImageElement)) {
             renderList.push(
-                <BigImageInput element={ (selectedTab) } letterData={ letterData } setLetterData={ setLetterData }/>
+                <BigImageInput element={ (element) } letterData={ letterData } setLetterData={ setLetterData }/>
             );
-        } else if (selectedTab instanceof (ParagraphElement)) {
+        } else if (element instanceof (ParagraphElement)) {
             renderList.push(
-                <ParagraphInput element={ (selectedTab) } letterData={ letterData } setLetterData={ setLetterData }/>
+                <ParagraphInput element={ (element) } letterData={ letterData } setLetterData={ setLetterData }/>
             );
-        } else if (selectedTab instanceof (InfoItemSignUpElement)) {
+        } else if (element instanceof (InfoItemSignUpElement)) {
             renderList.push(
-                <InfoItemSignUpInput element={ (selectedTab) } letterData={ letterData } setLetterData={ setLetterData }/>
+                <InfoItemSignUpInput element={ (element) } letterData={ letterData } setLetterData={ setLetterData }/>
             );
         }
     }
 
     return (
-        <Card style={ {height : "100%"} }>
-            <CardHeader className="fw-bold h5 py-3">Редактор элемента письма</CardHeader>
-            <CardBody>
-                { renderList }
-            </CardBody>
-        </Card>
-    );
-}
+        <div style={ {textAlign : "left"} }>
+            { renderList }
+        </div> );
+    }

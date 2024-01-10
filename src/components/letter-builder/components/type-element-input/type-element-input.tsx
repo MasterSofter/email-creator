@@ -12,19 +12,18 @@ import {
 } from "../../../../types/types";
 
 type Props = {
+    element : EmailElement;
     letterData : LetterData;
     setLetterData:  React.Dispatch<React.SetStateAction<LetterData>>;
-    selectedTab : EmailElement;
-    setSelectedTab:  React.Dispatch<React.SetStateAction<EmailElement>>;
 }
 
-export function TypeElementInput({letterData, setLetterData, selectedTab, setSelectedTab} : Props) : React.JSX.Element {
+export function TypeElementInput({element, letterData, setLetterData} : Props) : React.JSX.Element {
     const types : string[] = ["Заголовок", "Параграф", "Баольшая картинка", "Блок \"Записаться\""];
 
     return (
         <FormGroup className={"mb-3"}>
             <FormLabel className={"fw-semibold"}>Тип элемента</FormLabel>
-            <DropdownButton id="dropdown-basic-button" title={selectedTab.getName()}>
+            <DropdownButton id="dropdown-basic-button" title={element.getName()}>
                 {
                     types.map((value, index) => {
                         return (
@@ -32,7 +31,7 @@ export function TypeElementInput({letterData, setLetterData, selectedTab, setSel
                                 title={value}
                                 key = {"dropDownItem-" + index}
                                 onClick={(value) => {
-                                    let indexElement = letterData.indexOf(selectedTab);
+                                    let indexElement = letterData.indexOf(element);
                                     switch (value.currentTarget.title){
                                         case "Заголовок" :
                                         {
@@ -55,7 +54,6 @@ export function TypeElementInput({letterData, setLetterData, selectedTab, setSel
                                             break;
                                         }
                                     }
-                                    setSelectedTab(letterData[indexElement]);
                                     setLetterData([...letterData]);
                                 } }
                             >{value}</Dropdown.Item>

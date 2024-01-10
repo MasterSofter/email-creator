@@ -38,25 +38,25 @@ export default function LetterViewer({letterData, is_builtLetter}: Props): React
                 <tbody>
                 <Logo is_builtLetter={is_builtLetter}/>
                 {
-                    letterData.map((value, key) => {
-                        if (value instanceof (TitleElement))
-                            return <Title key={key} title={value.getValue()}/>
-                        else if (value instanceof (BigImageElement))
-                            return <BigImage key={key} url={value.getValue()} is_builtLetter={is_builtLetter}/>
-                        else if (value instanceof (ParagraphElement))
-                            return <Paragraph key={key} text={value.getValue()}/>
-                        else if (value instanceof (InfoItemSignUpElement))
-                            return <InfoItemSignUp key={key}
-                                                   text={value.getValue().text}
-                                                   title={value.getValue().title}
-                                                   imageUrl={value.getValue().imageUrl}
-                                                   age={value.getValue().age}
-                                                   amountOfDays={value.getValue().amountOfDays}
-                                                   metroImageUrl={value.getValue().metroStation.imageUrl}
-                                                   periods={value.getValue().periods}
-                                                   is_builtLetter={is_builtLetter}
-                            />
-                    })
+                    letterData.map((value, key) => (
+                        value instanceof (TitleElement)
+                            ? <Title key={key} title={value.getValue()}/>
+                            : value instanceof (BigImageElement)
+                                ? <BigImage key={key} url={value.getValue()} is_builtLetter={is_builtLetter}/>
+                                : value instanceof (ParagraphElement)
+                                    ? <Paragraph key={key} text={value.getValue()}/>
+                                    : value instanceof (InfoItemSignUpElement)
+                                        ? <InfoItemSignUp key={key}
+                                                          text={value.getValue().text}
+                                                          title={value.getValue().title}
+                                                          imageUrl={value.getValue().imageUrl}
+                                                          age={value.getValue().age}
+                                                          amountOfDays={value.getValue().amountOfDays}
+                                                          metroImageUrl={value.getValue().metroStation.imageUrl}
+                                                          periods={value.getValue().periods}
+                                                          is_builtLetter={is_builtLetter}
+                                        /> : <></>
+                    ) )
                 }
                 </tbody>
             </table>

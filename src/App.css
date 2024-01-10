@@ -33,7 +33,7 @@ li {
   border-radius: 10px;
   margin-bottom: 10px;
   width: 100%;
-  padding: 15px 18px;
+  padding: 5px 18px;
   position: relative;
   background: white;
   display: flex;
@@ -43,10 +43,19 @@ li {
   cursor: grab;
 }
 
-li svg {
-  width: 18px;
-  height: 18px;
-  cursor: grab;
+.trash-fill-icon{
+  width: 44px;
+  height: 44px;
+}
+
+.grip-vertical-icon{
+  width: 44px;
+  height: 44px;
+}
+
+.plus-circle-fill {
+  width: 55px;
+  height: 55px;
 }
 
 .background {

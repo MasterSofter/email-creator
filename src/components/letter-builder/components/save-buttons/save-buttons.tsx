@@ -1,5 +1,6 @@
 import {Button} from "react-bootstrap";
 import React , {useEffect , useState} from "react";
+import {Clipboard, Download} from "react-bootstrap-icons";
 
 const nodeToString = (node: HTMLDivElement): string => {
     const tmpNode = document.createElement('div');
@@ -8,24 +9,27 @@ const nodeToString = (node: HTMLDivElement): string => {
     return tmpNode.innerHTML;
 };
 
-export const copyToClipboard = (html: HTMLDivElement): void => {
-    navigator.clipboard.writeText(nodeToString(html));
+export const copyToClipboard = (html: null | HTMLDivElement): void => {
+    if(html)
+        navigator.clipboard.writeText(nodeToString(html));
 };
 
-export const downloadFile = (html: HTMLDivElement): void => {
-    const file = new Blob([new Uint8Array([0xEF , 0xBB , 0xBF]) , nodeToString(html)] ,
-                            {type : 'text/html;charset=utf-8'});
+export const downloadFile = (html: null | HTMLDivElement): void => {
+    if(html){
+        const file = new Blob([new Uint8Array([0xEF , 0xBB , 0xBF]) , nodeToString(html)] ,
+            {type : 'text/html;charset=utf-8'});
 
-    const element = document.createElement('a');
-    element.href = URL.createObjectURL(file);
-    element.download = `${ new Date().getTime().toString() }.html`;
-    document.body.appendChild(element);
-    element.click();
-    element.remove();
+        const element = document.createElement('a');
+        element.href = URL.createObjectURL(file);
+        element.download = `${ new Date().getTime().toString() }.html`;
+        document.body.appendChild(element);
+        element.click();
+        element.remove();
+    }
 };
 
 type Props = {
-    letter: HTMLDivElement;
+    letter: null | HTMLDivElement;
     set_is_BuiltLetter: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -50,9 +54,9 @@ export default function SaveButtons({letter, set_is_BuiltLetter}: Props): JSX.El
         }
         }, [onClickCopy]);
 
-    return (<div className="my-auto text-end">
+    return (<div className="text-end">
             <Button
-                variant="primary"
+                variant="outline-secondary"
                 size="lg"
                 className="me-3"
                 onClick={ () => {
@@ -60,17 +64,20 @@ export default function SaveButtons({letter, set_is_BuiltLetter}: Props): JSX.El
                     setOnClickCopy(true);
                     } }
             >
-                Скопировать
+                <div className={"d-flex flex-row justify-content-between align-items-center"}>
+                    <Clipboard className={"me-2"}/>
+                    <span>Скопировать</span>
+                </div>
             </Button>
             <Button
-                variant="outline-primary"
+                variant="secondary"
                 size="lg"
                 onClick={ () => {
                     set_is_BuiltLetter(true);
                     setOnClickDownload(true);
                     } }
             >
-                Сохранить файл
+                <Download/>
             </Button>
         </div>);
 }
