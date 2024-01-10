@@ -39,17 +39,18 @@ type Props = {
     removeTab : (element : EmailElement) => void;
     letterData: LetterData;
     setLetterData: React.Dispatch<React.SetStateAction<LetterData>>;
+    index : number;
 }
 
-export const Item = ({ element, removeTab, letterData, setLetterData}: Props) => {
+export const Item = ({index, element, removeTab, letterData, setLetterData}: Props) => {
     const y = useMotionValue(0);
     const boxShadow = useRaisedShadow(y);
 
-    const [_dragListener, setDragListener] = useState<boolean>(true);
+    const [dragListener, setDragListener] = useState<boolean>(true);
 
     return (
         <Reorder.Item
-                dragListener={ _dragListener }
+                dragListener={ dragListener }
                 value={element}
                 id={element.getElementKey()}
                 className={"d-flex flex-row justify-content-between"}
@@ -62,20 +63,17 @@ export const Item = ({ element, removeTab, letterData, setLetterData}: Props) =>
         >
             <GripVertical className={"grip-vertical-icon ps-0 pe-2 py-0"}
                           style={{backgroundColor:"transparent", color: "#b0b0b0"}}/>
-            <Accordion
-                onMouseEnter={()=> setDragListener(false)}
-                onMouseLeave={() => setDragListener(true)}
-                id={`accordion-${element.getElementKey()}`}
-                style={{width : "100%", cursor : "default"}}>
-                <Accordion.Item eventKey={`accordion-${element.getElementKey()}`}>
-                    <Accordion.Header className={"d-flex flex-row justify-content-between"}>
-                        <span>{element.getName()}</span>
-                    </Accordion.Header>
-                    <Accordion.Body>
-                        <EditorElement element={element} letterData={letterData} setLetterData={setLetterData}/>
-                    </Accordion.Body>
-                </Accordion.Item>
-            </Accordion>
+
+            <Accordion.Item  onMouseEnter={()=> setDragListener(false)}
+                             onMouseLeave={() => setDragListener(true)} style={{width : "100%"}} eventKey={`accordion-${index}`}>
+                <Accordion.Header className={"d-flex flex-row justify-content-between"}>
+                    <span>{element.getName()}</span>
+                </Accordion.Header>
+                <Accordion.Body>
+                    <EditorElement element={element} letterData={letterData} setLetterData={setLetterData}/>
+                </Accordion.Body>
+            </Accordion.Item>
+
             <TrashFill className={"trash-fill-icon ps-3 pe-0 py-1"}
                        style={{backgroundColor:"transparent", color: "#b0b0b0", cursor : "pointer"}}
                        onClick={ () => {
