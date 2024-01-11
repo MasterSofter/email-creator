@@ -53,13 +53,8 @@ export const Item = ({index, element, removeTab, letterData, setLetterData}: Pro
                 dragListener={ dragListener }
                 value={element}
                 id={element.getElementKey()}
-                className={"d-flex flex-row justify-content-between"}
-                style={ { color: "#858585" ,
-                      backgroundColor: "white" ,
-                      width : "100%" ,
-                      fontWeight : "600",
-                      fontSize : "18px",
-                      boxShadow, y }}
+                className={"list-item d-flex flex-row justify-content-between"}
+                style={ { boxShadow, y }}
         >
             <GripVertical className={"grip-vertical-icon ps-0 pe-2 py-0"}
                           style={{backgroundColor:"transparent", color: "#b0b0b0"}}/>
@@ -74,7 +69,7 @@ export const Item = ({index, element, removeTab, letterData, setLetterData}: Pro
                 </Accordion.Body>
             </Accordion.Item>
 
-            <TrashFill className={"trash-fill-icon ps-3 pe-0 py-1"}
+            <TrashFill className={"trash-fill-icon"}
                        style={{backgroundColor:"transparent", color: "#b0b0b0", cursor : "pointer"}}
                        onClick={ () => {
                            removeTab(element);

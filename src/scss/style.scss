@@ -1,0 +1,17 @@
+// Variables
+@import 'variables.scss';
+
+// Bootstrap core
+@import '~bootstrap/scss/bootstrap.scss';
+
+// React Quill
+@import '~react-quill/dist/quill.snow.css';
+
+// Layout & components
+@import 'components/react-quill.scss';
+@import 'components/toggle-switch.scss';
+@import 'components/global.scss';
+@import 'components/browser.scss';
+@import 'components/editor.scss';
+
+

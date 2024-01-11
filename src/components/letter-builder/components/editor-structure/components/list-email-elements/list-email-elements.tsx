@@ -29,8 +29,6 @@ export default function ListEmailElements({ letterData , setLetterData}: PropLet
         }, false);
     },[a]);
 
-
-
     return (
         <Accordion
             id={`accordion`}
@@ -39,7 +37,7 @@ export default function ListEmailElements({ letterData , setLetterData}: PropLet
                 axis="y"
                 onReorder={ setLetterData }
                 values={ letterData }
-                className={ "border border-1 rounded-3 text-center align-items-center" }
+                className={ "list border border-1 rounded-3 text-center align-items-center" }
                 style={ {
                     backgroundColor : "rgba(243,243,243,0.63)" ,
                     height : "100%" ,

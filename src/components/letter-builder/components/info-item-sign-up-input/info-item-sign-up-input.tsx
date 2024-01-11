@@ -16,7 +16,7 @@ type Props = {
 
 export default function InfoItemSignUpInput({element, letterData, setLetterData} : Props) : React.JSX.Element {
     return (
-        <FormGroup className={""} style={{maxHeight : "25vh" , overflowY : "auto"}} >
+        <FormGroup className={""} >
             <div className={"mb-3"}>
                 <FormLabel className={"fw-semibold"}>Заголовок</FormLabel>
                 <FormControl
