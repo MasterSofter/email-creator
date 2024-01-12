@@ -1,4 +1,4 @@
-export default function InfoItemAbout(props: { text: string }): JSX.Element {
+export default function InfoItemAbout(props: { is_builtLetter: boolean, text: string }): JSX.Element {
     return (
         <tr style={{margin: 0, padding: 0}}>
             <td style={{margin: 0, padding: 0}}>
@@ -53,7 +53,9 @@ export default function InfoItemAbout(props: { text: string }): JSX.Element {
                                                 textDecoration: 'none',
                                                 WebkitTextSizeAdjust: 'none'
                                             }}
-                                            dangerouslySetInnerHTML={{__html: props.text}}
+                                            dangerouslySetInnerHTML={{__html: props.is_builtLetter
+                                                                            ? props.text.replaceAll('<br>', '')
+                                                                            : props.text}}
                                         />
                                     </td>
                                 </tr>

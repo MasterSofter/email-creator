@@ -13,6 +13,7 @@ import {BigImage} from "./components/bigimage/bigimage";
 import {Paragraph} from "./components/paragraph/paragraph";
 import InfoItemSignUp from "./components/info-item-sign-up/info-item-sign-up";
 import InfoItemAbout from "./components/info-item-about/info-item-about";
+import Footer from "./components/footer/footer";
 
 type Props = {
     letterData: LetterData;
@@ -52,7 +53,7 @@ export default function LetterViewer({letterData, is_builtLetter}: Props): React
                             : value instanceof (BigImageElement)
                                 ? <BigImage key={key} url={value.getValue()} is_builtLetter={is_builtLetter}/>
                                 : value instanceof (ParagraphElement)
-                                    ? <Paragraph key={key} text={value.getValue()}/>
+                                    ? <Paragraph key={key} is_builtLetter={is_builtLetter} text={value.getValue()}/>
                                     : value instanceof (InfoItemSignUpElement)
                                         ? <InfoItemSignUp key={key}
                                                           text={value.getValue().text}
@@ -64,10 +65,11 @@ export default function LetterViewer({letterData, is_builtLetter}: Props): React
                                                           periods={value.getValue().periods}
                                                           is_builtLetter={is_builtLetter}
                                         /> : value instanceof (InfoItemAboutElement)
-                                                ? <InfoItemAbout key={key} text={value.getValue()}/>
+                                                ? <InfoItemAbout key={key} is_builtLetter={is_builtLetter} text={value.getValue()}/>
                                                 : <></>
                     ) )
                 }
+                <Footer is_builtLetter={is_builtLetter}/>
                 </tbody>
             </table>
         </div>
