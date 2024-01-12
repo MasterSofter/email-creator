@@ -14,7 +14,10 @@ export default function Title({title}: Props): React.JSX.Element {
                     cellPadding={ 0 }
                     role="presentation"
                     style={ {
-                        width : '100%' , borderRadius : '30px' , marginTop : '30px' , marginBottom : '30px' ,
+                        width : '100%' ,
+                        borderRadius : '30px' ,
+                        marginTop : '0px' ,
+                        marginBottom : '30px' ,
                     } }
                 >
                     <tbody>

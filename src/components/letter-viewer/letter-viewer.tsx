@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "./components/logo/logo";
 import Title from "./components/title/title";
 import {
+    BadgesElement,
     BigImageElement,
     InfoItemAboutElement,
     InfoItemSignUpElement,
@@ -14,6 +15,7 @@ import {Paragraph} from "./components/paragraph/paragraph";
 import InfoItemSignUp from "./components/info-item-sign-up/info-item-sign-up";
 import InfoItemAbout from "./components/info-item-about/info-item-about";
 import Footer from "./components/footer/footer";
+import Badges from "./components/badges/badges";
 
 type Props = {
     letterData: LetterData;
@@ -52,21 +54,23 @@ export default function LetterViewer({letterData, is_builtLetter}: Props): React
                             ? <Title key={key} title={value.getValue()}/>
                             : value instanceof (BigImageElement)
                                 ? <BigImage key={key} url={value.getValue()} is_builtLetter={is_builtLetter}/>
-                                : value instanceof (ParagraphElement)
-                                    ? <Paragraph key={key} is_builtLetter={is_builtLetter} text={value.getValue()}/>
-                                    : value instanceof (InfoItemSignUpElement)
-                                        ? <InfoItemSignUp key={key}
-                                                          text={value.getValue().text}
-                                                          title={value.getValue().title}
-                                                          imageUrl={value.getValue().imageUrl}
-                                                          age={value.getValue().age}
-                                                          amountOfDays={value.getValue().amountOfDays}
-                                                          metroImageUrl={value.getValue().metroStation.imageUrl}
-                                                          periods={value.getValue().periods}
-                                                          is_builtLetter={is_builtLetter}
-                                        /> : value instanceof (InfoItemAboutElement)
-                                                ? <InfoItemAbout key={key} is_builtLetter={is_builtLetter} text={value.getValue()}/>
-                                                : <></>
+                                :   value instanceof (BadgesElement)
+                                    ? <Badges key={key} is_builtLetter={is_builtLetter} badges={value.getValue()}/>
+                                    : value instanceof (ParagraphElement)
+                                        ? <Paragraph key={key} is_builtLetter={is_builtLetter} text={value.getValue()}/>
+                                        : value instanceof (InfoItemSignUpElement)
+                                            ? <InfoItemSignUp key={key}
+                                                              text={value.getValue().text}
+                                                              title={value.getValue().title}
+                                                              imageUrl={value.getValue().imageUrl}
+                                                              age={value.getValue().age}
+                                                              amountOfDays={value.getValue().amountOfDays}
+                                                              metroImageUrl={value.getValue().metroStation.imageUrl}
+                                                              periods={value.getValue().periods}
+                                                              is_builtLetter={is_builtLetter}
+                                            /> : value instanceof (InfoItemAboutElement)
+                                                    ? <InfoItemAbout key={key} is_builtLetter={is_builtLetter} text={value.getValue()}/>
+                                                    : <></>
                     ) )
                 }
                 <Footer is_builtLetter={is_builtLetter}/>

@@ -1,4 +1,5 @@
 import Badge from '../badge/badge';
+import {BadgeVariants} from '../../../../types/types';
 
 export default function InfoItemSignUp(props: { title: string, text: string, imageUrl: string, metroImageUrl: string, age: string, amountOfDays: string, periods: Array<string>, is_builtLetter: boolean }): JSX.Element {
     return (
@@ -194,6 +195,8 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                                                         }}
                                                     >
                                                         <tr style={{margin: 0, padding: 0}}>
+
+                                                            {props.age.length > 0 &&
                                                             <td style={{margin: 0, padding: 0}}>
                                                                 <table
                                                                     align='center'
@@ -208,9 +211,12 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                                                                         borderRadius: '18px'
                                                                     }}
                                                                 >
-                                                                    <Badge text={props.age.replace(' ', '\u00A0')}/>
+                                                                    <Badge variant={BadgeVariants.SolidPink}
+                                                                           text={props.age.replace(' ', '\u00A0')}/>
                                                                 </table>
-                                                            </td>
+                                                            </td>}
+
+                                                            {props.amountOfDays.length > 0 &&
                                                             <td style={{margin: 0, padding: 0}}>
                                                                 <table
                                                                     align='center'
@@ -225,11 +231,13 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                                                                         borderRadius: '18px'
                                                                     }}
                                                                 >
-                                                                    <Badge
-                                                                        text={props.amountOfDays.replace(' ', '\u00A0')}/>
+                                                                    <Badge variant={BadgeVariants.OutlinePink}
+                                                                           text={props.amountOfDays.replace(' ', '\u00A0')}/>
                                                                 </table>
                                                             </td>
-                                                            <td style={{margin: 0, padding: 0, maxWidth: '100px'}}>
+                                                            }
+
+                                                            <td style={{margin: 0, padding: 0}}>
                                                                 <table
                                                                     align='center'
                                                                     border={0}
@@ -240,7 +248,8 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                                                                         margin: '0px',
                                                                         padding: '0px',
                                                                         height: '100%',
-                                                                        width: '100%'
+                                                                        width: '100%',
+                                                                        maxWidth: '140px'
                                                                     }}
                                                                 >
                                                                     <tr style={{margin: 0, padding: 0}}>

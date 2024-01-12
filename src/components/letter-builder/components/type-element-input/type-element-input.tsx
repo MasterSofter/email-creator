@@ -1,8 +1,9 @@
-import React from "react";
+import React from 'react';
 import {FormGroup, FormLabel} from 'react-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import {
+    BadgesElement,
     BigImageElement,
     EmailElement,
     InfoItemAboutElement,
@@ -19,7 +20,7 @@ type Props = {
 }
 
 export function TypeElementInput({element, letterData, setLetterData}: Props): JSX.Element {
-    const types: string[] = ['Заголовок', 'Параграф', 'Баольшая картинка', 'Блок \"Записаться\"', 'Блок \"About\"'];
+    const types: string[] = ['Заголовок', 'Параграф', 'Баольшая картинка', 'Блок \'Записаться\'', 'Блок \'About\'', 'Бейджи'];
 
     return (
         <FormGroup className={'mb-3'}>
@@ -46,11 +47,15 @@ export function TypeElementInput({element, letterData, setLetterData}: Props): J
                                             letterData[indexElement] = new BigImageElement();
                                             break;
                                         }
-                                        case 'Блок \"Записаться\"' : {
+                                        case 'Бейджи' : {
+                                            letterData[indexElement] = new BadgesElement();
+                                            break;
+                                        }
+                                        case 'Блок \'Записаться\'' : {
                                             letterData[indexElement] = new InfoItemSignUpElement();
                                             break;
                                         }
-                                        case 'Блок \"About\"' : {
+                                        case 'Блок \'About\'' : {
                                             letterData[indexElement] = new InfoItemAboutElement();
                                             break;
                                         }

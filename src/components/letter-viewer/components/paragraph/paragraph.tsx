@@ -8,7 +8,9 @@ export function Paragraph(props: { is_builtLetter: boolean, text: string }): JSX
                 cellPadding={0}
                 role='presentation'
                 style={{
-                    width: '100%', maxWidth: '600px', borderRadius: '30px', marginBottom: '30px',
+                    width: '100%',
+                    maxWidth: '600px',
+                    marginBottom: '30px',
                 }}
             >
                 <tbody>

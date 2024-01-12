@@ -1,5 +1,6 @@
 import React, {useRef, useState} from 'react';
 import {
+    BadgesElement,
     BigImageElement,
     EmailElement,
     InfoItemAboutElement,
@@ -17,6 +18,7 @@ import './scss/style.scss';
 
 const initialItems = [
     new BigImageElement(),
+    new BadgesElement(),
     new TitleElement(),
     new ParagraphElement(),
     new InfoItemSignUpElement(),

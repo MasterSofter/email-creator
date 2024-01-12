@@ -1,7 +1,14 @@
 import {v4 as uuidv4} from 'uuid';
+import {text} from "stream/consumers";
 
 export const Stations = [{name: 'м. Молодежная', imageUrl: 'metro-molodeznaya.png'},
     {name: 'м. Войковская', imageUrl: 'metro-voykovskaya.png'}];
+
+export enum BadgeVariants {
+    SolidPink,
+    OutlinePink,
+    SolidBlack
+}
 
 export interface EmailElement {
     getElementKey(): string;
@@ -57,7 +64,7 @@ export class InfoItemAboutElement implements EmailElement {
     }
 
     getElementKey(): string {
-        return '';
+        return `element-${this.index}`;
     }
 
     getName(): string {
@@ -185,6 +192,35 @@ export class BigImageElement implements EmailElement {
 
     getName(): string {
         return 'Большая картинка';
+    }
+}
+
+export class BadgesElement implements EmailElement {
+    index: string;
+    private badges: Array<{variant: BadgeVariants, text: string}>;
+
+    constructor() {
+        this.index = uuidv4();
+        this.badges = new Array<{variant: BadgeVariants, text: string}>(
+            {variant : BadgeVariants.SolidPink , text : '8-12 лет' },
+            {variant : BadgeVariants.OutlinePink , text : 'Продлёнка!' },
+            {variant : BadgeVariants.SolidBlack , text : 'Предложение доступно до 30 декабря' });
+    }
+
+    public getValue(): Array<{variant: BadgeVariants, text: string}> {
+        return this.badges;
+    }
+
+    public setValue(value: {value: {variant: BadgeVariants, text: string}, index : number}): void {
+        this.badges[value.index] = value.value;
+    }
+
+    getElementKey(): string {
+        return `element-${this.index}`;
+    }
+
+    getName(): string {
+        return 'Бейджи';
     }
 }
 

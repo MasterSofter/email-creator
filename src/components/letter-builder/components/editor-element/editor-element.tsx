@@ -1,5 +1,6 @@
 import React from 'react';
 import {
+    BadgesElement,
     BigImageElement,
     EmailElement,
     InfoItemAboutElement,
@@ -14,6 +15,7 @@ import TitleInput from '../title-input/title-input';
 import {TypeElementInput} from '../type-element-input/type-element-input';
 import InfoItemSignUpInput from '../info-item-sign-up-input/info-item-sign-up-input';
 import InfoItemAboutInput from '../info-item-about-input/info-item-about-input';
+import BadgesInput from "../badges-input/badges-input";
 
 type Props = {
     element: EmailElement;
@@ -35,6 +37,10 @@ export default function EditorElement({element, letterData, setLetterData}: Prop
         } else if (element instanceof (BigImageElement)) {
             renderList.push(
                 <BigImageInput element={(element)} letterData={letterData} setLetterData={setLetterData}/>
+            );
+        } else if (element instanceof (BadgesElement)) {
+            renderList.push(
+                <BadgesInput element={(element)} letterData={letterData} setLetterData={setLetterData}/>
             );
         } else if (element instanceof (ParagraphElement)) {
             renderList.push(

@@ -21,14 +21,6 @@ export default function ListEmailElements({ letterData , setLetterData}: PropLet
         setLetterData([...letterData , new EmptyElement()]);
     };
 
-    const a = useRef();
-
-    useEffect(() => {
-        document.addEventListener('mouseenter', function (event) {
-           console.log(event.currentTarget);
-        }, false);
-    },[a]);
-
     return (
         <Accordion
             id={`accordion`}

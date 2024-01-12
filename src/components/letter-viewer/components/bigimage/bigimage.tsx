@@ -15,7 +15,7 @@ export function BigImage({url, is_builtLetter}: Props): React.JSX.Element {
                     cellPadding={ 0 }
                     role="presentation"
                     style={ {
-                        marginTop : '0px' , marginBottom : '30px' , width : '100%'
+                        marginTop : '0px' , marginBottom : '20px' , width : '100%'
                     } }
                 >
                     <tbody>
