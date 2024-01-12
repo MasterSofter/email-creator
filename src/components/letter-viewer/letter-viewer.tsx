@@ -1,10 +1,18 @@
 import React from "react";
 import Logo from "./components/logo/logo";
 import Title from "./components/title/title";
-import {BigImageElement, InfoItemSignUpElement, LetterData, ParagraphElement, TitleElement} from "../../types/types";
+import {
+    BigImageElement,
+    InfoItemAboutElement,
+    InfoItemSignUpElement,
+    LetterData,
+    ParagraphElement,
+    TitleElement
+} from "../../types/types";
 import {BigImage} from "./components/bigimage/bigimage";
 import {Paragraph} from "./components/paragraph/paragraph";
 import InfoItemSignUp from "./components/info-item-sign-up/info-item-sign-up";
+import InfoItemAbout from "./components/info-item-about/info-item-about";
 
 type Props = {
     letterData: LetterData;
@@ -55,7 +63,9 @@ export default function LetterViewer({letterData, is_builtLetter}: Props): React
                                                           metroImageUrl={value.getValue().metroStation.imageUrl}
                                                           periods={value.getValue().periods}
                                                           is_builtLetter={is_builtLetter}
-                                        /> : <></>
+                                        /> : value instanceof (InfoItemAboutElement)
+                                                ? <InfoItemAbout key={key} text={value.getValue()}/>
+                                                : <></>
                     ) )
                 }
                 </tbody>

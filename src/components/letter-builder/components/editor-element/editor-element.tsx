@@ -1,52 +1,58 @@
-import React from "react";
+import React from 'react';
 import {
     BigImageElement,
     EmailElement,
+    InfoItemAboutElement,
     InfoItemSignUpElement,
     LetterData,
     ParagraphElement,
     TitleElement
-} from "../../../../types/types";
-import ParagraphInput from "../paragraph-input/paragraph-input";
-import BigImageInput from "../big-image-input/big-image-input";
-import TitleInput from "../title-input/title-input";
-import {TypeElementInput} from "../type-element-input/type-element-input";
-import InfoItemSignUpInput from "../info-item-sign-up-input/info-item-sign-up-input";
+} from '../../../../types/types';
+import ParagraphInput from '../paragraph-input/paragraph-input';
+import BigImageInput from '../big-image-input/big-image-input';
+import TitleInput from '../title-input/title-input';
+import {TypeElementInput} from '../type-element-input/type-element-input';
+import InfoItemSignUpInput from '../info-item-sign-up-input/info-item-sign-up-input';
+import InfoItemAboutInput from '../info-item-about-input/info-item-about-input';
 
 type Props = {
-    element : EmailElement;
+    element: EmailElement;
     letterData: LetterData;
     setLetterData: React.Dispatch<React.SetStateAction<LetterData>>;
 }
 
-export default function EditorElement({element, letterData , setLetterData }: Props): JSX.Element {
+export default function EditorElement({element, letterData, setLetterData}: Props): JSX.Element {
     const renderList: Array<React.JSX.Element> = new Array<React.JSX.Element>();
     if (element) {
         renderList.push(
-            <TypeElementInput element={element} letterData={ letterData } setLetterData={ setLetterData }/>
+            <TypeElementInput element={element} letterData={letterData} setLetterData={setLetterData}/>
         );
 
         if (element instanceof (TitleElement)) {
             renderList.push(
-                <TitleInput element={ (element) } letterData={ letterData } setLetterData={ setLetterData }/>
+                <TitleInput element={(element)} letterData={letterData} setLetterData={setLetterData}/>
             );
         } else if (element instanceof (BigImageElement)) {
             renderList.push(
-                <BigImageInput element={ (element) } letterData={ letterData } setLetterData={ setLetterData }/>
+                <BigImageInput element={(element)} letterData={letterData} setLetterData={setLetterData}/>
             );
         } else if (element instanceof (ParagraphElement)) {
             renderList.push(
-                <ParagraphInput element={ (element) } letterData={ letterData } setLetterData={ setLetterData }/>
+                <ParagraphInput element={(element)} letterData={letterData} setLetterData={setLetterData}/>
             );
         } else if (element instanceof (InfoItemSignUpElement)) {
             renderList.push(
-                <InfoItemSignUpInput element={ (element) } letterData={ letterData } setLetterData={ setLetterData }/>
+                <InfoItemSignUpInput element={(element)} letterData={letterData} setLetterData={setLetterData}/>
+            );
+        } else if (element instanceof (InfoItemAboutElement)) {
+            renderList.push(
+                <InfoItemAboutInput element={(element)} letterData={letterData} setLetterData={setLetterData}/>
             );
         }
     }
 
     return (
-        <div style={ {textAlign : "left"} }>
-            { renderList }
-        </div> );
-    }
+        <div style={{textAlign: 'left'}}>
+            {renderList}
+        </div>);
+}

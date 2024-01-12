@@ -435,7 +435,6 @@ export default function InfoItemSignUp(props : {title : string, text : string, i
                     </tbody>
                 </table>
             </td>
-
         </tr>
     );
 }

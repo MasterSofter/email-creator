@@ -1,8 +1,7 @@
-import ReactQuill from "react-quill";
-import React from "react";
-import {FormGroup, FormLabel} from "react-bootstrap";
-import {LetterData , ParagraphElement} from "../../../../types/types";
-
+import React from 'react';
+import ReactQuill from 'react-quill';
+import {FormGroup, FormLabel} from 'react-bootstrap';
+import {LetterData , ParagraphElement} from '../../../../types/types';
 
 type Props = {
     element : ParagraphElement;
@@ -10,15 +9,15 @@ type Props = {
     setLetterData:  React.Dispatch<React.SetStateAction<LetterData>>;
 }
 
-export default function ParagraphInput({element, letterData, setLetterData} : Props) : React.JSX.Element {
+export default function ParagraphInput({element, letterData, setLetterData} : Props) : JSX.Element {
     return (
-        <FormGroup className={"mb-3"}>
-            <FormLabel className={"fw-semibold"}>Параграф</FormLabel>
+        <FormGroup className={'mb-3'}>
+            <FormLabel className={'fw-semibold'}>Параграф</FormLabel>
             <ReactQuill
-                className={"border rounded-3"}
-                theme={"snow"}
+                className={'border rounded-3'}
+                theme={'snow'}
                 value={element.getValue()}
-                id="reactQuill"
+                id='reactQuill'
                 onChange={(value) => {
                     element.setValue(value)
                     setLetterData([...letterData]);
