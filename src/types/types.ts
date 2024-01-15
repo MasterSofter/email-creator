@@ -24,10 +24,13 @@ export class BaseEmailElement {
   protected name: string;
   protected id: EmailElements;
 
-  protected constructor(name: string, id: EmailElements) {
+  protected constructor(name: string, id: EmailElements, index : string | undefined = undefined) {
     this.name = name;
     this.id = id;
-    this.index = uuidv4();
+    if(index !== undefined)
+      this.index = index;
+    else
+      this.index = uuidv4();
   }
 
   public get Name() {
@@ -48,16 +51,16 @@ export class BaseEmailElement {
 }
 
 export class EmptyElement extends BaseEmailElement {
-  public constructor() {
-    super('Пустой элемент', EmailElements.Empty);
+  public constructor(index : string | undefined = undefined) {
+    super('Пустой элемент', EmailElements.Empty, index);
   }
 }
 
 export class AboutElement extends BaseEmailElement {
   text: string;
 
-  public constructor(text: string | null) {
-    super('Блок \"About\"', EmailElements.About);
+  public constructor(text: string | null, index : string | undefined = undefined) {
+    super('Блок \"About\"', EmailElements.About, index);
 
     if (text)
       this.text = text;
@@ -103,9 +106,9 @@ export class SignUpElement extends BaseEmailElement {
     amountOfDays: string,
     metroStation: { name: string, imageUrl: string },
     periods: Array<string>
-  } | null) {
+  } | null, index : string | undefined = undefined) {
 
-    super('Блок \"Записаться\"', EmailElements.SignUp);
+    super('Блок \"Записаться\"', EmailElements.SignUp, index);
 
     if (initVal) {
       this.title = initVal.title;
@@ -186,8 +189,8 @@ export class SignUpElement extends BaseEmailElement {
 export class TitleElement extends BaseEmailElement {
   title: string = '';
 
-  public constructor(title: string | null) {
-    super('Заголовок', EmailElements.Title);
+  public constructor(title: string | null, index : string | undefined = undefined) {
+    super('Заголовок', EmailElements.Title, index);
     if (title)
       this.title = title;
     else
@@ -206,8 +209,8 @@ export class TitleElement extends BaseEmailElement {
 export class BigImageElement extends BaseEmailElement {
   url: string = '';
 
-  public constructor(url: string | null) {
-    super('Большая картинка', EmailElements.BigImage);
+  public constructor(url: string | null, index : string | undefined = undefined) {
+    super('Большая картинка', EmailElements.BigImage, index);
 
     if (url)
       this.url = url;
@@ -228,8 +231,8 @@ export class BigImageElement extends BaseEmailElement {
 export class BadgesElement extends BaseEmailElement {
   badges: Array<{ variant: BadgeVariants, text: string }>;
 
-  public constructor(badges: Array<{ variant: BadgeVariants, text: string }> | null) {
-    super('Бейджи', EmailElements.Badges);
+  public constructor(badges: Array<{ variant: BadgeVariants, text: string }> | null, index : string | undefined = undefined) {
+    super('Бейджи', EmailElements.Badges, index);
 
     if (badges)
       this.badges = badges;
@@ -253,8 +256,8 @@ export class BadgesElement extends BaseEmailElement {
 export class ParagraphElement extends BaseEmailElement {
   text: string = '';
 
-  public constructor(text: string | null) {
-    super('Параграф', EmailElements.Paragraph);
+  public constructor(text: string | null, index : string | undefined = undefined) {
+    super('Параграф', EmailElements.Paragraph, index);
 
     if (text)
       this.text = text;
