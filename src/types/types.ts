@@ -1,255 +1,289 @@
 import {v4 as uuidv4} from 'uuid';
-import {text} from "stream/consumers";
 
 export const Stations = [{name: 'м. Молодежная', imageUrl: 'metro-molodeznaya.png'},
-    {name: 'м. Войковская', imageUrl: 'metro-voykovskaya.png'}];
+  {name: 'м. Войковская', imageUrl: 'metro-voykovskaya.png'}];
 
 export enum BadgeVariants {
-    SolidPink,
-    OutlinePink,
-    SolidBlack
+  SolidPink,
+  OutlinePink,
+  SolidBlack
 }
 
-export interface EmailElement {
-    getElementKey(): string;
-
-    getValue(): any;
-
-    setValue(value: any): void;
-
-    getName(): string;
+export enum EmailElements {
+  Empty,
+  About,
+  SignUp,
+  Title,
+  BigImage,
+  Badges,
+  Paragraph
 }
 
-export class EmptyElement implements EmailElement {
-    index: string = '';
+export class BaseEmailElement {
+  readonly index: string;
+  protected name: string;
+  protected id: EmailElements;
 
-    constructor() {
-        this.index = uuidv4();
-    }
+  protected constructor(name: string, id: EmailElements) {
+    this.name = name;
+    this.id = id;
+    this.index = uuidv4();
+  }
 
-    getValue(): any {
-        return '';
-    }
+  public get Name() {
+    return this.name
+  };
 
-    setValue(value: string): void {
-    }
+  public get ElementKey(): string {
+    return `element-${this.index}`;
+  }
 
-    getElementKey(): string {
-        return `element-${this.index}`;
-    }
+  public get GetType() {
+    return this.constructor.name;
+  }
 
-    getName(): string {
-        return 'Пустой элемент';
-    }
+  public get ID() {
+    return this.id
+  }
 }
 
-export class InfoItemAboutElement implements EmailElement {
-    readonly index: string;
-    private text: string;
-
-    constructor() {
-        this.index = uuidv4();
-        this.text =
-            '<b>🔥 Чем предстоит заниматься?</b>' +
-            '<br><br>' +
-            'Учеников ждёт множество интересных заданий ' +
-            'по программированию, созданию алгоритмов ' +
-            'разной сложности, изучение графов, таблиц' +
-            'и работа с данными.  ' +
-            '<br><br>' +
-            '<b>✅ В чём польза курса?</b>' +
-            '<br><br>' +
-            'Возможность учиться у ведущий преподавателей МАИ, сотрудников ФИПИ' +
-            ' и специалистов ОГЭ и ЕГЭ с многолетним опытом.';
-    }
-
-    getElementKey(): string {
-        return `element-${this.index}`;
-    }
-
-    getName(): string {
-        return 'Блок \"About\"';
-    }
-
-    getValue(): any {
-        return this.text;
-    }
-
-    setValue(value: any): void {
-        this.text = value;
-    }
-
+export class EmptyElement extends BaseEmailElement {
+  public constructor() {
+    super('Пустой элемент', EmailElements.Empty);
+  }
 }
 
-export class InfoItemSignUpElement implements EmailElement {
-    readonly index: string;
-    private title: string;
-    private text: string;
-    private imageUrl: string;
-    private age: string;
-    private amountOfDays: string;
-    private metroStation: { name: string, imageUrl: string };
-    private periods: Array<string>;
+export class AboutElement extends BaseEmailElement {
+  text: string;
 
-    constructor() {
-        this.index = uuidv4();
-        this.title = 'Minecraft-каникулы';
-        this.text = 'Ребята создадут и анимируют объекты для своих игровых миров, на самом популярном языке программирования!';
-        this.imageUrl = '';
-        this.age = '8-17 лет';
-        this.amountOfDays = '5 дней';
-        this.metroStation = Stations[0];
-        this.periods = ['30 окт — 3 ноя', '20 — 24 ноя'];
-    }
+  public constructor(text: string | null) {
+    super('Блок \"About\"', EmailElements.About);
 
-    public getValue(): any {
-        return {
-            title: this.title,
-            text: this.text,
-            imageUrl: this.imageUrl,
-            age: this.age,
-            amountOfDays: this.amountOfDays,
-            metroStation: this.metroStation,
-            periods: this.periods
-        };
-    }
+    if (text)
+      this.text = text;
+    else
+      this.text = '<div class="paragraph">' +
+        '<p><b>🔥 Чем предстоит заниматься?</b></p>' +
+        '<br>' +
+        '<p>Учеников ждёт множество интересных заданий ' +
+        'по программированию, созданию алгоритмов ' +
+        'разной сложности, изучение графов, таблиц' +
+        'и работа с данными.</p>' +
+        '<br>' +
+        '<p><b>✅ В чём польза курса?</b></p>' +
+        '<br>' +
+        '<p>Возможность учиться у ведущий преподавателей МАИ, сотрудников ФИПИ' +
+        ' и специалистов ОГЭ и ЕГЭ с многолетним опытом.</p>' +
+        '</div>';
+  }
 
-    public setValue(value: {
-                        title: string,
-                        text: string,
-                        imageUrl: string,
-                        age: string,
-                        amountOfDays: string,
-                        metroStation: { name: string, imageUrl: string },
-                        periods: Array<string>
-                    }
-    ): void {
-        this.title = value.title;
-        this.text = value.text;
-        this.imageUrl = value.imageUrl;
-        this.age = value.age;
-        this.amountOfDays = value.amountOfDays;
-        this.metroStation = value.metroStation;
-        this.periods = value.periods;
-    }
+  public get Text(): string {
+    return this.text;
+  }
 
-    getElementKey(): string {
-        return `element-${this.index}`;
-    }
-
-    getName(): string {
-        return 'Блок \"Записаться\"';
-    }
+  public set Text(value: string) {
+    this.text = value;
+  }
 }
 
-export class TitleElement implements EmailElement {
-    index: string = '';
-    private value: string = '';
+export class SignUpElement extends BaseEmailElement {
+  title: string;
+  text: string;
+  imageUrl: string;
+  age: string;
+  amountOfDays: string;
+  metroStation: { name: string, imageUrl: string };
+  periods: Array<string>;
 
-    constructor() {
-        this.index = uuidv4();
-        this.value = 'Привет ✨';
+  public constructor(initVal: {
+    title: string,
+    text: string,
+    imageUrl: string,
+    age: string,
+    amountOfDays: string,
+    metroStation: { name: string, imageUrl: string },
+    periods: Array<string>
+  } | null) {
+
+    super('Блок \"Записаться\"', EmailElements.SignUp);
+
+    if (initVal) {
+      this.title = initVal.title;
+      this.text = initVal.text;
+      this.imageUrl = initVal.imageUrl;
+      this.age = initVal.age;
+      this.amountOfDays = initVal.amountOfDays;
+      this.metroStation = initVal.metroStation;
+      this.periods = initVal.periods;
+    } else {
+      this.title = 'Minecraft-каникулы';
+      this.text = 'Ребята создадут и анимируют объекты для своих игровых миров, на самом популярном языке программирования!';
+      this.imageUrl = '';
+      this.age = '8-17 лет';
+      this.amountOfDays = '5 дней';
+      this.metroStation = Stations[0];
+      this.periods = ['30 окт — 3 ноя', '20 — 24 ноя'];
     }
+  }
 
-    public getValue(): string {
-        return this.value;
-    }
+  public get Title() {
+    return this.title;
+  }
 
-    public setValue(value: string): void {
-        this.value = value;
-    }
+  public set Title(value: string) {
+    this.title = value;
+  }
 
-    getElementKey(): string {
-        return `element-${this.index}`;
-    }
+  public get Text() {
+    return this.text;
+  }
 
-    getName(): string {
-        return 'Заголовок';
-    }
+  public set Text(value: string) {
+    this.text = value;
+  }
 
+  public get ImageUrl() {
+    return this.imageUrl;
+  }
+
+  public set ImageUrl(value: string) {
+    this.imageUrl = value;
+  }
+
+  public get Age() {
+    return this.age;
+  }
+
+  public set Age(value: string) {
+    this.age = value;
+  }
+
+  public get AmountOfDays() {
+    return this.amountOfDays;
+  }
+
+  public set AmountOfDays(value: string) {
+    this.amountOfDays = value;
+  }
+
+  public get MetroStation() {
+    return this.metroStation;
+  }
+
+  public set MetroStation(value: { name: string, imageUrl: string }) {
+    this.metroStation = value;
+  }
+
+  public get Periods() {
+    return this.periods;
+  }
+
+  public set Periods(value: Array<string>) {
+    this.periods = value;
+  }
 }
 
-export class BigImageElement implements EmailElement {
-    index: string = '';
-    private url: string = '';
+export class TitleElement extends BaseEmailElement {
+  title: string = '';
 
-    constructor() {
-        this.index = uuidv4();
-        this.url = '';
-    }
+  public constructor(title: string | null) {
+    super('Заголовок', EmailElements.Title);
+    if (title)
+      this.title = title;
+    else
+      this.title = 'Привет ✨';
+  }
 
-    public getValue(): string {
-        return this.url;
-    }
+  public get Title(): string {
+    return this.title;
+  }
 
-    public setValue(value: string): void {
-        this.url = value;
-    }
-
-    getElementKey(): string {
-        return `element-${this.index}`;
-    }
-
-    getName(): string {
-        return 'Большая картинка';
-    }
+  public set Title(value: string) {
+    this.title = value;
+  }
 }
 
-export class BadgesElement implements EmailElement {
-    index: string;
-    private badges: Array<{variant: BadgeVariants, text: string}>;
+export class BigImageElement extends BaseEmailElement {
+  url: string = '';
 
-    constructor() {
-        this.index = uuidv4();
-        this.badges = new Array<{variant: BadgeVariants, text: string}>(
-            {variant : BadgeVariants.SolidPink , text : '8-12 лет' },
-            {variant : BadgeVariants.OutlinePink , text : 'Продлёнка!' },
-            {variant : BadgeVariants.SolidBlack , text : 'Предложение доступно до 30 декабря' });
-    }
+  public constructor(url: string | null) {
+    super('Большая картинка', EmailElements.BigImage);
 
-    public getValue(): Array<{variant: BadgeVariants, text: string}> {
-        return this.badges;
-    }
+    if (url)
+      this.url = url;
+    else
+      this.url = '';
+  }
 
-    public setValue(value: {value: {variant: BadgeVariants, text: string}, index : number}): void {
-        this.badges[value.index] = value.value;
-    }
+  public get Url(): string {
+    return this.url;
+  }
 
-    getElementKey(): string {
-        return `element-${this.index}`;
-    }
-
-    getName(): string {
-        return 'Бейджи';
-    }
+  public set Url(value: string) {
+    this.url = value;
+  }
 }
 
-export class ParagraphElement implements EmailElement {
-    index: string = '';
-    private value: string = '';
 
-    constructor() {
-        this.index = uuidv4();
-        this.value = 'Как создавать шедевры с помощью Midjorney, вы узнаете в другом месте. ' +
-            'А мы расскажем, с чего вообще началось генеративное искусство и кто научил нейросети «рисовать».';
-    }
+export class BadgesElement extends BaseEmailElement {
+  badges: Array<{ variant: BadgeVariants, text: string }>;
 
-    getValue(): string {
-        return this.value;
-    }
+  public constructor(badges: Array<{ variant: BadgeVariants, text: string }> | null) {
+    super('Бейджи', EmailElements.Badges);
 
-    setValue(value: string): void {
-        this.value = value;
-    }
+    if (badges)
+      this.badges = badges;
+    else
+      this.badges = new Array<{ variant: BadgeVariants, text: string }>(
+        {variant: BadgeVariants.SolidPink, text: '8-12 лет'},
+        {variant: BadgeVariants.OutlinePink, text: 'Продлёнка!'},
+        {variant: BadgeVariants.SolidBlack, text: 'Предложение доступно до 30 декабря'});
+  }
 
-    getElementKey(): string {
-        return `element-${this.index}`;
-    }
+  public get Badges(): Array<{ variant: BadgeVariants, text: string }> {
+    return this.badges;
+  }
 
-    getName(): string {
-        return 'Параграф';
-    }
+  public set Badges(value: Array<{ variant: BadgeVariants, text: string }>) {
+    this.badges = value;
+  }
 }
 
-export type LetterData = Array<EmailElement>;
+
+export class ParagraphElement extends BaseEmailElement {
+  text: string = '';
+
+  public constructor(text: string | null) {
+    super('Параграф', EmailElements.Paragraph);
+
+    if (text)
+      this.text = text;
+    else
+      this.text = 'Как создавать шедевры с помощью Midjorney, вы узнаете в другом месте. ' +
+        'А мы расскажем, с чего вообще началось генеративное искусство и кто научил нейросети «рисовать».';
+  }
+
+  public get Text(): string {
+    return this.text;
+  }
+
+  public set Text(value: string) {
+    this.text = value;
+  }
+}
+
+export class MailData {
+  public version: number = 0;
+
+  public elements: Array<BaseEmailElement>;
+
+  constructor(version: number, elements: Array<BaseEmailElement> | null) {
+    if (elements)
+      this.elements = elements;
+    else
+      this.elements = new Array<BaseEmailElement>();
+    this.version = version;
+  }
+}
+
 

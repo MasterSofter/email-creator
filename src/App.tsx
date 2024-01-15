@@ -1,33 +1,34 @@
 import React, {useRef, useState} from 'react';
 import {
     BadgesElement,
+    BaseEmailElement,
     BigImageElement,
-    EmailElement,
-    InfoItemAboutElement,
-    InfoItemSignUpElement,
+    AboutElement,
+    SignUpElement, MailData,
     ParagraphElement,
     TitleElement
 } from './types/types';
 import {Container, Row} from 'react-bootstrap';
-import EditorStructure from './components/letter-builder/components/editor-structure/editor-structure';
-import LetterViewer from './components/letter-viewer/letter-viewer';
+import MailEditor from './components/mail-editor/mail-editor';
+import MailViewer from './components/mail-preview/mail-viewer';
 import NavBarHead from './components/nav-bar-head/nav-bar-head';
 
 // Подключение стиилей
 import './scss/style.scss';
+import MailPreview from "./components/mail-preview/mail-preview";
 
 const initialItems = [
-    new BigImageElement(),
-    new BadgesElement(),
-    new TitleElement(),
-    new ParagraphElement(),
-    new InfoItemSignUpElement(),
-    new InfoItemAboutElement()
+    new BigImageElement(null),
+    new BadgesElement(null),
+    new TitleElement(null),
+    new ParagraphElement(null),
+    new SignUpElement(null),
+    new AboutElement(null)
 ];
 
 export default function App(): React.JSX.Element {
-    const letter = useRef<null | HTMLDivElement>(null);
-    const [letterData, setLetterData] = useState<Array<EmailElement>>(initialItems);
+    const mail = useRef<null | HTMLDivElement>(null);
+    const [mailData, setMailData] = useState<MailData>(new MailData(0, initialItems));
     const [is_builtLetter, set_is_BuiltLetter] = useState<boolean>(false);
 
     return (
@@ -37,43 +38,11 @@ export default function App(): React.JSX.Element {
             </Row>
             <Row className='pt-4' style={{height: '92vh'}}>
                 <div className='col-editor'>
-                    <EditorStructure letter={letter.current} set_is_BuiltLetter={set_is_BuiltLetter}
-                                     letterData={letterData} setLetterData={setLetterData}/>
+                    <MailEditor mailData={mailData} setMailData={setMailData}/>
                 </div>
-                <div className='col-browser'>
-                    <figure className='device-browser'>
-                        <div className='device-browser-header'>
-                            <div className='device-browser-header-btn-list'>
-                                <span className='device-browser-header-btn-list-btn'/>
-                                <span className='device-browser-header-btn-list-btn'/>
-                                <span className='device-browser-header-btn-list-btn'/>
-                            </div>
-                            <div className='device-browser-header-browser-bar'>mail.mai.ru</div>
-                        </div>
-                        <div className='device-browser-frame d-flex flex-row text-center'>
-                            <div className='device-browser-frame-left-col'>
-                                <div className='py-1'/>
-                                <div className='device-browser-frame-left-col-bar py-5'/>
-                                <div className='py-3'/>
-                                <div className='device-browser-frame-left-col-bar'/>
-                                <div className='device-browser-frame-left-col-bar'/>
-                                <div className='device-browser-frame-left-col-bar'/>
-                                <div className='device-browser-frame-left-col-bar'/>
-                                <div className='device-browser-frame-left-col-bar'/>
-                                <div className='device-browser-frame-left-col-bar'/>
-                                <div className='device-browser-frame-left-col-bar'/>
-                            </div>
-                            <div className={'device-browser-frame-middle-col d-flex flex-column'}>
-                                <div className='device-browser-frame-middle-col-top'>
-                                    <div className='device-browser-frame-middle-col-top-bar'/>
-                                </div>
-                                <div ref={letter} className='device-browser-frame-middle-col-letter'>
-                                    <LetterViewer letterData={letterData} is_builtLetter={is_builtLetter}/>
-                                </div>
-                            </div>
-                            <div className='device-browser-frame-right-col'/>
-                        </div>
-                    </figure>
+                <div className='col-preview'>
+                    <MailPreview mail={mail} is_builtLetter={is_builtLetter} set_is_BuiltLetter={set_is_BuiltLetter}
+                                 mailData={mailData} setMailData={setMailData}/>
                 </div>
             </Row>
         </Container>

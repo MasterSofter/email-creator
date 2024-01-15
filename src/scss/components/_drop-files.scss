@@ -1,0 +1,23 @@
+.modal-drop-area{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  border-radius: 30px;
+}
+
+
+.drop-area{
+  width: 90%;
+  border-radius: 30px;
+  padding-top: 20vh;
+  padding-bottom: 20vh;
+  margin: 1.5vh 1.5vw;
+  border: 8px dashed #bababa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bababa;
+  font-size: 24px;
+  font-weight: 600;
+}
