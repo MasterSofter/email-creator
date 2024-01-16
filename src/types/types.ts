@@ -1,6 +1,7 @@
 import {v4 as uuidv4} from 'uuid';
 
-export const Stations = [{name: 'м. Молодежная', imageUrl: 'metro-molodeznaya.png'},
+export const Stations = [
+  {name: 'м. Молодежная', imageUrl: 'metro-molodeznaya.png'},
   {name: 'м. Войковская', imageUrl: 'metro-voykovskaya.png'}];
 
 export enum BadgeVariants {
@@ -93,18 +94,20 @@ export class SignUpElement extends BaseEmailElement {
   title: string;
   text: string;
   imageUrl: string;
+  buttonUrl : string;
   age: string;
   amountOfDays: string;
-  metroStation: { name: string, imageUrl: string };
+  metroStation: { name: string, imageUrl: string } | null;
   periods: Array<string>;
 
   public constructor(initVal: {
     title: string,
     text: string,
     imageUrl: string,
+    buttonUrl : string,
     age: string,
     amountOfDays: string,
-    metroStation: { name: string, imageUrl: string },
+    metroStation: { name: string, imageUrl: string } | null,
     periods: Array<string>
   } | null, index : string | undefined = undefined) {
 
@@ -114,6 +117,7 @@ export class SignUpElement extends BaseEmailElement {
       this.title = initVal.title;
       this.text = initVal.text;
       this.imageUrl = initVal.imageUrl;
+      this.buttonUrl = initVal.buttonUrl;
       this.age = initVal.age;
       this.amountOfDays = initVal.amountOfDays;
       this.metroStation = initVal.metroStation;
@@ -122,6 +126,7 @@ export class SignUpElement extends BaseEmailElement {
       this.title = 'Minecraft-каникулы';
       this.text = 'Ребята создадут и анимируют объекты для своих игровых миров, на самом популярном языке программирования!';
       this.imageUrl = '';
+      this.buttonUrl = '';
       this.age = '8-17 лет';
       this.amountOfDays = '5 дней';
       this.metroStation = Stations[0];
@@ -153,6 +158,16 @@ export class SignUpElement extends BaseEmailElement {
     this.imageUrl = value;
   }
 
+  public get ButtonUrl() {
+    return this.buttonUrl;
+  }
+
+  public set ButtonUrl(value: string) {
+    this.buttonUrl = value;
+  }
+
+
+
   public get Age() {
     return this.age;
   }
@@ -169,11 +184,11 @@ export class SignUpElement extends BaseEmailElement {
     this.amountOfDays = value;
   }
 
-  public get MetroStation() {
+  public get MetroStation() : { name: string, imageUrl: string } | null {
     return this.metroStation;
   }
 
-  public set MetroStation(value: { name: string, imageUrl: string }) {
+  public set MetroStation(value: { name: string, imageUrl: string } | null) {
     this.metroStation = value;
   }
 
@@ -207,23 +222,37 @@ export class TitleElement extends BaseEmailElement {
 }
 
 export class BigImageElement extends BaseEmailElement {
-  url: string = '';
+  imageUrl: string = '';
+  address : string = ''
 
-  public constructor(url: string | null, index : string | undefined = undefined) {
+  public constructor(address: string | null, imageUrl: string | null, index : string | undefined = undefined) {
     super('Большая картинка', EmailElements.BigImage, index);
 
-    if (url)
-      this.url = url;
+    if (imageUrl)
+      this.imageUrl = imageUrl;
     else
-      this.url = '';
+      this.imageUrl = '';
+
+    if (address)
+      this.address = address;
+    else
+      this.imageUrl = '';
   }
 
-  public get Url(): string {
-    return this.url;
+  public get ImageUrl(): string {
+    return this.imageUrl;
   }
 
-  public set Url(value: string) {
-    this.url = value;
+  public set ImageUrl(value: string) {
+    this.imageUrl = value;
+  }
+
+  public get Address(): string {
+    return this.address;
+  }
+
+  public set Address(value: string) {
+    this.address = value;
   }
 }
 

@@ -10,18 +10,34 @@ type Props = {
 
 export default function BigImageInput({element, mailData, setMailData}: Props ) : React.JSX.Element {
     return (
-        <FormGroup className={"mb-3"}>
+        <div>
+          <FormGroup className={"mb-3"}>
             <FormLabel className={"fw-semibold"}>URL изображения</FormLabel>
             <FormControl
-                value={element.Url}
-                type="text"
-                name="image"
-                id="imageInput"
-                onChange={(value) => {
-                    element.Url = value.currentTarget.value;
-                  setMailData({...mailData, elements: mailData.elements});
-                } }
-                required/>
-        </FormGroup>
+              value={element.ImageUrl}
+              type="text"
+              name="image"
+              id="imageInput"
+              onChange={(value) => {
+                element.ImageUrl = value.currentTarget.value;
+                setMailData({...mailData, elements: mailData.elements});
+              } }
+              required/>
+          </FormGroup>
+
+          <FormGroup>
+            <FormLabel className={"fw-semibold"}>URL адрес ссылки</FormLabel>
+            <FormControl
+              value={element.Address}
+              type="text"
+              name="image"
+              id="imageInput"
+              onChange={(value) => {
+                element.Address = value.currentTarget.value;
+                setMailData({...mailData, elements: mailData.elements});
+              } }
+              required/>
+          </FormGroup>
+        </div>
     );
 }

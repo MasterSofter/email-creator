@@ -18,7 +18,7 @@ import './scss/style.scss';
 import MailPreview from "./components/mail-preview/mail-preview";
 
 const initialItems = [
-    new BigImageElement(null),
+    new BigImageElement(null, null),
     new BadgesElement(null),
     new TitleElement(null),
     new ParagraphElement(null),

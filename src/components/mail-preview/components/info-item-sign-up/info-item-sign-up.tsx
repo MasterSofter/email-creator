@@ -1,16 +1,16 @@
 import Badge from '../badge/badge';
 import {BadgeVariants} from '../../../../types/types';
 
-export default function InfoItemSignUp(props: { title: string, text: string, imageUrl: string, metroImageUrl: string, age: string, amountOfDays: string, periods: Array<string>, is_builtLetter: boolean }): JSX.Element {
+export default function InfoItemSignUp(props: { title: string, text: string, imageUrl: string, buttonUrl:string, metroImageUrl: string, age: string, amountOfDays: string, periods: Array<string>, is_builtLetter: boolean }): JSX.Element {
   return (
     <tr style={{margin: 0, padding: 0}}>
       <td style={{margin: 0, padding: 0}}>
         <table
-          align="center"
+          align='center'
           border={0}
           cellSpacing={0}
           cellPadding={0}
-          role="presentation"
+          role='presentation'
           style={{
             padding: '0px',
             marginTop: '20px',
@@ -23,16 +23,16 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
         >
           <tbody>
           <tr style={{margin: 0, padding: 0}}>
-            <td align="center" style={{
+            <td align='center' style={{
               margin: 0,
               padding: 0
             }}>
               <table
-                align="center"
+                align='center'
                 border={0}
                 cellSpacing={0}
                 cellPadding={0}
-                role="presentation"
+                role='presentation'
                 style={{
                   margin: '0',
                   padding: '0',
@@ -44,17 +44,17 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
               >
                 <tbody>
                 <tr style={{margin: 0, padding: 0}}>
-                  <td align="right" style={{
+                  <td align='right' style={{
                     margin: 0,
                     padding: 0,
-                    width: '40%',
+                    width: '40%'
                   }}>
                     <table
-                      align="center"
+                      align='center'
                       border={0}
                       cellSpacing={0}
                       cellPadding={0}
-                      role="presentation"
+                      role='presentation'
                       style={{
                         margin: '0px',
                         padding: '0px',
@@ -65,18 +65,18 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                     >
                       <tbody>
                       <tr style={{margin: 0, padding: 0}}>
-                        <td align="center" style={{
+                        <td align='center' style={{
                           margin: 0,
                           padding: '0px',
                           width: '100%',
                           height: '72%'
                         }}>
                           <table
-                            align="center"
+                            align='center'
                             border={0}
                             cellSpacing={0}
                             cellPadding={0}
-                            role="presentation"
+                            role='presentation'
                             style={{
                               margin: '0px',
                               padding: '0px',
@@ -86,7 +86,7 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                           >
                             <tbody>
                             <tr style={{margin: 0, padding: 0}}>
-                              <td align="center"
+                              <td align='center'
                                   style={{margin: 0, padding: 0}}>
                                 <img style={{width: '100%', borderRadius: '34px'}}
                                      src={props.imageUrl.length > 0
@@ -101,7 +101,7 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                         </td>
                       </tr>
                       <tr style={{margin: 0, padding: 0}}>
-                        <td align="center" style={{
+                        <td align='center' style={{
                           margin: 0,
                           padding: 0,
                           width: '100%',
@@ -109,18 +109,18 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                         }}/>
                       </tr>
                       <tr style={{margin: 0, padding: 0}}>
-                        <td align="center" style={{
+                        <td align='center' style={{
                           margin: 0,
                           padding: 0,
                           width: '100%',
                           height: '23%'
                         }}>
                           <table
-                            align="center"
+                            align='center'
                             border={0}
                             cellSpacing={0}
                             cellPadding={0}
-                            role="presentation"
+                            role='presentation'
                             style={{
                               margin: '0px',
                               padding: '0px',
@@ -132,15 +132,16 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                           >
                             <tbody>
                             <tr style={{margin: 0, padding: 0}}>
-                              <td align="center" style={{
+                              <td align='center' style={{
                                 margin: 0,
                                 padding: 0,
                                 textAlign: 'center',
                                 fontSize: '24px',
                                 fontWeight: '400',
+                                textDecoration: 'none',
                                 color: 'white'
                               }}>
-                                <a>
+                                <a href={props.buttonUrl} target='_blank' style={{textDecoration: 'none', color: 'white'}}>
                                   <span>Записаться</span>
                                 </a>
                               </td>
@@ -152,22 +153,24 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                       </tbody>
                     </table>
                   </td>
-                  <td align="right" style={{
+
+                  <td align='right' style={{
                     margin: 0,
                     padding: 0,
-                    width: '8%',
+                    width: '8%'
                   }}/>
-                  <td align="left" style={{
+
+                  <td align='left' style={{
                     margin: 0,
                     padding: 0,
                     width: '52%'
                   }}>
                     <table
-                      align="center"
+                      align='center'
                       border={0}
                       cellSpacing={0}
                       cellPadding={0}
-                      role="presentation"
+                      role='presentation'
                       style={{
                         margin: '0px',
                         padding: '0px',
@@ -177,105 +180,117 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                       }}
                     >
                       <tbody>
-                      <tr style={{margin: 0, padding: 0}}>
-                        <td style={{margin: 0, padding: 0, height: '7%'}}>
-                          <table
-                            align="center"
-                            border={0}
-                            cellSpacing={0}
-                            cellPadding={0}
-                            role="presentation"
-                            style={{
-                              margin: '0px',
-                              padding: '0px',
-                              height: '100%',
-                              width: '100%',
-                              borderRadius: '18px'
-                            }}
-                          >
-                            <tbody>
-                            <tr style={{
-                              margin: 0, padding: 0, display: 'flex', flexDirection: 'row',
-                              justifyContent: props.age.length > 0 || props.amountOfDays.length > 0 ? 'space-between' : 'right'
-                            }}>
-                              {props.age.length > 0 &&
-                              <td style={{margin: 0, padding: 0}}>
-                                  <table
-                                      align="center"
-                                      border={0}
-                                      cellSpacing={0}
-                                      cellPadding={0}
-                                      role="presentation"
-                                      style={{
-                                        margin: '0px',
-                                        padding: '0px',
-                                        height: '100%',
-                                        borderRadius: '18px'
-                                      }}
-                                  >
-                                      <tbody>
-                                      <Badge variant={BadgeVariants.SolidPink}
-                                             text={props.age.replace(' ', '\u00A0')}/>
-                                      </tbody>
-                                  </table>
-                              </td>}
-
-                              {props.amountOfDays.length > 0 &&
-                              <td style={{margin: 0, padding: 0}}>
-                                  <table
-                                      align="center"
-                                      border={0}
-                                      cellSpacing={0}
-                                      cellPadding={0}
-                                      role="presentation"
-                                      style={{
-                                        margin: '0px',
-                                        padding: '0px',
-                                        height: '100%',
-                                        borderRadius: '18px'
-                                      }}
-                                  >
-                                      <tbody>
-                                      <Badge variant={BadgeVariants.OutlinePink}
-                                             text={props.amountOfDays.replace(' ', '\u00A0')}/>
-                                      </tbody>
-                                  </table>
-                              </td>
-                              }
-                              <td style={{margin: 0, padding: 0}}>
+                      {
+                        (props.age || props.amountOfDays || props.metroImageUrl) &&
+                        <tr style={{margin: 0, padding: 0}}>
+                            <td style={{margin: 0, padding: 0, height: '7%'}}>
                                 <table
-                                  align="center"
-                                  border={0}
-                                  cellSpacing={0}
-                                  cellPadding={0}
-                                  role="presentation"
-                                  style={{
-                                    margin: '0px',
-                                    padding: '0px',
-                                    height: '100%',
-                                    width: '100%',
-                                    maxWidth: '120px'
-                                  }}
+                                    align='center'
+                                    border={0}
+                                    cellSpacing={0}
+                                    cellPadding={0}
+                                    role='presentation'
+                                    style={{
+                                      margin: '0px',
+                                      padding: '0px',
+                                      height: '100%',
+                                      width: '100%',
+                                      borderRadius: '18px'
+                                    }}
                                 >
-                                  <tbody>
-                                  <tr style={{margin: 0, padding: 0}}>
-                                    <td align="center"
-                                        style={{margin: 0, padding: 0}}>
-                                      <img style={{width: '100%'}}
-                                           src={props.is_builtLetter
-                                                 ? 'https://dev.mai.ru/services/email-creator-tr/images/' + props.metroImageUrl
-                                                 : process.env.PUBLIC_URL + '/images/' + props.metroImageUrl}
-                                      />
-                                    </td>
-                                  </tr>
-                                  </tbody>
+                                    <tbody>
+                                    <tr style={{
+                                      margin: 0, padding: 0
+                                    }}>
+                                        <td style={{width: '180px'}}>
+                                            <table>
+                                                <tbody>
+                                                <tr>
+                                                  {props.age &&
+                                                  <td style={{margin: 0, padding: 0}}>
+                                                      <table
+                                                          align='center'
+                                                          border={0}
+                                                          cellSpacing={0}
+                                                          cellPadding={0}
+                                                          role='presentation'
+                                                          style={{
+                                                            marginRight: '10px',
+                                                            padding: '0px',
+                                                            height: '100%',
+                                                            borderRadius: '18px'
+                                                          }}
+                                                      >
+                                                          <tbody>
+                                                          <Badge variant={BadgeVariants.SolidPink}
+                                                                 text={props.age.replace(' ', '\u00A0')}/>
+                                                          </tbody>
+                                                      </table>
+                                                  </td>}
+
+                                                  {props.amountOfDays &&
+                                                  <td style={{margin: 0, padding: 0}}>
+                                                      <table
+                                                          align='center'
+                                                          border={0}
+                                                          cellSpacing={0}
+                                                          cellPadding={0}
+                                                          role='presentation'
+                                                          style={{
+                                                            marginRight: '10px',
+                                                            padding: '0px',
+                                                            height: '100%',
+                                                            borderRadius: '18px'
+                                                          }}
+                                                      >
+                                                          <tbody>
+                                                          <Badge variant={BadgeVariants.OutlinePink}
+                                                                 text={props.amountOfDays.replace(' ', '\u00A0')}/>
+                                                          </tbody>
+                                                      </table>
+                                                  </td>
+                                                  }
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                      {
+                                        props.metroImageUrl && <td style={{margin: 0, padding: 0, maxWidth: '110px'}}>
+                                            <table
+                                                align='center'
+                                                border={0}
+                                                cellSpacing={0}
+                                                cellPadding={0}
+                                                role='presentation'
+                                                style={{
+                                                  margin: '0px',
+                                                  padding: '0px',
+                                                  height: '100%',
+                                                  width: '100%'
+                                                }}
+                                            >
+                                                <tbody>
+                                                <tr style={{margin: 0, padding: 0}}>
+                                                    <td align='center'
+                                                        style={{margin: 0, padding: 0}}>
+                                                        <img style={{width: '100%', verticalAlign: 'middle'}}
+                                                             src={props.is_builtLetter
+                                                               ? 'https://dev.mai.ru/services/email-creator-tr/images/' + props.metroImageUrl
+                                                               : process.env.PUBLIC_URL + '/images/' + props.metroImageUrl}
+                                                        />
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                      }
+                                    </tr>
+                                    </tbody>
                                 </table>
-                              </td>
-                            </tr>
-                            </tbody>
-                          </table>
-                        </td>
-                      </tr>
+                            </td>
+                        </tr>
+
+                      }
 
                       <tr style={{margin: 0, padding: 0}}>
                         <td style={{margin: 0, padding: 0, height: '2%'}}/>
@@ -284,11 +299,11 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                       <tr style={{margin: 0, padding: 0}}>
                         <td style={{margin: 0, padding: 0}}>
                           <table
-                            align="center"
+                            align='center'
                             border={0}
                             cellSpacing={0}
                             cellPadding={0}
-                            role="presentation"
+                            role='presentation'
                             style={{
                               margin: '0px',
                               padding: '0px',
@@ -330,7 +345,11 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                                     textDecoration: 'none',
                                     WebkitTextSizeAdjust: 'none'
                                   }}
-                                  dangerouslySetInnerHTML={{__html: props.text}}
+                                  dangerouslySetInnerHTML={{
+                                    __html: props.is_builtLetter
+                                      ? props.text.replaceAll('<br>', '').replaceAll('<p>', '<p style="margin:0; padding:0">')
+                                      : props.text
+                                  }}
                                 />
                               </td>
                             </tr>
@@ -348,11 +367,11 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                           props.periods[0] &&
                           <td style={{margin: 0, padding: 0, height: '10%'}}>
                               <table
-                                  align="center"
+                                  align='center'
                                   border={0}
                                   cellSpacing={0}
                                   cellPadding={0}
-                                  role="presentation"
+                                  role='presentation'
                                   style={{
                                     margin: '0px',
                                     padding: '0px',
@@ -365,13 +384,19 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                                   <tr style={{margin: 0, padding: 0}}>
                                     {
                                       props.periods[0] &&
-                                      <td style={{margin: 0, padding: 0, width: '20%'}}>
+                                      <td style={{
+                                        margin: 0,
+                                        padding: 0,
+                                        width: '50%',
+                                        float: 'left',
+                                        textAlign: 'left'
+                                      }}>
                                           <table
-                                              align="center"
+                                              align='center'
                                               border={0}
                                               cellSpacing={0}
                                               cellPadding={0}
-                                              role="presentation"
+                                              role='presentation'
                                               style={{
                                                 margin: '0px',
                                                 padding: '0px',
@@ -380,17 +405,17 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                                               }}
                                           >
                                               <tbody>
-                                              <tr style={{margin: 0, padding: 0}}>
+                                              <tr style={{margin: 0, padding: 0, float: 'left', textAlign: 'left'}}>
                                                   <td style={{
                                                     margin: 0,
                                                     padding: 0,
                                                     width: '14px'
                                                   }}>
                                                       <img
-                                                          style={{width: '100%'}}
+                                                          style={{width: '100%', verticalAlign: 'middle'}}
                                                           src={props.is_builtLetter
-                                                              ? 'https://dev.mai.ru/services/email-creator-tr/images/clock.png'
-                                                              : process.env.PUBLIC_URL + '/images/clock.png'}/>
+                                                            ? 'https://dev.mai.ru/services/email-creator-tr/images/clock.png'
+                                                            : process.env.PUBLIC_URL + '/images/clock.png'}/>
                                                   </td>
                                                   <td style={{
                                                     margin: 0,
@@ -414,16 +439,21 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                                       </td>
                                     }
 
-                                    <td style={{margin: 0, padding: 0, width: '2%'}}/>
 
                                     {props.periods[1] &&
-                                    <td style={{margin: 0, padding: 0, width: '20%'}}>
+                                    <td style={{
+                                      margin: 0,
+                                      padding: 0,
+                                      width: '50%',
+                                      float: 'right',
+                                      textAlign: 'right'
+                                    }}>
                                         <table
-                                            align="center"
+                                            align='center'
                                             border={0}
                                             cellSpacing={0}
                                             cellPadding={0}
-                                            role="presentation"
+                                            role='presentation'
                                             style={{
                                               margin: '0px',
                                               padding: '0px',
@@ -432,16 +462,16 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                                             }}
                                         >
                                             <tbody>
-                                            <tr style={{margin: 0, padding: 0}}>
+                                            <tr style={{margin: 0, padding: 0, float: 'right'}}>
                                                 <td style={{
                                                   margin: 0,
                                                   padding: 0,
                                                   width: '14px'
                                                 }}>
-                                                    <img style={{width: '100%'}}
+                                                    <img style={{width: '100%', verticalAlign: 'middle'}}
                                                          src={props.is_builtLetter
-                                                             ? 'https://dev.mai.ru/services/email-creator-tr/images/clock.png'
-                                                             : process.env.PUBLIC_URL + '/images/clock.png'}/>
+                                                           ? 'https://dev.mai.ru/services/email-creator-tr/images/clock.png'
+                                                           : process.env.PUBLIC_URL + '/images/clock.png'}/>
                                                 </td>
                                                 <td style={{
                                                   margin: 0,

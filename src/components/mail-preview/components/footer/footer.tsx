@@ -10,171 +10,114 @@ export default function Footer(props: { is_builtLetter: boolean; }): JSX.Element
                     role='presentation'
                     style={{
                         width: '100%',
-                        maxWidth: '600px',
                         marginTop: '20px',
                         marginBottom: '30px'
                     }}
                 >
                     <tbody>
-                    <tr style={{
-                        marginBottom: '5px',
-                        padding: 0,
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between'
-                    }}>
-                        <td style={{margin: 0, padding: 0, alignItems: 'start'}}>
-                            <span
-                                style={{
-                                    display: 'block',
-                                    color: '#000000',
-                                    fontSize: '15px',
-                                    lineHeight: '28px',
-                                    fontWeight: 'normal',
-                                    textDecoration: 'none',
-                                    paddingBottom: '0px',
-                                    textSizeAdjust: 'none'
-                                }}
-                            >С любовью&nbsp;❤️</span>
+                      <tr style={{height: '30px'}}>
+                        <td colSpan={4} style={{maxWidth:'45px', textAlign: 'left'}} >
+                          <span
+                            style={{
+                              display: 'block',
+                              color: '#000000',
+                              fontSize: '14px',
+                              fontWeight: 'normal',
+                              textDecoration: 'none',
+                              paddingBottom: '0px',
+                              textSizeAdjust: 'none'
+                            }}
+                          >С уважением и любовью ❤️️</span>
                         </td>
-                        <td style={{margin: 0, padding: 0, alignItems: 'end'}}>
-                            <table
-                                align='center'
-                                border={0}
-                                cellSpacing={0}
-                                cellPadding={0}
-                            >
-                                <tbody>
-                                <tr style={{
-                                    margin: 0,
-                                    padding: 0,
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-between'
-                                }}>
-                                    <td style={{marginRight: '10px', padding: 0}}>
-                                        <a href='tel:+79017130331' style={{textDecoration: 'none'}}>
+                        <td colSpan={4} style={{width: '50px'}}/>
+                        <td colSpan={3} style={{maxWidth:'25px', textAlign: 'right'}}>
+                          <a href='tel:+79017130331' style={{textDecoration: 'none'}}>
                                             <span
-                                                style={{
-                                                    display: 'block',
-                                                    color: '#000000',
-                                                    fontSize: '15px',
-                                                    lineHeight: '28px',
-                                                    fontWeight: 'normal',
-                                                    textDecoration: 'none',
-                                                    paddingBottom: '0px',
-                                                    textSizeAdjust: 'none'
-                                                }}
+                                              style={{
+                                                display: 'block',
+                                                color: '#000000',
+                                                fontSize: '15px',
+                                                fontWeight: 'normal',
+                                                textDecoration: 'none',
+                                                paddingBottom: '0px',
+                                                textSizeAdjust: 'none'
+                                              }}
                                             >+7 (901) 713-03-31</span>
-                                        </a>
-                                    </td>
-                                    <td style={{margin: 0, padding: 0, maxWidth: '15px'}}>
-                                        <a href='https://mai.ru' target='_blank' rel='noreferrer'>
-                                            <img
-                                                src={props.is_builtLetter ? 'https://dev.mai.ru/services/email-creator-tr/images/phone-flip.png' : process.env.PUBLIC_URL + '/images/phone-flip.png'}
-                                                alt='phone-image'
-                                                style={{width: '100%'}}
-                                            />
-                                        </a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                          </a>
                         </td>
-                    </tr>
-                    <tr style={{
-                        marginBottom: '5px',
-                        padding: 0,
-                        display: 'flex',
-                        flexDirection: 'row',
-                        justifyContent: 'space-between'
-                    }}>
-                        <td style={{margin: 0, padding: 0, alignItems: 'start'}}>
-                            <span
-                                style={{
-                                    display: 'block',
-                                    color: '#000000',
-                                    fontSize: '15px',
-                                    lineHeight: '28px',
-                                    fontWeight: 'normal',
-                                    textDecoration: 'none',
-                                    paddingBottom: '0px',
-                                    textSizeAdjust: 'none'
-                                }}
-                            >Ваш МАИ ✈️</span>
+                        <td style={{maxWidth: '5px', textAlign: 'right'}}>
+                          <a href='tel:+79017130331' style={{textDecoration: 'none'}}>
+                            <img
+                              src={props.is_builtLetter ? 'https://dev.mai.ru/services/email-creator-tr/images/phone-flip.png' : process.env.PUBLIC_URL + '/images/phone-flip.png'}
+                              alt='envelope-image'
+                              style={{width: '100%', maxWidth:'15px', verticalAlign: 'middle'}}
+                            />
+                          </a>
                         </td>
-                        <td style={{margin: 0, padding: 0, alignItems: 'end'}}>
-                            <table
-                                align='center'
-                                border={0}
-                                cellSpacing={0}
-                                cellPadding={0}
-                            >
-                                <tbody>
-                                <tr style={{
-                                    margin: 0,
-                                    padding: 0,
-                                    display: 'flex',
-                                    flexDirection: 'row',
-                                    justifyContent: 'space-between'
-                                }}>
-                                    <td style={{marginRight: '10px', padding: 0}}>
-                                        <a href='traektoria@mai.ru' style={{textDecoration: 'none'}}>
+                      </tr>
+                      <tr style={{height: '35px'}}>
+                        <td colSpan={4} style={{maxWidth:'45px', textAlign: 'left'}} >
+                          <span
+                            style={{
+                              display: 'block',
+                              color: '#000000',
+                              fontSize: '14px',
+                              fontWeight: 'normal',
+                              textDecoration: 'none',
+                              paddingBottom: '0px',
+                              textSizeAdjust: 'none'
+                            }}
+                          >Ваш МАИ ✈️️️</span>
+                        </td>
+                        <td colSpan={4} style={{width: '50px'}}/>
+                        <td colSpan={3} style={{maxWidth:'25px', textAlign: 'right'}}>
+                          <a href='traektoria@mai.ru' style={{textDecoration: 'none'}}>
                                             <span
-                                                style={{
-                                                    display: 'block',
-                                                    color: '#000000',
-                                                    fontSize: '15px',
-                                                    lineHeight: '28px',
-                                                    fontWeight: 'normal',
-                                                    textDecoration: 'none',
-                                                    paddingBottom: '0px',
-                                                    textSizeAdjust: 'none'
-                                                }}
+                                              style={{
+                                                display: 'block',
+                                                color: '#000000',
+                                                fontSize: '15px',
+                                                fontWeight: 'normal',
+                                                textDecoration: 'none',
+                                                paddingBottom: '0px',
+                                                textSizeAdjust: 'none'
+                                              }}
                                             >traektoria@mai.ru</span>
-                                        </a>
-                                    </td>
-                                    <td style={{margin: 0, padding: 0, maxWidth: '15px'}}>
-                                        <a href='https://mai.ru' target='_blank' rel='noreferrer'>
-                                            <img
-                                                src={props.is_builtLetter ? 'https://dev.mai.ru/services/email-creator-tr/images/envelope.png' : process.env.PUBLIC_URL + '/images/envelope.png'}
-                                                alt='envelope-image'
-                                                style={{width: '100%'}}
-                                            />
-                                        </a>
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                          </a>
                         </td>
-                    </tr>
-                    <tr
-                        style={{
-                            margin: 0,
-                            padding: 0,
-                            display: 'flex',
-                            flexDirection: 'row',
-                            justifyContent: 'end'
-                        }}>
-                        <td style={{marginRight: '10px', padding: 0, maxWidth: '30px'}}>
-                            <a href='https://mai.ru' target='_blank' rel='noreferrer'>
-                                <img
-                                    src={props.is_builtLetter ? 'https://dev.mai.ru/services/email-creator-tr/images/telegram.png' : process.env.PUBLIC_URL + '/images/telegram.png'}
-                                    alt='envelope-image'
-                                    style={{width: '100%'}}
-                                />
-                            </a>
+                        <td style={{maxWidth: '5px', textAlign: 'right'}}>
+                          <a href='traektoria@mai.ru' style={{textDecoration: 'none'}}>
+                            <img
+                              src={props.is_builtLetter ? 'https://dev.mai.ru/services/email-creator-tr/images/envelope.png' : process.env.PUBLIC_URL + '/images/envelope.png'}
+                              alt='envelope-image'
+                              style={{width: '100%', maxWidth:'15px', verticalAlign: 'middle'}}
+                            />
+                          </a>
                         </td>
-                        <td style={{margin: 0, padding: 0, maxWidth: '30px'}}>
-                            <a href='https://mai.ru' target='_blank' rel='noreferrer'>
-                                <img
-                                    src={props.is_builtLetter ? 'https://dev.mai.ru/services/email-creator-tr/images/vk.png' : process.env.PUBLIC_URL + '/images/vk.png'}
-                                    alt='envelope-image'
-                                    style={{width: '100%'}}
-                                />
-                            </a>
+                      </tr>
+                      <tr style={{height: '30px'}}>
+                        <td colSpan={8}/>
+                        <td style={{width:'50px'}}/>
+                        <td style={{width:'50px'}}/>
+                        <td style={{maxWidth: '8px', textAlign: 'left'}}>
+                          <a href='' style={{textDecoration: 'none'}}>
+                            <img
+                              src={props.is_builtLetter ? 'https://dev.mai.ru/services/email-creator-tr/images/telegram.png' : process.env.PUBLIC_URL + '/images/telegram.png'}
+                              alt='envelope-image'
+                              style={{width: '100%', maxWidth:'25px', verticalAlign: 'middle'}}
+                            />
+                          </a>
                         </td>
-                    </tr>
+                        <td style={{maxWidth: '5px', textAlign: 'right'}}>
+                          <a href='' style={{textDecoration: 'none'}}>
+                            <img
+                              src={props.is_builtLetter ? 'https://dev.mai.ru/services/email-creator-tr/images/vk.png' : process.env.PUBLIC_URL + '/images/vk.png'}
+                              alt='envelope-image'
+                              style={{width: '100%', maxWidth:'30px', verticalAlign: 'middle'}}
+                            />
+                          </a>
+                        </td>
+                      </tr>
                     </tbody>
                 </table>
             </td>

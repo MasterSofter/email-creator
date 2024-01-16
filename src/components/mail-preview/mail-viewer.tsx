@@ -40,9 +40,7 @@ export default function MailViewer({mailData, is_builtLetter}: Props): React.JSX
                fontFamily: 'Helvetica, sans-serif, Arial',
                margin: 'auto',
                padding: 0,
-               width: '94%',
-               minWidth: '580px',
-               maxWidth: '600px'
+               width: '600px'
              }}
       >
         <tbody>
@@ -52,7 +50,7 @@ export default function MailViewer({mailData, is_builtLetter}: Props): React.JSX
             element instanceof (TitleElement)
               ? <Title key={key} title={element.Title}/>
               : element instanceof (BigImageElement)
-                ? <BigImage key={key} url={element.Url} is_builtLetter={is_builtLetter}/>
+                ? <BigImage key={key} address={element.Address} imageUrl={element.ImageUrl} is_builtLetter={is_builtLetter}/>
                 : element instanceof (BadgesElement)
                   ? <Badges key={key} is_builtLetter={is_builtLetter} badges={element.Badges}/>
                   : element instanceof (ParagraphElement)
@@ -61,10 +59,11 @@ export default function MailViewer({mailData, is_builtLetter}: Props): React.JSX
                       ? <InfoItemSignUp key={key}
                                         text={element.Text}
                                         title={element.Title}
+                                        buttonUrl={element.ButtonUrl}
                                         imageUrl={element.ImageUrl}
                                         age={element.Age}
                                         amountOfDays={element.AmountOfDays}
-                                        metroImageUrl={element.MetroStation.imageUrl}
+                                        metroImageUrl={element.MetroStation ? element.MetroStation.imageUrl : ''}
                                         periods={element.Periods}
                                         is_builtLetter={is_builtLetter}
                       /> : element instanceof (AboutElement)

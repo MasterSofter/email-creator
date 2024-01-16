@@ -76,12 +76,13 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
                   cellPadding={0}
                   role='presentation'
                   style={{
-                    marginTop: '2px',
-                    marginBottom: '2px',
+                    height: '21px',
+                    marginTop: '0px',
+                    marginBottom: '0px',
                     marginRight: '2px',
                     marginLeft: '2px',
-                    padding: '0',
-                    borderRadius: '26px',
+                    padding: '0 ',
+                    borderRadius: '24px',
                     backgroundColor: 'white'
                   }}
                 >

@@ -16,7 +16,7 @@ export default function Title({title}: Props): React.JSX.Element {
                     style={ {
                         width : '100%' ,
                         borderRadius : '30px' ,
-                        marginTop : '0px' ,
+                        marginTop : '20px' ,
                         marginBottom : '30px' ,
                     } }
                 >

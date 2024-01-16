@@ -31,6 +31,7 @@ export class SignUpDeserializator implements IDeserializator {
         title    : obj['title'],
         text     : obj['text'],
         imageUrl : obj['imageUrl'],
+        buttonUrl : obj['buttonUrl'],
         age      : obj['age'],
         amountOfDays : obj['amountOfDays'],
         metroStation : obj['metroStation'],
@@ -47,7 +48,7 @@ export class TitleDeserializator implements IDeserializator {
 
 export class BigImageDeserializator implements IDeserializator {
   deserialize(obj: any): BigImageElement {
-    return new BigImageElement(obj['url']);
+    return new BigImageElement(obj['address'], obj['imageUrl']);
   }
 }
 

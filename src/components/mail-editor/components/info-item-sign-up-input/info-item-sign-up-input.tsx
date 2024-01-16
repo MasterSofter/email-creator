@@ -12,7 +12,7 @@ type Props = {
 }
 
 export default function InfoItemSignUpInput({element, mailData, setMailData}: Props): JSX.Element {
-    return (
+  return (
         <FormGroup className=''>
             <div className='mb-3'>
                 <FormLabel className='fw-semibold'>Заголовок</FormLabel>
@@ -55,6 +55,20 @@ export default function InfoItemSignUpInput({element, mailData, setMailData}: Pr
                     required/>
             </div>
 
+            <div className='mb-3'>
+              <FormLabel className='fw-semibold'>URL ссылки для кнопки</FormLabel>
+              <FormControl
+                value={element.ButtonUrl}
+                type='text'
+                name='button-url'
+                id='buttonUrl-input'
+                onChange={(event) => {
+                  element.ButtonUrl = event.currentTarget.value;
+                  setMailData({...mailData, elements: mailData.elements});
+                }}
+                required/>
+            </div>
+
             <div className='d-flex flex-row mb-3'>
                 <div className='me-5'>
                     <FormLabel className='fw-semibold'>Возраст</FormLabel>
@@ -85,8 +99,18 @@ export default function InfoItemSignUpInput({element, mailData, setMailData}: Pr
 
                 <div>
                     <FormLabel className='fw-semibold'>Станция метро</FormLabel>
-                    <DropdownButton title={element.MetroStation.name}>
-                        {
+                    <DropdownButton title={element.MetroStation ? element.MetroStation.name : 'Нет'}>
+
+                      <Dropdown.Item
+                        title={'Нет'}
+                        key={'dropDownItem-' + 'none'}
+                        onClick={(value) => {
+                          element.MetroStation = null;
+                          setMailData({...mailData, elements: mailData.elements});
+                        }}
+                      >{'Нет'}</Dropdown.Item>
+
+                      {
                             Stations.map((value, index) => {
                                 return (
                                     <Dropdown.Item
