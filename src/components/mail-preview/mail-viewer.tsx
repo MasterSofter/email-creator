@@ -24,28 +24,57 @@ type Props = {
 
 export default function MailViewer({mailData, is_builtLetter}: Props): React.JSX.Element {
   return (
-    <div style={{
-      width: '100%',
-      margin: 0,
-      padding: 0
-    }}
-    >
-      <table align="center"
-             border={0}
-             cellSpacing={0}
-             cellPadding={0}
-             role="presentation"
-             style={{
-               color: '#1C1E23',
-               fontFamily: 'Helvetica, sans-serif, Arial',
-               margin: 'auto',
-               padding: 0,
-               width: '600px'
-             }}
-      >
-        <tbody>
-        <Logo is_builtLetter={is_builtLetter}/>
-        {
+    <table width='100%' cellSpacing={0} cellPadding={0} border={0} style={{borderCollapse:'collapse',fontFamily: 'Helvetica, sans-serif, Arial', color: 'black', fontSize:'14px'}}>
+      <tbody>
+      <tr style={{verticalAlign:'top'}}>
+        <td>
+          <table width='100%' align='center' cellSpacing='0' cellPadding='0' border={0} style={{borderCollapse:'collapse', maxWidth:'510px'}}>
+            <tbody>
+              <tr style={{verticalAlign:'top'}}>
+                <td>
+                  <Logo is_builtLetter={is_builtLetter}/>
+                  {
+                    mailData.elements.map((element, key) => (
+                      element instanceof (TitleElement)
+                        ? <Title key={key} title={element.Title}/>
+                        : element instanceof (BigImageElement)
+                          ? <BigImage key={key} address={element.Address} imageUrl={element.ImageUrl} is_builtLetter={is_builtLetter}/>
+                          : element instanceof (BadgesElement)
+                            ? <Badges key={key} is_builtLetter={is_builtLetter} badges={element.Badges}/>
+                            : element instanceof (ParagraphElement)
+                              ? <Paragraph key={key} is_builtLetter={is_builtLetter} text={element.Text}/>
+                              : element instanceof (SignUpElement)
+                                ? <InfoItemSignUp key={key}
+                                                  text={element.Text}
+                                                  title={element.Title}
+                                                  buttonUrl={element.ButtonUrl}
+                                                  imageUrl={element.ImageUrl}
+                                                  age={element.Age}
+                                                  amountOfDays={element.AmountOfDays}
+                                                  metroImageUrl={element.MetroStation ? element.MetroStation.imageUrl : ''}
+                                                  periods={element.Periods}
+                                                  is_builtLetter={is_builtLetter}
+                                /> : element instanceof (AboutElement)
+                                  ? <InfoItemAbout key={key} is_builtLetter={is_builtLetter} text={element.Text}/>
+                                  : <></>
+                    ))
+                  }
+                  <Footer is_builtLetter={is_builtLetter}/>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+
+
+
+
+
+
+
+
+      { /*
           mailData.elements.map((element, key) => (
             element instanceof (TitleElement)
               ? <Title key={key} title={element.Title}/>
@@ -70,11 +99,10 @@ export default function MailViewer({mailData, is_builtLetter}: Props): React.JSX
                         ? <InfoItemAbout key={key} is_builtLetter={is_builtLetter} text={element.Text}/>
                         : <></>
           ))
-        }
-        <Footer is_builtLetter={is_builtLetter}/>
-        </tbody>
-      </table>
-    </div>
+        */}
+
+      </tbody>
+    </table>
   );
 }
 

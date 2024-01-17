@@ -5,58 +5,23 @@ type Props = {
 }
 
 export default function Title({title}: Props): React.JSX.Element {
-    return (<tr style={ {margin : 0 , padding : 0} }>
-            <td style={ {margin : 0 , padding : 0} }>
-                <table
-                    align="center"
-                    border={ 0 }
-                    cellSpacing={ 0 }
-                    cellPadding={ 0 }
-                    role="presentation"
-                    style={ {
-                        width : '100%' ,
-                        borderRadius : '30px' ,
-                        marginTop : '20px' ,
-                        marginBottom : '30px' ,
-                    } }
-                >
-                    <tbody>
-                    { title && (<tr style={ {margin : 0 , padding : 0} }>
-                            <td style={ {margin : 0 , padding : 0} }>
-                                <table
-                                    align="left"
-                                    border={ 0 }
-                                    cellSpacing={ 0 }
-                                    cellPadding={ 0 }
-                                    role="presentation"
-                                >
-                                    <tbody>
-
-                                    { title && (<tr style={ {margin : 0 , padding : 0} }>
-                                            <td style={ {margin : 0 , padding : 0} }>
-                                                <div
-                                                    style={ {
-                                                        display : 'block' ,
-                                                        color : '#000000' ,
-                                                        fontFamily : 'Arial, Helvetica, sans-serif' ,
-                                                        fontSize : '28px' ,
-                                                        fontWeight : '500' ,
-                                                        lineHeight : '24px' ,
-                                                        textAlign : 'left' ,
-                                                        textDecoration : 'none' ,
-                                                        WebkitTextSizeAdjust : 'none' ,
-                                                        maxWidth : '600px'
-                                                    } }
-                                                    dangerouslySetInnerHTML={ {__html : title} }
-                                                />
-                                            </td>
-                                        </tr>) }
-                                    </tbody>
-                                </table>
-                            </td>
-                        </tr>) }
-                    </tbody>
-                </table>
-            </td>
-        </tr>);
+  return (
+    <table border={0} cellSpacing={0} cellPadding={0} width='100%' style={{borderCollapse:'collapse', padding:0, maxWidth:'600px', marginTop:'20px', marginBottom:'20px', marginLeft: 'auto' ,marginRight: 'auto'}}>
+      <tbody>
+        <tr style={ {margin : 0 , padding : 0} }>
+          <td style={ {margin: 0, padding : 0, textAlign : 'left'} }>
+            <span
+              style={ {
+                textAlign : 'left',
+                fontSize : '24px' ,
+                fontWeight : '500' ,
+                textDecoration : 'none' ,
+                WebkitTextSizeAdjust : 'none' ,
+              } }
+            >{title}</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  );
 }
