@@ -176,7 +176,7 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                                 margin: 0,
                                 padding: 0,
                                 color: '#4636FF',
-                                fontSize: '20px',
+                                fontSize: '22px',
                                 fontWeight: '700'
                               }}>{props.title}</span>
                           </td>
@@ -188,8 +188,8 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
 
                         <tr>
                           <td colSpan={2} height={
-                            (props.age || props.amountOfDays || props.metroImageUrl) && props.periods[0] ? '110px' :
-                              (!props.age && !props.amountOfDays && !props.metroImageUrl) ? '135px' : '110px'
+                            (props.age || props.amountOfDays || props.metroImageUrl) && props.periods[0] ? '105px' :
+                              (!props.age && !props.amountOfDays && !props.metroImageUrl) ? '130px' : '105px'
                           }
                               style={{verticalAlign: 'top'}}>
                             <span
@@ -197,7 +197,7 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                                 margin: 0,
                                 padding: 0,
                                 color: 'rgb(0,0,0)',
-                                fontSize: '14px',
+                                fontSize: '16px',
                                 fontWeight: 'normal',
                                 textAlign: 'left',
                                 textDecoration: 'none',
