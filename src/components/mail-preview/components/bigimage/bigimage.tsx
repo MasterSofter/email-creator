@@ -1,6 +1,6 @@
 export function BigImage(props : {address: string, imageUrl : string, is_builtLetter : boolean}): JSX.Element {
   return (
-    <table border={0} cellSpacing={0} cellPadding={0} width='100%' style={{borderCollapse:'collapse', padding:0,maxWidth:'600px', margin:'0 auto'}}>
+    <table border={0} cellSpacing={0} cellPadding={0} width='100%' style={{borderCollapse:'collapse', padding:0, minWidth:'375px', maxWidth:'600px', margin:'0 auto'}}>
       <tr style={{margin: 0, padding: 0}}>
         <td style={{margin: 0, padding: 0}}>
           <span>

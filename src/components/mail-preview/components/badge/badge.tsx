@@ -5,7 +5,7 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
 
   if (props.variant == BadgeVariants.SolidPink || props.variant == BadgeVariants.SolidBlack)
     return (
-      <table border={0} cellSpacing={0} cellPadding={0}  width='100%' style={{borderCollapse:'collapse', padding:0, margin:'0 auto'}}>
+      <table border={0} cellSpacing={0} cellPadding={0}  width='100%' style={{borderCollapse:'collapse', padding:0, margin:0}}>
         <tr style={{margin: 0, padding: 0}}>
           <td align='left' style={{
             margin: 0,
@@ -29,9 +29,9 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
               <tr style={{margin: 0, padding: 0}}>
                 <td align='center' style={{
                   margin: 0,
-                  paddingRight: '10px',
-                  paddingLeft: '10px',
-                  fontSize: '12px',
+                  paddingRight: '8px',
+                  paddingLeft: '8px',
+                  fontSize: '10px',
                   fontWeight: '500',
                   color: 'white'
                 }}>
@@ -46,7 +46,7 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
     );
   else
     return (
-      <table border={0} cellSpacing={0} cellPadding={0} width='100%' style={{borderCollapse:'collapse', padding:0, margin:'0 auto'}}>
+      <table border={0} cellSpacing={0} cellPadding={0} width='100%' style={{borderCollapse:'collapse', padding:0, margin:0}}>
         <tr style={{margin: 0, padding: 0}}>
           <td align='left' style={{
             margin: 0,
@@ -93,9 +93,9 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
                     <tr style={{margin: 0, padding: 0}}>
                       <td align='center' style={{
                         margin: 0,
-                        paddingRight: '10px',
-                        paddingLeft: '10px',
-                        fontSize: '12px',
+                        paddingRight: '8px',
+                        paddingLeft: '8px',
+                        fontSize: '10px',
                         fontWeight: '500'
                       }}>
                         <span>{props.text}</span>

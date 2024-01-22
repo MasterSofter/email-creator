@@ -28,7 +28,7 @@ export default function MailViewer({mailData, is_builtLetter}: Props): React.JSX
       <tbody>
       <tr style={{verticalAlign:'top'}}>
         <td>
-          <table width='100%' align='center' cellSpacing='0' cellPadding='0' border={0} style={{borderCollapse:'collapse', maxWidth:'510px'}}>
+          <table width='100%' align='center' cellSpacing='0' cellPadding='0' border={0} style={{borderCollapse:'collapse', minWidth: '375px', maxWidth: '600px', width: '100%'}}>
             <tbody>
               <tr style={{verticalAlign:'top'}}>
                 <td>
