@@ -8,8 +8,8 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
       padding: 0,
       minWidth:'375px',
       maxWidth:'600px',
-      marginTop: '0px',
-      marginBottom: '30px',
+      marginTop: '20px',
+      marginBottom: '0px',
       marginLeft: 'auto',
       marginRight: 'auto'
     }}>
@@ -23,7 +23,7 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
             role='presentation'
             style={{
               padding: '0px',
-              marginTop: '20px',
+              margin: '0px',
               width: '100%',
               borderRadius: '24px',
               background: 'linear-gradient(127deg, rgba(236,188,242,1) 0%, rgba(187,117,254,1) 100%)'
@@ -60,7 +60,7 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                         <table style={{padding:0, margin:0, width:'100%',height:'100%', minWidth:'130px', maxWidth:'180px'}}>
                           <tbody>
                           <tr style={{margin: 0, padding: 0}}>
-                            <td width='100%' height='20%' style={{verticalAlign:'top'}}>
+                            <td width='100%' style={{verticalAlign:'middle'}}>
                               <span style={{display:'inline-block', width:'100%'}}>
                                 <img style={{width: '100%', borderRadius: '20px'}}
                                      src={props.imageUrl.length > 0
@@ -73,7 +73,7 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                           </tr>
 
                           <tr style={{margin: 0, padding: 0}}>
-                            <td width='100%' height='20%' style={{verticalAlign:'bottom',  textAlign: 'center', paddingTop:'10px'}}>
+                            <td width='100%' style={{verticalAlign:'middle', textAlign: 'center'}}>
                               <div style={{
                                 width:'100%',
                                 display:'inline-block',
@@ -103,7 +103,7 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                         <table style={{margin:0, padding: 0, width:'100%',height:'100%'}}>
                           <tbody>
                           {
-                            (props.age || props.amountOfDays || props.metroImageUrl) ?
+                            (props.age || props.amountOfDays || props.metroImageUrl) &&
                             <tr style={{margin: 0, padding: 0}}>
                                 <td width='100%' height='20%' style={{verticalAlign:'top'}}>
                                     <div style={{display:'inline-block',width:'100%'}}>
@@ -148,10 +148,12 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                                     </div>
                                 </td>
                             </tr>
-                              : <tr><td height={'10%'}></td></tr>
                           }
                           <tr style={{margin: 0, padding: 0}}>
-                            <td width='100%' height='60%' style={{verticalAlign:'top'}}>
+                            <td width='100%' height={props.periods[0] && (props.age || props.amountOfDays || props.metroImageUrl) ? '60%'
+                                                    : ((!props.age && !props.amountOfDays && !props.metroImageUrl) && props.periods[0]
+                                                        || (!props.periods[0] && (props.age || props.amountOfDays || props.metroImageUrl))) ? '90%'
+                                                            : '100%'} style={{verticalAlign:'middle'}}>
                               <div style={{display:'inline-block', height:'24px', width:'100%'}}>
                                  <span
                                    style={{
@@ -164,7 +166,7 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                               </div>
                               <div style={{
                                 display:'inline-block',
-                                marginTop: '2px',
+                                marginTop: '0px',
                                 padding: 0,
                                 color: 'rgb(0,0,0)',
                                 fontSize: '12px',
@@ -184,122 +186,125 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                             </td>
                           </tr>
                           <tr style={{margin: 0, padding: 0}}>
-                            <td width='100%' height='20%' style={{verticalAlign:'bottom'}}>
-                              <div style={{display:'inline-block', height:'24px', width:'100%'}}>
-                                <table>
-                                  <tbody>
-                                  <tr>
-                                    {
-                                      props.periods[0] &&
-                                      <td style={{
-                                        margin: 0,
-                                        padding: 0,
-                                        float: 'left',
-                                        textAlign: 'left'
-                                      }}>
-                                          <table
-                                              align='center'
-                                              border={0}
-                                              cellSpacing={0}
-                                              cellPadding={0}
-                                              role='presentation'
-                                              style={{
-                                                margin: '0px',
-                                                padding: '0px',
-                                                height: '100%',
-                                                width: '100%'
-                                              }}
-                                          >
-                                              <tbody>
-                                              <tr style={{margin: 0, padding: 0, float: 'left', textAlign: 'left'}}>
-                                                  <td style={{
-                                                    margin: 0,
-                                                    padding: 0,
-                                                    width: '12px'
-                                                  }}>
-                                                      <img
-                                                          style={{width: '100%', verticalAlign: 'middle'}}
-                                                          src={props.is_builtLetter
-                                                            ? 'https://dev.mai.ru/services/email-creator-tr/images/clock.png'
-                                                            : process.env.PUBLIC_URL + '/images/clock.png'}/>
-                                                  </td>
-                                                  <td style={{
-                                                    margin: 0,
-                                                    padding: 0,
-                                                    width: '5px'
-                                                  }}/>
-                                                  <td style={{
-                                                    margin: 0,
-                                                    padding: 0,
-                                                    width: 'auto',
-                                                    fontSize: '11px',
-                                                    fontWeight: '500'
-                                                  }}>
-                                                      <span style={{verticalAlign:'middle'}}>{props.periods[0]}</span>
-                                                  </td>
-                                              </tr>
-                                              </tbody>
-                                          </table>
-                                      </td>
-                                    }
-                                    {
-                                      props.periods[1] &&
-                                      <td style={{
-                                        marginLeft: '10px',
-                                        padding: 0,
-                                        float: 'left',
-                                        textAlign: 'left'
-                                      }}>
-                                          <table
-                                              align='center'
-                                              border={0}
-                                              cellSpacing={0}
-                                              cellPadding={0}
-                                              role='presentation'
-                                              style={{
-                                                margin: '0px',
-                                                padding: '0px',
-                                                height: '100%',
-                                                width: '100%'
-                                              }}
-                                          >
-                                              <tbody>
-                                              <tr style={{margin: 0, padding: 0, float: 'left', textAlign: 'left'}}>
-                                                  <td style={{
-                                                    margin: 0,
-                                                    padding: 0,
-                                                    width: '12px'
-                                                  }}>
-                                                      <img
-                                                          style={{width: '100%', verticalAlign: 'middle'}}
-                                                          src={props.is_builtLetter
-                                                            ? 'https://dev.mai.ru/services/email-creator-tr/images/clock.png'
-                                                            : process.env.PUBLIC_URL + '/images/clock.png'}/>
-                                                  </td>
-                                                  <td style={{
-                                                    margin: 0,
-                                                    padding: 0,
-                                                    width: '5px'
-                                                  }}/>
-                                                  <td style={{
-                                                    margin: 0,
-                                                    padding: 0,
-                                                    width: 'auto',
-                                                    fontSize: '11px',
-                                                    fontWeight: '500'
-                                                  }}>
-                                                      <span style={{verticalAlign:'middle'}}>{props.periods[1]}</span>
-                                                  </td>
-                                              </tr>
-                                              </tbody>
-                                          </table>
-                                      </td>
-                                    }
-                                  </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                            </td>
+                            {
+                              props.periods[0] &&
+                              <td width='100%' height='20%' style={{verticalAlign:'bottom'}}>
+                                  <div style={{display:'inline-block', height:'24px', width:'100%'}}>
+                                      <table>
+                                          <tbody>
+                                          <tr>
+                                            {
+                                              props.periods[0] &&
+                                              <td style={{
+                                                margin: 0,
+                                                padding: 0,
+                                                float: 'left',
+                                                textAlign: 'left'
+                                              }}>
+                                                  <table
+                                                      align='center'
+                                                      border={0}
+                                                      cellSpacing={0}
+                                                      cellPadding={0}
+                                                      role='presentation'
+                                                      style={{
+                                                        margin: '0px',
+                                                        padding: '0px',
+                                                        height: '100%',
+                                                        width: '100%'
+                                                      }}
+                                                  >
+                                                      <tbody>
+                                                      <tr style={{margin: 0, padding: 0, float: 'left', textAlign: 'left'}}>
+                                                          <td style={{
+                                                            margin: 0,
+                                                            padding: 0,
+                                                            width: '12px'
+                                                          }}>
+                                                              <img
+                                                                  style={{width: '100%', verticalAlign: 'middle'}}
+                                                                  src={props.is_builtLetter
+                                                                    ? 'https://dev.mai.ru/services/email-creator-tr/images/clock.png'
+                                                                    : process.env.PUBLIC_URL + '/images/clock.png'}/>
+                                                          </td>
+                                                          <td style={{
+                                                            margin: 0,
+                                                            padding: 0,
+                                                            width: '5px'
+                                                          }}/>
+                                                          <td style={{
+                                                            margin: 0,
+                                                            padding: 0,
+                                                            width: 'auto',
+                                                            fontSize: '11px',
+                                                            fontWeight: '500'
+                                                          }}>
+                                                              <span style={{verticalAlign:'middle'}}>{props.periods[0]}</span>
+                                                          </td>
+                                                      </tr>
+                                                      </tbody>
+                                                  </table>
+                                              </td>
+                                            }
+                                            {
+                                              props.periods[1] &&
+                                              <td style={{
+                                                marginLeft: '10px',
+                                                padding: 0,
+                                                float: 'left',
+                                                textAlign: 'left'
+                                              }}>
+                                                  <table
+                                                      align='center'
+                                                      border={0}
+                                                      cellSpacing={0}
+                                                      cellPadding={0}
+                                                      role='presentation'
+                                                      style={{
+                                                        margin: '0px',
+                                                        padding: '0px',
+                                                        height: '100%',
+                                                        width: '100%'
+                                                      }}
+                                                  >
+                                                      <tbody>
+                                                      <tr style={{margin: 0, padding: 0, float: 'left', textAlign: 'left'}}>
+                                                          <td style={{
+                                                            margin: 0,
+                                                            padding: 0,
+                                                            width: '12px'
+                                                          }}>
+                                                              <img
+                                                                  style={{width: '100%', verticalAlign: 'middle'}}
+                                                                  src={props.is_builtLetter
+                                                                    ? 'https://dev.mai.ru/services/email-creator-tr/images/clock.png'
+                                                                    : process.env.PUBLIC_URL + '/images/clock.png'}/>
+                                                          </td>
+                                                          <td style={{
+                                                            margin: 0,
+                                                            padding: 0,
+                                                            width: '5px'
+                                                          }}/>
+                                                          <td style={{
+                                                            margin: 0,
+                                                            padding: 0,
+                                                            width: 'auto',
+                                                            fontSize: '11px',
+                                                            fontWeight: '500'
+                                                          }}>
+                                                              <span style={{verticalAlign:'middle'}}>{props.periods[1]}</span>
+                                                          </td>
+                                                      </tr>
+                                                      </tbody>
+                                                  </table>
+                                              </td>
+                                            }
+                                          </tr>
+                                          </tbody>
+                                      </table>
+                                  </div>
+                              </td>
+                            }
                           </tr>
                           </tbody>
                         </table>

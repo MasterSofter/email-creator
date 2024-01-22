@@ -20,7 +20,7 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
               style={{
                 margin: '0px',
                 padding: '0px',
-                height: '25px',
+                height: '18px',
                 borderRadius: '24px',
                 backgroundColor: props.variant == BadgeVariants.SolidPink ? '#bb75fe' : '#000000'
               }}
@@ -29,6 +29,8 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
               <tr style={{margin: 0, padding: 0}}>
                 <td align='center' style={{
                   margin: 0,
+                  paddingTop: 0,
+                  paddingBottom : 0,
                   paddingRight: '8px',
                   paddingLeft: '8px',
                   fontSize: '10px',
@@ -61,7 +63,7 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
               style={{
                 margin: '0px',
                 padding: '0px',
-                height: '25px',
+                height: '18px',
                 borderRadius: '24px',
                 background: 'linear-gradient(127deg, rgba(236,188,242,1) 0%, rgba(187,117,254,1) 100%)'
               }}
@@ -79,7 +81,7 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
                     cellPadding={0}
                     role='presentation'
                     style={{
-                      height: '21px',
+                      height: '15px',
                       marginTop: '0px',
                       marginBottom: '0px',
                       marginRight: '2px',
@@ -93,6 +95,8 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
                     <tr style={{margin: 0, padding: 0}}>
                       <td align='center' style={{
                         margin: 0,
+                        paddingTop: 0,
+                        paddingBottom : 0,
                         paddingRight: '8px',
                         paddingLeft: '8px',
                         fontSize: '10px',
