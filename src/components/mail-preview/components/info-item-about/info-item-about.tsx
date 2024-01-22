@@ -20,13 +20,13 @@ export default function InfoItemAbout(props: { is_builtLetter: boolean, text: st
             <tr style={{margin: 0, padding: 0}}>
               <td align="center" style={{
                 margin: 0,
-                padding: '32px'
+                padding: '24px'
               }}>
                 <span
                   style={{
                     margin: 0,
                     padding: 0,
-                    fontSize: '16px',
+                    fontSize: '14px',
                     fontWeight: 'normal',
                     textAlign: 'left',
                     textDecoration: 'none',

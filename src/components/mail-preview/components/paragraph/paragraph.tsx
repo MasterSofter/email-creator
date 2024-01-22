@@ -6,7 +6,7 @@ export function Paragraph(props: { is_builtLetter: boolean, text: string }): JSX
           <span>
             <div
               style={{
-                fontSize: '16px',
+                fontSize: '14px',
                 fontWeight: 'normal',
                 WebkitTextSizeAdjust: 'none',
                 maxWidth: '600px'

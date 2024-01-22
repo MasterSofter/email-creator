@@ -13,7 +13,7 @@ export default function Title({title}: Props): React.JSX.Element {
             <span
               style={ {
                 textAlign : 'left',
-                fontSize : '24px' ,
+                fontSize : '22px' ,
                 fontWeight : '500' ,
                 textDecoration : 'none' ,
                 WebkitTextSizeAdjust : 'none' ,

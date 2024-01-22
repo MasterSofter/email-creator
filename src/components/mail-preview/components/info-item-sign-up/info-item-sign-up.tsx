@@ -51,7 +51,7 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                     borderRadius: '20px',
                     backgroundColor: 'white',
                     height:'190px',
-                    width:'98%'
+                    width:'97.5%'
                   }}
                 >
                   <tbody>
@@ -102,49 +102,54 @@ export default function InfoItemSignUp(props: { title: string, text: string, ima
                       <td style={{width:'70%', padding:'5px'}}>
                         <table style={{margin:0, padding: 0, width:'100%',height:'100%'}}>
                           <tbody>
-                          <tr style={{margin: 0, padding: 0}}>
-                            <td width='100%' height='20%' style={{verticalAlign:'top'}}>
-                              <div style={{display:'inline-block',width:'100%'}}>
-                                <table align='left' style={{margin:0, padding:0}}>
-                                  <tbody>
-                                    <tr>
-                                      {props.age &&
-                                        <td style={{marginRight: '5px', padding: 0, float:'left'}}>
-                                              <span>
-                                                  <Badge variant={BadgeVariants.SolidPink}
-                                                         text={props.age.replace(' ', '\u00A0')}/>
-                                              </span>
-                                        </td>
-                                      }
-                                      {props.amountOfDays &&
-                                        <td style={{margin: 0, padding: 0, float:'left'}}>
-                                               <span>
-                                                   <Badge variant={BadgeVariants.OutlinePink}
-                                                          text={props.amountOfDays.replace(' ', '\u00A0')}/>
-                                               </span>
-                                        </td>
-                                      }
-                                      {
-                                        props.metroImageUrl &&
-                                        <td style={{margin: 0, padding: 0, verticalAlign:'middle', width:'28%'}}>
-                                              <span>
-                                                  <img style={{
-                                                    width:'100%',
-                                                    maxWidth:'120px'
-                                                  }}
-                                                       src={props.is_builtLetter
-                                                         ? 'https://dev.mai.ru/services/email-creator-tr/images/' + props.metroImageUrl
-                                                         : process.env.PUBLIC_URL + '/images/' + props.metroImageUrl}
-                                                  />
-                                              </span>
-                                        </td>
-                                      }
-                                    </tr>
-                                  </tbody>
-                                </table>
-                              </div>
-                            </td>
-                          </tr>
+                          {
+                            (props.age || props.amountOfDays || props.metroImageUrl) ?
+                            <tr style={{margin: 0, padding: 0}}>
+                                <td width='100%' height='20%' style={{verticalAlign:'top'}}>
+                                    <div style={{display:'inline-block',width:'100%'}}>
+                                        <table align='left' style={{margin:0, padding:0}}>
+                                            <tbody>
+                                            <tr>
+                                              {props.age &&
+                                              <td style={{marginRight: '5px', padding: 0, float:'left'}}>
+                                                <span>
+                                                    <Badge variant={BadgeVariants.SolidPink}
+                                                           text={props.age.replace(' ', '\u00A0')}/>
+                                                </span>
+                                              </td>
+                                              }
+                                              {props.amountOfDays &&
+                                              <td style={{margin: 0, padding: 0, float:'left'}}>
+                                                 <span>
+                                                     <Badge variant={BadgeVariants.OutlinePink}
+                                                            text={props.amountOfDays.replace(' ', '\u00A0')}/>
+                                                 </span>
+                                              </td>
+                                              }
+                                              {
+                                                props.metroImageUrl &&
+                                                <td style={{margin: 0, padding: 0, verticalAlign:'middle', width:'34%'}}>
+                                                <span>
+                                                    <img style={{
+                                                      width:'100%',
+                                                      minWidth: '80px',
+                                                      maxWidth:'120px'
+                                                    }}
+                                                         src={props.is_builtLetter
+                                                           ? 'https://dev.mai.ru/services/email-creator-tr/images/' + props.metroImageUrl
+                                                           : process.env.PUBLIC_URL + '/images/' + props.metroImageUrl}
+                                                    />
+                                                </span>
+                                                </td>
+                                              }
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </td>
+                            </tr>
+                              : <tr><td height={'10%'}></td></tr>
+                          }
                           <tr style={{margin: 0, padding: 0}}>
                             <td width='100%' height='60%' style={{verticalAlign:'top'}}>
                               <div style={{display:'inline-block', height:'24px', width:'100%'}}>
