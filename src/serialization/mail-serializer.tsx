@@ -1,18 +1,18 @@
 import {
-  AboutElement,
+  HighlightedParagraphElement,
   BadgesElement,
   BaseEmailElement, BigImageElement,
   EmailElements,
   EmptyElement,
   MailData, ParagraphElement,
-  SignUpElement, TitleElement
+  ProductCardElement, TitleElement
 } from '../types/types';
 import {deserialize} from 'v8';
 import {
-  AboutDeserializator, BadgesDeserializator, BigImageDeserializator,
+  HighlightedParagraphDeserializator, BadgesDeserializator, BigImageDeserializator,
   EmptyDeserializator,
   IDeserializator, ParagraphDeserializator,
-  SignUpDeserializator,
+  ProductCardDeserializator,
   TitleDeserializator
 } from './deserializatiors';
 
@@ -26,8 +26,8 @@ export class MailSerializer {
 
     let mapTypes : Map<EmailElements,IDeserializator> = new Map<EmailElements, IDeserializator>();
     mapTypes.set(EmailElements.Empty, new EmptyDeserializator());
-    mapTypes.set(EmailElements.About, new AboutDeserializator());
-    mapTypes.set(EmailElements.SignUp, new SignUpDeserializator());
+    mapTypes.set(EmailElements.HighlightedParagraph, new HighlightedParagraphDeserializator());
+    mapTypes.set(EmailElements.ProductCard, new ProductCardDeserializator());
     mapTypes.set(EmailElements.Title, new TitleDeserializator());
     mapTypes.set(EmailElements.BigImage,new BigImageDeserializator());
     mapTypes.set(EmailElements.Badges, new BadgesDeserializator());

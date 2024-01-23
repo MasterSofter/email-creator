@@ -1,17 +1,17 @@
 import React from 'react';
-import {SignUpElement, MailData, Stations,} from '../../../../types/types';
+import {ProductCardElement, MailData, Stations,} from '../../../../types/types';
 import {FormControl, FormGroup, FormLabel} from 'react-bootstrap';
 import ReactQuill from 'react-quill';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 
 type Props = {
-  element: SignUpElement;
+  element: ProductCardElement;
   mailData: MailData;
   setMailData: React.Dispatch<React.SetStateAction<MailData>>;
 }
 
-export default function InfoItemSignUpInput({element, mailData, setMailData}: Props): JSX.Element {
+export default function ProductCardInput({element, mailData, setMailData}: Props): JSX.Element {
   return (
         <FormGroup className=''>
             <div className='mb-3'>
@@ -55,18 +55,34 @@ export default function InfoItemSignUpInput({element, mailData, setMailData}: Pr
                     required/>
             </div>
 
-            <div className='mb-3'>
-              <FormLabel className='fw-semibold'>URL ссылки для кнопки</FormLabel>
-              <FormControl
-                value={element.ButtonUrl}
-                type='text'
-                name='button-url'
-                id='buttonUrl-input'
-                onChange={(event) => {
-                  element.ButtonUrl = event.currentTarget.value;
-                  setMailData({...mailData, elements: mailData.elements});
-                }}
-                required/>
+            <div className='d-flex flex-row'>
+              <div className='mb-3 me-5'>
+                <FormLabel className='fw-semibold'>URL ссылки для кнопки</FormLabel>
+                <FormControl
+                  value={element.ButtonUrl}
+                  type='text'
+                  name='button-url'
+                  id='buttonUrl-input'
+                  onChange={(event) => {
+                    element.ButtonUrl = event.currentTarget.value;
+                    setMailData({...mailData, elements: mailData.elements});
+                  }}
+                  required/>
+              </div>
+
+              <div className='mb-3'>
+                <FormLabel className='fw-semibold'>Текст кнопки</FormLabel>
+                <FormControl
+                  value={element.ButtonText}
+                  type='text'
+                  name='button-url'
+                  id='buttonUrl-input'
+                  onChange={(event) => {
+                    element.ButtonText = event.currentTarget.value;
+                    setMailData({...mailData, elements: mailData.elements});
+                  }}
+                  required/>
+              </div>
             </div>
 
             <div className='d-flex flex-row mb-3'>

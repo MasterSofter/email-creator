@@ -1,11 +1,11 @@
 import {
-  AboutElement,
+  HighlightedParagraphElement,
   BadgesElement,
   BaseEmailElement,
   BigImageElement,
   EmptyElement,
   ParagraphElement,
-  SignUpElement,
+  ProductCardElement,
   TitleElement
 } from '../types/types';
 
@@ -19,19 +19,20 @@ export class EmptyDeserializator implements IDeserializator {
   }
 }
 
-export class AboutDeserializator implements IDeserializator {
-  deserialize(obj: any): AboutElement {
-    return new AboutElement(obj['text']);
+export class HighlightedParagraphDeserializator implements IDeserializator {
+  deserialize(obj: any): HighlightedParagraphElement {
+    return new HighlightedParagraphElement(obj['text']);
   }
 }
 
-export class SignUpDeserializator implements IDeserializator {
-  deserialize(obj: any): SignUpElement {
-    return new SignUpElement( {
+export class ProductCardDeserializator implements IDeserializator {
+  deserialize(obj: any): ProductCardElement {
+    return new ProductCardElement( {
         title    : obj['title'],
         text     : obj['text'],
         imageUrl : obj['imageUrl'],
         buttonUrl : obj['buttonUrl'],
+        buttonText : obj['buttonText'],
         age      : obj['age'],
         amountOfDays : obj['amountOfDays'],
         metroStation : obj['metroStation'],

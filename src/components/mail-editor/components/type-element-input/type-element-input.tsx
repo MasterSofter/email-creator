@@ -3,13 +3,13 @@ import {FormGroup, FormLabel} from 'react-bootstrap';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import {
-    AboutElement,
+    HighlightedParagraphElement,
     BadgesElement,
     BaseEmailElement,
     BigImageElement,
     MailData,
     ParagraphElement,
-    SignUpElement,
+    ProductCardElement,
     TitleElement
 } from '../../../../types/types';
 
@@ -19,8 +19,8 @@ type Props = {
     setMailData: React.Dispatch<React.SetStateAction<MailData>>;
 }
 
-export function TypeElementInput({element, mailData, setMailData}: Props): JSX.Element {
-    const types: string[] = ['Заголовок', 'Параграф', 'Баольшая картинка', 'Блок \"Записаться\"', 'Блок \"About\"', 'Бейджи'];
+export default function TypeElementInput({element, mailData, setMailData}: Props): JSX.Element {
+    const types: string[] = ['Заголовок', 'Параграф', 'Баольшая картинка', 'Карточка товара', 'Выделенный параграф', 'Бейджи'];
 
     return (
       <FormGroup className={'mb-3'}>
@@ -51,12 +51,12 @@ export function TypeElementInput({element, mailData, setMailData}: Props): JSX.E
                                       mailData.elements[indexElement] = new BadgesElement(null, mailData.elements[indexElement].index);
                                       break;
                                   }
-                                  case 'Блок \"Записаться\"' : {
-                                      mailData.elements[indexElement] = new SignUpElement(null, mailData.elements[indexElement].index);
+                                  case 'Карточка товара' : {
+                                      mailData.elements[indexElement] = new ProductCardElement(null, mailData.elements[indexElement].index);
                                       break;
                                   }
-                                  case 'Блок \"About\"' : {
-                                      mailData.elements[indexElement] = new AboutElement(null, mailData.elements[indexElement].index);
+                                  case 'Выделенный параграф' : {
+                                      mailData.elements[indexElement] = new HighlightedParagraphElement(null, mailData.elements[indexElement].index);
                                       break;
                                   }
                               }

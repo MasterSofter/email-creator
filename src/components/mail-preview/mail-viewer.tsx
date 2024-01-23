@@ -2,18 +2,18 @@ import React from 'react';
 import Logo from './components/logo/logo';
 import Title from './components/title/title';
 import {
-  AboutElement,
+  HighlightedParagraphElement,
   BadgesElement,
   BigImageElement,
   MailData,
   ParagraphElement,
-  SignUpElement,
+  ProductCardElement,
   TitleElement
 } from '../../types/types';
 import {BigImage} from './components/bigimage/bigimage';
 import {Paragraph} from './components/paragraph/paragraph';
-import InfoItemSignUp from './components/info-item-sign-up/info-item-sign-up';
-import InfoItemAbout from './components/info-item-about/info-item-about';
+import ProductCard from './components/product-card/product-card';
+import HighlightedParagraph from './components/highlighted-paragraph/highlighted-paragraph';
 import Footer from './components/footer/footer';
 import Badges from './components/badges/badges';
 
@@ -43,19 +43,20 @@ export default function MailViewer({mailData, is_builtLetter}: Props): React.JSX
                             ? <Badges key={key} is_builtLetter={is_builtLetter} badges={element.Badges}/>
                             : element instanceof (ParagraphElement)
                               ? <Paragraph key={key} is_builtLetter={is_builtLetter} text={element.Text}/>
-                              : element instanceof (SignUpElement)
-                                ? <InfoItemSignUp key={key}
-                                                  text={element.Text}
-                                                  title={element.Title}
-                                                  buttonUrl={element.ButtonUrl}
-                                                  imageUrl={element.ImageUrl}
-                                                  age={element.Age}
-                                                  amountOfDays={element.AmountOfDays}
-                                                  metroImageUrl={element.MetroStation ? element.MetroStation.imageUrl : ''}
-                                                  periods={element.Periods}
-                                                  is_builtLetter={is_builtLetter}
-                                /> : element instanceof (AboutElement)
-                                  ? <InfoItemAbout key={key} is_builtLetter={is_builtLetter} text={element.Text}/>
+                              : element instanceof (ProductCardElement)
+                                ? <ProductCard key={key}
+                                               text={element.Text}
+                                               title={element.Title}
+                                               buttonUrl={element.ButtonUrl}
+                                               buttonText={element.ButtonText}
+                                               imageUrl={element.ImageUrl}
+                                               age={element.Age}
+                                               amountOfDays={element.AmountOfDays}
+                                               metroImageUrl={element.MetroStation ? element.MetroStation.imageUrl : ''}
+                                               periods={element.Periods}
+                                               is_builtLetter={is_builtLetter}
+                                /> : element instanceof (HighlightedParagraphElement)
+                                  ? <HighlightedParagraph key={key} is_builtLetter={is_builtLetter} text={element.Text}/>
                                   : <></>
                     ))
                   }

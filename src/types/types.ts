@@ -12,8 +12,8 @@ export enum BadgeVariants {
 
 export enum EmailElements {
   Empty,
-  About,
-  SignUp,
+  HighlightedParagraph,
+  ProductCard,
   Title,
   BigImage,
   Badges,
@@ -57,11 +57,11 @@ export class EmptyElement extends BaseEmailElement {
   }
 }
 
-export class AboutElement extends BaseEmailElement {
+export class HighlightedParagraphElement extends BaseEmailElement {
   text: string;
 
   public constructor(text: string | null, index : string | undefined = undefined) {
-    super('Блок \"About\"', EmailElements.About, index);
+    super('Выделенный параграф', EmailElements.HighlightedParagraph, index);
 
     if (text)
       this.text = text;
@@ -90,11 +90,12 @@ export class AboutElement extends BaseEmailElement {
   }
 }
 
-export class SignUpElement extends BaseEmailElement {
+export class ProductCardElement extends BaseEmailElement {
   title: string;
   text: string;
   imageUrl: string;
   buttonUrl : string;
+  buttonText : string;
   age: string;
   amountOfDays: string;
   metroStation: { name: string, imageUrl: string } | null;
@@ -105,19 +106,21 @@ export class SignUpElement extends BaseEmailElement {
     text: string,
     imageUrl: string,
     buttonUrl : string,
+    buttonText : string,
     age: string,
     amountOfDays: string,
     metroStation: { name: string, imageUrl: string } | null,
     periods: Array<string>
   } | null, index : string | undefined = undefined) {
 
-    super('Блок \"Записаться\"', EmailElements.SignUp, index);
+    super('Карточка товара', EmailElements.ProductCard, index);
 
     if (initVal) {
       this.title = initVal.title;
       this.text = initVal.text;
       this.imageUrl = initVal.imageUrl;
       this.buttonUrl = initVal.buttonUrl;
+      this.buttonText = initVal.buttonText;
       this.age = initVal.age;
       this.amountOfDays = initVal.amountOfDays;
       this.metroStation = initVal.metroStation;
@@ -127,6 +130,7 @@ export class SignUpElement extends BaseEmailElement {
       this.text = 'Ребята создадут и анимируют объекты для своих игровых миров, на самом популярном языке программирования!';
       this.imageUrl = '';
       this.buttonUrl = '';
+      this.buttonText = 'Записаться';
       this.age = '8-17 лет';
       this.amountOfDays = '5 дней';
       this.metroStation = Stations[0];
@@ -166,6 +170,13 @@ export class SignUpElement extends BaseEmailElement {
     this.buttonUrl = value;
   }
 
+  public get ButtonText() {
+    return this.buttonText;
+  }
+
+  public set ButtonText(value: string) {
+    this.buttonText = value;
+  }
 
 
   public get Age() {

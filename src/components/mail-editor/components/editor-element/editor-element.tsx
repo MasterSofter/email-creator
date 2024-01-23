@@ -3,8 +3,8 @@ import {
     BadgesElement,
     BigImageElement,
     BaseEmailElement,
-    AboutElement,
-    SignUpElement,
+    HighlightedParagraphElement,
+    ProductCardElement,
     MailData,
     ParagraphElement,
     TitleElement
@@ -12,10 +12,10 @@ import {
 import ParagraphInput from '../paragraph-input/paragraph-input';
 import BigImageInput from '../big-image-input/big-image-input';
 import TitleInput from '../title-input/title-input';
-import {TypeElementInput} from '../type-element-input/type-element-input';
-import InfoItemSignUpInput from '../info-item-sign-up-input/info-item-sign-up-input';
-import InfoItemAboutInput from '../info-item-about-input/info-item-about-input';
+import TypeElementInput from '../type-element-input/type-element-input';
+import ProductCardInput from '../product-card-input/product-card-input';
 import BadgesInput from "../badges-input/badges-input";
+import HighlightedParagraphInput from '../highlighted-paragraph-input/highlighted-paragraph-input';
 
 type Props = {
     element: BaseEmailElement;
@@ -45,13 +45,13 @@ export default function EditorElement({element, mailData, setMailData}: Props): 
             renderList.push(
                 <ParagraphInput key={`${element.ElementKey}-${renderList.length}`} element={(element)} mailData={mailData} setMailData={setMailData}/>
             );
-        } else if (element instanceof (SignUpElement)) {
+        } else if (element instanceof (ProductCardElement)) {
             renderList.push(
-                <InfoItemSignUpInput key={`${element.ElementKey}-${renderList.length}`} element={(element)} mailData={mailData} setMailData={setMailData}/>
+                <ProductCardInput key={`${element.ElementKey}-${renderList.length}`} element={(element)} mailData={mailData} setMailData={setMailData}/>
             );
-        } else if (element instanceof (AboutElement)) {
+        } else if (element instanceof (HighlightedParagraphElement)) {
             renderList.push(
-                <InfoItemAboutInput key={`${element.ElementKey}-${renderList.length}`} element={(element)} mailData={mailData} setMailData={setMailData}/>
+                <HighlightedParagraphInput key={`${element.ElementKey}-${renderList.length}`} element={(element)} mailData={mailData} setMailData={setMailData}/>
             );
         }
     }

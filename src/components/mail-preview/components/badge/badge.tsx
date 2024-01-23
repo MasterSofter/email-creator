@@ -1,22 +1,23 @@
-import React from 'react';
 import {BadgeVariants} from '../../../../types/types';
 
 export default function Badge(props: { variant: BadgeVariants, text: string }): JSX.Element {
 
   if (props.variant == BadgeVariants.SolidPink || props.variant == BadgeVariants.SolidBlack)
     return (
-      <table border={0} cellSpacing={0} cellPadding={0}  width='100%' style={{borderCollapse:'collapse', padding:0, margin:0}}>
+      <table border={0} cellSpacing={0} cellPadding={0} width="100%"
+             style={{borderCollapse: 'collapse', padding: 0, margin: 0}}>
+        <tbody>
         <tr style={{margin: 0, padding: 0}}>
-          <td align='left' style={{
+          <td align="left" style={{
             margin: 0,
             padding: 0
           }}>
             <table
-              align='center'
+              align="center"
               border={0}
               cellSpacing={0}
               cellPadding={0}
-              role='presentation'
+              role="presentation"
               style={{
                 margin: '0px',
                 padding: '0px',
@@ -27,10 +28,10 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
             >
               <tbody>
               <tr style={{margin: 0, padding: 0}}>
-                <td align='center' style={{
+                <td align="center" style={{
                   margin: 0,
                   paddingTop: 0,
-                  paddingBottom : 0,
+                  paddingBottom: 0,
                   paddingRight: '8px',
                   paddingLeft: '8px',
                   fontSize: '10px',
@@ -44,22 +45,25 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
             </table>
           </td>
         </tr>
+        </tbody>
       </table>
     );
   else
     return (
-      <table border={0} cellSpacing={0} cellPadding={0} width='100%' style={{borderCollapse:'collapse', padding:0, margin:0}}>
+      <table border={0} cellSpacing={0} cellPadding={0} width="100%"
+             style={{borderCollapse: 'collapse', padding: 0, margin: 0}}>
+        <tbody>
         <tr style={{margin: 0, padding: 0}}>
-          <td align='left' style={{
+          <td align="left" style={{
             margin: 0,
             padding: 0
           }}>
             <table
-              align='center'
+              align="center"
               border={0}
               cellSpacing={0}
               cellPadding={0}
-              role='presentation'
+              role="presentation"
               style={{
                 margin: '0px',
                 padding: '0px',
@@ -70,16 +74,16 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
             >
               <tbody>
               <tr style={{margin: 0, padding: 0}}>
-                <td align='center' style={{
+                <td align="center" style={{
                   margin: 0,
                   padding: 0
                 }}>
                   <table
-                    align='center'
+                    align="center"
                     border={0}
                     cellSpacing={0}
                     cellPadding={0}
-                    role='presentation'
+                    role="presentation"
                     style={{
                       height: '15px',
                       marginTop: '0px',
@@ -93,10 +97,10 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
                   >
                     <tbody>
                     <tr style={{margin: 0, padding: 0}}>
-                      <td align='center' style={{
+                      <td align="center" style={{
                         margin: 0,
                         paddingTop: 0,
-                        paddingBottom : 0,
+                        paddingBottom: 0,
                         paddingRight: '8px',
                         paddingLeft: '8px',
                         fontSize: '10px',
@@ -113,6 +117,7 @@ export default function Badge(props: { variant: BadgeVariants, text: string }): 
             </table>
           </td>
         </tr>
+        </tbody>
       </table>
     );
 }

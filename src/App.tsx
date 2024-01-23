@@ -1,11 +1,11 @@
 import React, {useRef, useState} from 'react';
 import {
-    AboutElement,
+    HighlightedParagraphElement,
     BadgesElement,
     BigImageElement,
     MailData,
     ParagraphElement,
-    SignUpElement,
+    ProductCardElement,
     TitleElement
 } from './types/types';
 import {Container, Row} from 'react-bootstrap';
@@ -21,8 +21,8 @@ const initialItems = [
     new BadgesElement(null),
     new TitleElement(null),
     new ParagraphElement(null),
-    new SignUpElement(null),
-    new AboutElement(null)
+    new ProductCardElement(null),
+    new HighlightedParagraphElement(null)
 ];
 
 export default function App(): React.JSX.Element {
