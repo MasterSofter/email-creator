@@ -17,7 +17,7 @@ export default function Logo(props: { is_builtLetter: boolean }): JSX.Element {
                   <td align='left' style={{margin: 0, padding: 0, width: '280px', maxWidth: '280px'}}>
                     <a href='https://mai.ru' target='_blank' rel='noreferrer'>
                       <img
-                        src={props.is_builtLetter ? 'https://dev.mai.ru/services/email-creator-tr/images/logo-tr.png' : process.env.PUBLIC_URL + '/images/logo-tr.png'}
+                        src={props.is_builtLetter ? 'https://dev.mai.ru/services/email-creator-tr/images/_logo-tr.png' : process.env.PUBLIC_URL + '/images/_logo-tr.png'}
                         alt='MAI Logo'
                         style={{width: '100%'}}
                       />
@@ -27,7 +27,7 @@ export default function Logo(props: { is_builtLetter: boolean }): JSX.Element {
                   <td align='right' style={{margin: 0, padding: 0, width: '45px'}}>
                     <a href='tel:+79017130331' rel='noreferrer'>
                       <img
-                        src={props.is_builtLetter ? 'https://dev.mai.ru/services/email-creator-tr/images/call-icon.png' : process.env.PUBLIC_URL + '/images/call-icon.png'}
+                        src={props.is_builtLetter ? 'https://dev.mai.ru/services/email-creator-tr/images/_call-icon.png' : process.env.PUBLIC_URL + '/images/_call-icon.png'}
                         alt='MAI Logo'
                         style={{width: '100%'}}
                       />

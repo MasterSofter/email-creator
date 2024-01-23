@@ -1,8 +1,8 @@
 import {v4 as uuidv4} from 'uuid';
 
 export const Stations = [
-  {name: 'м. Молодежная', imageUrl: 'metro-molodeznaya.png'},
-  {name: 'м. Войковская', imageUrl: 'metro-voykovskaya.png'}];
+  {name: 'м. Молодежная', imageUrl: '_metro-molodeznaya.png'},
+  {name: 'м. Войковская', imageUrl: '_metro-voykovskaya.png'}];
 
 export enum ButtonAlign {
   Left,

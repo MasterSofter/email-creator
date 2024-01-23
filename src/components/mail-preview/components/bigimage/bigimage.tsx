@@ -16,7 +16,7 @@ export function BigImage(props: { address: string, imageUrl: string, is_builtLet
           <span>
             <a href={props.address} target="_blank" rel="noreferrer">
                   <img
-                    src={props.imageUrl ? props.imageUrl : (props.is_builtLetter ? 'https://dev.mai.ru/services/email-creator-tr/images/hero.png' : process.env.PUBLIC_URL + '/images/hero.png')}
+                    src={props.imageUrl ? props.imageUrl : (props.is_builtLetter ? 'https://dev.mai.ru/services/email-creator-tr/images/_hero.png' : process.env.PUBLIC_URL + '/images/_hero.png')}
                     alt="Hero"
                     style={{width: '100%', borderRadius: '34px'}}
                   />

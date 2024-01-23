@@ -53,6 +53,7 @@ export default function MailViewer({mailData, is_builtLetter}: Props): React.JSX
                                                imageUrl={element.ImageUrl}
                                                age={element.Age}
                                                amountOfDays={element.AmountOfDays}
+                                               metroName={element.MetroStation ? element.MetroStation.name : 'метро'}
                                                metroImageUrl={element.MetroStation ? element.MetroStation.imageUrl : ''}
                                                periods={element.Periods}
                                                is_builtLetter={is_builtLetter}
