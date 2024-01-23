@@ -1,8 +1,9 @@
 import React, {useRef, useState} from 'react';
 import {
-    HighlightedParagraphElement,
     BadgesElement,
     BigImageElement,
+    ButtonElement,
+    HighlightedParagraphElement,
     MailData,
     ParagraphElement,
     ProductCardElement,
@@ -17,17 +18,20 @@ import './scss/style.scss';
 import MailPreview from './components/mail-preview/mail-preview';
 
 const initialItems = [
-    new BigImageElement(null, null),
-    new BadgesElement(null),
-    new TitleElement(null),
-    new ParagraphElement(null),
-    new ProductCardElement(null),
-    new HighlightedParagraphElement(null)
+    BigImageElement.Default(),
+    BadgesElement.Default(),
+    TitleElement.Default(),
+    ParagraphElement.Default(),
+    ProductCardElement.Default(),
+    HighlightedParagraphElement.Default(),
+    ButtonElement.Default()
 ];
+
+const VERSION : number = 0;
 
 export default function App(): React.JSX.Element {
     const mail = useRef<null | HTMLDivElement>(null);
-    const [mailData, setMailData] = useState<MailData>(new MailData(0, initialItems));
+    const [mailData, setMailData] = useState<MailData>(new MailData(VERSION, initialItems));
     const [is_builtLetter, set_is_BuiltLetter] = useState<boolean>(false);
 
     return (

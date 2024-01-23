@@ -36,27 +36,27 @@ export default function TypeElementInput({element, mailData, setMailData}: Props
                               let indexElement = mailData.elements.indexOf(element);
                               switch (value.currentTarget.title) {
                                   case 'Заголовок' : {
-                                      mailData.elements[indexElement] = new TitleElement(null, mailData.elements[indexElement].index);
+                                      mailData.elements[indexElement] =  TitleElement.Default(mailData.elements[indexElement].index);
                                       break;
                                   }
                                   case 'Параграф' : {
-                                      mailData.elements[indexElement] = new ParagraphElement(null, mailData.elements[indexElement].index);
+                                      mailData.elements[indexElement] =  ParagraphElement.Default(mailData.elements[indexElement].index);
                                       break;
                                   }
                                   case 'Баольшая картинка' : {
-                                      mailData.elements[indexElement] = new BigImageElement(null, mailData.elements[indexElement].index);
+                                      mailData.elements[indexElement] =  BigImageElement.Default(mailData.elements[indexElement].index);
                                       break;
                                   }
                                   case 'Бейджи' : {
-                                      mailData.elements[indexElement] = new BadgesElement(null, mailData.elements[indexElement].index);
+                                      mailData.elements[indexElement] =  BadgesElement.Default(mailData.elements[indexElement].index);
                                       break;
                                   }
                                   case 'Карточка товара' : {
-                                      mailData.elements[indexElement] = new ProductCardElement(null, mailData.elements[indexElement].index);
+                                      mailData.elements[indexElement] =  ProductCardElement.Default(mailData.elements[indexElement].index);
                                       break;
                                   }
                                   case 'Выделенный параграф' : {
-                                      mailData.elements[indexElement] = new HighlightedParagraphElement(null, mailData.elements[indexElement].index);
+                                      mailData.elements[indexElement] =  HighlightedParagraphElement.Default(mailData.elements[indexElement].index);
                                       break;
                                   }
                               }

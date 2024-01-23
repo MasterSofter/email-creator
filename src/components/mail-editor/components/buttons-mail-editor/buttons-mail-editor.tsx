@@ -1,12 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Button, Modal} from 'react-bootstrap';
-import {Clipboard, Download, FolderPlus} from 'react-bootstrap-icons';
-import {
-  MailData
-} from '../../../../types/types';
+import {Download, FolderPlus} from 'react-bootstrap-icons';
+import {MailData} from '../../../../types/types';
 import {MailSerializer} from '../../../../serialization/mail-serializer';
 
-function UploadFileModal(props : {setModalShow: React.Dispatch<React.SetStateAction<boolean>>, mailData : MailData , setMailData : React.Dispatch<React.SetStateAction<MailData>>, show : boolean, onHide : () => void}) {
+function UploadFileModal(props: { setModalShow: React.Dispatch<React.SetStateAction<boolean>>, mailData: MailData, setMailData: React.Dispatch<React.SetStateAction<MailData>>, show: boolean, onHide: () => void }) {
   const [drag, setDrag] = useState(false);
 
   function dragStartHandler(e: React.DragEvent<HTMLDivElement>) {
@@ -23,42 +21,62 @@ function UploadFileModal(props : {setModalShow: React.Dispatch<React.SetStateAct
     e.preventDefault();
     let file = e.dataTransfer.files[0];
 
-    let mailData : MailData = new MailData(0, null);
-    file.text().then((value)=> {
-      mailData = MailSerializer.Deserialize(value);
+    if (!~file.name.indexOf('json')) {
+      alert('Неверный формат файла! Требуется файл с расширением .json !');
+      return;
+    }
+
+    let mailData: MailData = new MailData(0, null);
+    file.text().then((value) => {
+      try {
+        mailData = MailSerializer.Deserialize(value);
+      } catch (err) {
+        alert(err);
+      }
       props.setModalShow(false);
       props.setMailData(mailData);
     });
   }
 
   return (
-    <Modal className='modal-drop-area'
-      size='lg'
-      {...props}
-      aria-labelledby="contained-modal-title-vcenter"
-      centered
+    <Modal className="modal-drop-area"
+           size="lg"
+           {...props}
+           aria-labelledby="contained-modal-title-vcenter"
+           centered
     >
-      <Modal.Body className='modal-drop-area'>
+      <Modal.Body className="modal-drop-area">
         {drag
           ? <div
-            onDragStart={e => {dragStartHandler(e)}}
-            onDragLeave={e => {dragLeaveHandler(e)}}
-            onDragOver={e => {dragStartHandler(e)}}
+            onDragStart={e => {
+              dragStartHandler(e)
+            }}
+            onDragLeave={e => {
+              dragLeaveHandler(e)
+            }}
+            onDragOver={e => {
+              dragStartHandler(e)
+            }}
             onDrop={e => onDropHandler(e)}
-            className='drop-area'>Отпустите файл, чтобы открыть его</div>
+            className="drop-area">Отпустите файл, чтобы открыть его</div>
           : <div
-            onDragStart={e => {dragStartHandler(e)}}
-            onDragLeave={e => {dragLeaveHandler(e)}}
-            onDragOver={e => {dragStartHandler(e)}}
-            className='drop-area'>Перетащите файл, чтобы загрузить его</div>
+            onDragStart={e => {
+              dragStartHandler(e)
+            }}
+            onDragLeave={e => {
+              dragLeaveHandler(e)
+            }}
+            onDragOver={e => {
+              dragStartHandler(e)
+            }}
+            className="drop-area">Перетащите файл, чтобы загрузить его</div>
         }
       </Modal.Body>
     </Modal>
   );
 }
 
-export default function ButtonsMailEditor(props : {mailData : MailData , setMailData : React.Dispatch<React.SetStateAction<MailData>>})
-{
+export default function ButtonsMailEditor(props: { mailData: MailData, setMailData: React.Dispatch<React.SetStateAction<MailData>> }) {
   const [modalShow, setModalShow] = useState(false);
 
   const downloadFile = (json: string | null): void => {
@@ -74,14 +92,13 @@ export default function ButtonsMailEditor(props : {mailData : MailData , setMail
     }
   };
 
-
   return (
     <>
-      <div className='text-end'>
+      <div className="text-end">
         <Button
-          variant='outline-primary'
-          size='lg'
-          className='me-3'
+          variant="outline-primary"
+          size="lg"
+          className="me-3"
           onClick={() => {
             setModalShow(true);
           }}
@@ -93,9 +110,11 @@ export default function ButtonsMailEditor(props : {mailData : MailData , setMail
         </Button>
 
         <Button
-          variant='primary'
-          size='lg'
-          onClick={() => {downloadFile(MailSerializer.Serialize(props.mailData))}}
+          variant="primary"
+          size="lg"
+          onClick={() => {
+            downloadFile(MailSerializer.Serialize(props.mailData))
+          }}
         >
           <Download/>
         </Button>

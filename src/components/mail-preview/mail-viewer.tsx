@@ -8,7 +8,7 @@ import {
   MailData,
   ParagraphElement,
   ProductCardElement,
-  TitleElement
+  TitleElement, ButtonElement
 } from '../../types/types';
 import {BigImage} from './components/bigimage/bigimage';
 import {Paragraph} from './components/paragraph/paragraph';
@@ -16,6 +16,7 @@ import ProductCard from './components/product-card/product-card';
 import HighlightedParagraph from './components/highlighted-paragraph/highlighted-paragraph';
 import Footer from './components/footer/footer';
 import Badges from './components/badges/badges';
+import ButtonCustom from './components/button-custom/button-custom';
 
 type Props = {
   mailData: MailData;
@@ -57,7 +58,13 @@ export default function MailViewer({mailData, is_builtLetter}: Props): React.JSX
                                                is_builtLetter={is_builtLetter}
                                 /> : element instanceof (HighlightedParagraphElement)
                                   ? <HighlightedParagraph key={key} is_builtLetter={is_builtLetter} text={element.Text}/>
-                                  : <></>
+                                  : element instanceof (ButtonElement)
+                                    ? <ButtonCustom key={key}
+                                                    buttonUrl={element.ButtonUrl}
+                                                    buttonText={element.ButtonText}
+                                                    buttonAlign={element.ButtonAlign}
+                                                    is_builtLetter={is_builtLetter}/>
+                                    : <></>
                     ))
                   }
                   <Footer is_builtLetter={is_builtLetter}/>

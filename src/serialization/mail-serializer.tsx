@@ -1,55 +1,51 @@
+import {EmailElements, MailData,} from '../types/types';
 import {
-  HighlightedParagraphElement,
-  BadgesElement,
-  BaseEmailElement, BigImageElement,
-  EmailElements,
-  EmptyElement,
-  MailData, ParagraphElement,
-  ProductCardElement, TitleElement
-} from '../types/types';
-import {deserialize} from 'v8';
-import {
-  HighlightedParagraphDeserializator, BadgesDeserializator, BigImageDeserializator,
+  BadgesDeserializator,
+  BigImageDeserializator,
+  ButtonDeserializator,
   EmptyDeserializator,
-  IDeserializator, ParagraphDeserializator,
+  HighlightedParagraphDeserializator,
+  IDeserializator,
+  ParagraphDeserializator,
   ProductCardDeserializator,
   TitleDeserializator
 } from './deserializatiors';
 
 export class MailSerializer {
-  public static Serialize(mailData : MailData) : string {
+  public static Serialize(mailData: MailData): string {
     return JSON.stringify(mailData);
   }
 
-  private static DeserializeVer0(obj : any) : MailData {
-    let mailData : MailData = new MailData(obj['version'], null);
+  public static Deserialize(json: string): MailData {
+    let obj: MailData = JSON.parse(json);
 
-    let mapTypes : Map<EmailElements,IDeserializator> = new Map<EmailElements, IDeserializator>();
+    switch (obj.version) {
+      case 0:
+        return this.DeserializeVer0(obj);
+      default :
+        throw new Error('Неизвестная версия файла!');
+    }
+  }
+
+  private static DeserializeVer0(obj: any): MailData {
+    let mailData: MailData = new MailData(obj['version'], null);
+
+    let mapTypes: Map<EmailElements, IDeserializator> = new Map<EmailElements, IDeserializator>();
     mapTypes.set(EmailElements.Empty, new EmptyDeserializator());
     mapTypes.set(EmailElements.HighlightedParagraph, new HighlightedParagraphDeserializator());
     mapTypes.set(EmailElements.ProductCard, new ProductCardDeserializator());
     mapTypes.set(EmailElements.Title, new TitleDeserializator());
-    mapTypes.set(EmailElements.BigImage,new BigImageDeserializator());
+    mapTypes.set(EmailElements.BigImage, new BigImageDeserializator());
     mapTypes.set(EmailElements.Badges, new BadgesDeserializator());
     mapTypes.set(EmailElements.Paragraph, new ParagraphDeserializator());
+    mapTypes.set(EmailElements.Button, new ButtonDeserializator());
 
-    obj.elements.map((item : any) => {
+    obj.elements.map((item: any) => {
       let ser = mapTypes.get(item['id']);
-      if(ser !== undefined)
+      if (ser !== undefined)
         mailData.elements.push(ser.deserialize(item));
     })
 
-    console.log(mailData);
     return mailData;
-  }
-
-  public static Deserialize(json : string) : MailData {
-    let obj : MailData = JSON.parse(json);
-
-    switch (obj.version) {
-      case 0: return this.DeserializeVer0(obj);
-    }
-
-    return new MailData(0, null);
   }
 }

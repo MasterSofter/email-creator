@@ -4,7 +4,7 @@ export default function HighlightedParagraph(props: { is_builtLetter: boolean, t
       borderCollapse: 'collapse',
       padding: 0,
       minWidth: '375px',
-      maxWidth: '600px',
+      maxWidth: '450px',
       marginTop: '20px',
       marginBottom: '0px',
       marginLeft: 'auto',
