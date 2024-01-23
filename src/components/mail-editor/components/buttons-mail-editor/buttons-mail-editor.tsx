@@ -79,7 +79,7 @@ export default function ButtonsMailEditor(props : {mailData : MailData , setMail
     <>
       <div className='text-end'>
         <Button
-          variant='outline-secondary'
+          variant='outline-primary'
           size='lg'
           className='me-3'
           onClick={() => {
@@ -93,12 +93,11 @@ export default function ButtonsMailEditor(props : {mailData : MailData , setMail
         </Button>
 
         <Button
-          variant='secondary'
+          variant='primary'
           size='lg'
           onClick={() => {downloadFile(MailSerializer.Serialize(props.mailData))}}
         >
-          <Download className={'me-2'}/>
-          <span>Сохранить</span>
+          <Download/>
         </Button>
       </div>
 

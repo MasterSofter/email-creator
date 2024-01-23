@@ -20,7 +20,7 @@ export default function MailPreview({
                                       }: Props): JSX.Element {
   return (
     <Card style={{height: '100%', overflowY: 'hidden'}}>
-      <CardHeader className="fw-bold h5 py-3 d-flex flex-row justify-content-between align-items-center">
+      <CardHeader className="fw-bold h5 py-2 d-flex flex-row justify-content-between align-items-center">
         <span>Предосмотр письма</span>
         <SaveButtonsHTML mail={mail.current} set_is_BuiltLetter={set_is_BuiltLetter}/>
       </CardHeader>

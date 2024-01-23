@@ -8,7 +8,7 @@ import ButtonsMailEditor from './components/buttons-mail-editor/buttons-mail-edi
 export default function MailEditor(props : {mailData : MailData , setMailData : React.Dispatch<React.SetStateAction<MailData>>} ): React.JSX.Element {
     return (
         <Card style={ {height : "100%", overflowY : "auto"} }>
-            <CardHeader className="fw-bold h5 py-3 d-flex flex-row justify-content-between align-items-center">
+            <CardHeader className="fw-bold h5 py-2 d-flex flex-row justify-content-between align-items-center">
                 <span>Редактор шаблона письма</span>
                 <ButtonsMailEditor mailData={props.mailData} setMailData={props.setMailData}/>
             </CardHeader>

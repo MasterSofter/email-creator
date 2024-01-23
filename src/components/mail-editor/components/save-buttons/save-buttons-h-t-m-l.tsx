@@ -55,7 +55,7 @@ export default function SaveButtonsHTML({mail, set_is_BuiltLetter}: Props): JSX.
 
   return (<div className='text-end'>
     <Button
-      variant='outline-secondary'
+      variant='outline-primary'
       size='lg'
       className='me-3'
       onClick={() => {
@@ -69,7 +69,7 @@ export default function SaveButtonsHTML({mail, set_is_BuiltLetter}: Props): JSX.
       </div>
     </Button>
     <Button
-      variant='secondary'
+      variant='primary'
       size='lg'
       onClick={() => {
         set_is_BuiltLetter(true);

@@ -32,10 +32,10 @@ export default function App(): React.JSX.Element {
 
     return (
       <Container style={{height: '100vh', width: '100vw', maxWidth: '100wv'}} fluid>
-          <Row style={{height: '5vh'}}>
+          <Row style={{}}>
               <NavBarHead is_builtLetter={is_builtLetter}/>
           </Row>
-          <Row className="pt-4" style={{height: '92vh'}}>
+          <Row className="pt-4" style={{height: '94vh'}}>
               <div className="col-editor">
                   <MailEditor mailData={mailData} setMailData={setMailData}/>
               </div>

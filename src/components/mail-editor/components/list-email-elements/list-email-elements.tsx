@@ -20,7 +20,7 @@ export default function ListEmailElements(props : { mailData : MailData, setMail
     return (
         <Accordion
             id={`accordion`}
-            style={{width : "100%", cursor : "default"}}>
+            style={{width : "100%", cursor : "default", border:'none'}}>
             <Reorder.Group
                 axis="y"
                 onReorder={ (value) => { props.setMailData({...props.mailData, elements : value})} }

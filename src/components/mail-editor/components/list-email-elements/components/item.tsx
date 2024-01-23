@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {BaseEmailElement, MailData} from '../../../../../types/types';
 import {animate, MotionValue, Reorder, useMotionValue} from 'framer-motion';
 import {Accordion} from 'react-bootstrap';
-import {GripVertical, TrashFill} from 'react-bootstrap-icons';
+import {GripVertical, Trash, TrashFill} from 'react-bootstrap-icons';
 import EditorElement from '../../editor-element/editor-element';
 
 const inactiveShadow = '0px 0px 0px rgba(0,0,0,0.8)';
@@ -46,6 +46,7 @@ export const Item = ({index, element, removeTab, mailData, setMailData}: Props) 
   const [dragListener, setDragListener] = useState<boolean>(true);
 
   return (
+
     <Reorder.Item
       dragListener={dragListener}
       value={element}
@@ -53,21 +54,21 @@ export const Item = ({index, element, removeTab, mailData, setMailData}: Props) 
       className='list-item d-flex flex-row justify-content-between'
       style={{boxShadow, y}}
     >
-      <GripVertical className='grip-vertical-icon ps-0 pe-2 py-0'
-                    style={{backgroundColor: 'transparent', color: '#b0b0b0'}}/>
+      <GripVertical className='grip-vertical-icon' style={{backgroundColor: 'transparent', color: '#b0b0b0'}}/>
 
       <Accordion.Item onMouseEnter={() => setDragListener(false)}
-                      onMouseLeave={() => setDragListener(true)} style={{width: '100%'}}
+                      onMouseLeave={() => setDragListener(true)}
+                      style={{width: '100%', border:'none'}}
                       eventKey={`accordion-${element.ElementKey}`}>
         <Accordion.Header className='d-flex flex-row justify-content-between'>
           <span>{element.Name}</span>
         </Accordion.Header>
-        <Accordion.Body>
+        <Accordion.Body style={{border:'none'}}>
           <EditorElement element={element} mailData={mailData} setMailData={setMailData}/>
         </Accordion.Body>
       </Accordion.Item>
 
-      <TrashFill className='trash-fill-icon'
+      <Trash className='trash-icon'
                  style={{backgroundColor: 'transparent', color: '#b0b0b0', cursor: 'pointer'}}
                  onClick={() => {
                    removeTab(element)
