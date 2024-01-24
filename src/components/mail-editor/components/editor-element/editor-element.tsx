@@ -19,53 +19,57 @@ import BadgesInput from '../badges-input/badges-input';
 import HighlightedParagraphInput from '../highlighted-paragraph-input/highlighted-paragraph-input';
 import ButtonInput from '../button-input/button-input';
 
-type Props = {
-    element: BaseEmailElement;
-    mailData: MailData;
-    setMailData: React.Dispatch<React.SetStateAction<MailData>>;
-}
-
-export default function EditorElement({element, mailData, setMailData}: Props): JSX.Element {
+export default function EditorElement(props: {
+    element: BaseEmailElement,
+    mailData: MailData,
+    setMailData: React.Dispatch<React.SetStateAction<MailData>>
+}): JSX.Element {
     const renderList: Array<React.JSX.Element> = new Array<React.JSX.Element>();
-    if (element) {
+    if (props.element) {
         renderList.push(
-          <TypeElementInput key={`${element.ElementKey}-${renderList.length}`} element={element} mailData={mailData}
-                            setMailData={setMailData}/>
+          <TypeElementInput key={`${props.element.ElementKey}-${renderList.length}`} element={props.element}
+                            mailData={props.mailData}
+                            setMailData={props.setMailData}/>
         );
-        if (element instanceof (TitleElement)) {
+        if (props.element instanceof (TitleElement)) {
             renderList.push(
-              <TitleInput key={`${element.ElementKey}-${renderList.length}`} element={(element)} mailData={mailData}
-                          setMailData={setMailData}/>
+              <TitleInput key={`${props.element.ElementKey}-${renderList.length}`} element={(props.element)}
+                          mailData={props.mailData}
+                          setMailData={props.setMailData}/>
             );
-        } else if (element instanceof (BigImageElement)) {
+        } else if (props.element instanceof (BigImageElement)) {
             renderList.push(
-              <BigImageInput key={`${element.ElementKey}-${renderList.length}`} element={(element)} mailData={mailData}
-                             setMailData={setMailData}/>
+              <BigImageInput key={`${props.element.ElementKey}-${renderList.length}`} element={(props.element)}
+                             mailData={props.mailData}
+                             setMailData={props.setMailData}/>
             );
-        } else if (element instanceof (BadgesElement)) {
+        } else if (props.element instanceof (BadgesElement)) {
             renderList.push(
-              <BadgesInput key={`${element.ElementKey}-${renderList.length}`} element={(element)} mailData={mailData}
-                           setMailData={setMailData}/>
+              <BadgesInput key={`${props.element.ElementKey}-${renderList.length}`} element={(props.element)}
+                           mailData={props.mailData}
+                           setMailData={props.setMailData}/>
             );
-        } else if (element instanceof (ParagraphElement)) {
+        } else if (props.element instanceof (ParagraphElement)) {
             renderList.push(
-              <ParagraphInput key={`${element.ElementKey}-${renderList.length}`} element={(element)} mailData={mailData}
-                              setMailData={setMailData}/>
+              <ParagraphInput key={`${props.element.ElementKey}-${renderList.length}`} element={(props.element)}
+                              mailData={props.mailData}
+                              setMailData={props.setMailData}/>
             );
-        } else if (element instanceof (ProductCardElement)) {
+        } else if (props.element instanceof (ProductCardElement)) {
             renderList.push(
-              <ProductCardInput key={`${element.ElementKey}-${renderList.length}`} element={(element)}
-                                mailData={mailData} setMailData={setMailData}/>
+              <ProductCardInput key={`${props.element.ElementKey}-${renderList.length}`} element={(props.element)}
+                                mailData={props.mailData} setMailData={props.setMailData}/>
             );
-        } else if (element instanceof (HighlightedParagraphElement)) {
+        } else if (props.element instanceof (HighlightedParagraphElement)) {
             renderList.push(
-              <HighlightedParagraphInput key={`${element.ElementKey}-${renderList.length}`} element={(element)}
-                                         mailData={mailData} setMailData={setMailData}/>
+              <HighlightedParagraphInput key={`${props.element.ElementKey}-${renderList.length}`}
+                                         element={(props.element)}
+                                         mailData={props.mailData} setMailData={props.setMailData}/>
             );
-        } else if (element instanceof (ButtonElement)) {
+        } else if (props.element instanceof (ButtonElement)) {
             renderList.push(
-              <ButtonInput key={`${element.ElementKey}-${renderList.length}`} element={(element)}
-                           mailData={mailData} setMailData={setMailData}/>
+              <ButtonInput key={`${props.element.ElementKey}-${renderList.length}`} element={(props.element)}
+                           mailData={props.mailData} setMailData={props.setMailData}/>
             );
         }
     }

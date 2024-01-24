@@ -1,6 +1,6 @@
 export default function HighlightedParagraph(props: { is_builtLetter: boolean, text: string }): JSX.Element {
   return (
-    <table border={0} cellSpacing={0} cellPadding={0} width="100%" style={{
+    <table border={0} cellSpacing={0} cellPadding={0} width='100%' style={{
       borderCollapse: 'collapse',
       padding: 0,
       minWidth: '375px',
@@ -14,11 +14,11 @@ export default function HighlightedParagraph(props: { is_builtLetter: boolean, t
       <tr style={{margin: 0, padding: 0}}>
         <td style={{margin: 0, padding: 0}}>
           <table
-            align="center"
+            align='center'
             border={0}
             cellSpacing={0}
             cellPadding={0}
-            role="presentation"
+            role='presentation'
             style={{
               padding: '0px',
               margin: '0px',
@@ -28,7 +28,7 @@ export default function HighlightedParagraph(props: { is_builtLetter: boolean, t
           >
             <tbody>
             <tr style={{margin: 0, padding: 0}}>
-              <td align="center" style={{
+              <td align='center' style={{
                 margin: 0,
                 padding: '24px'
               }}>

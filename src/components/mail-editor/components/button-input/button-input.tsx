@@ -3,7 +3,11 @@ import React from 'react';
 import {FormControl, FormGroup, FormLabel} from 'react-bootstrap';
 import {Justify, JustifyLeft, JustifyRight} from 'react-bootstrap-icons';
 
-export default function ButtonInput(props: { element: ButtonElement, mailData: MailData, setMailData: React.Dispatch<React.SetStateAction<MailData>> }): JSX.Element {
+export default function ButtonInput(props: {
+  element: ButtonElement,
+  mailData: MailData,
+  setMailData: React.Dispatch<React.SetStateAction<MailData>>
+}): JSX.Element {
   return (
     <FormGroup className="mb-3">
       <div className="d-flex flex-row">

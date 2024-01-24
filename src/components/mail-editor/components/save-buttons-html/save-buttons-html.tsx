@@ -33,7 +33,7 @@ type Props = {
   set_is_BuiltLetter: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export default function SaveButtonsHTML({mail, set_is_BuiltLetter}: Props): JSX.Element {
+export default function SaveButtonsHtml({mail, set_is_BuiltLetter}: Props): JSX.Element {
   const [onClickDownload, setOnClickDownload] = useState<boolean>(false)
   const [onClickCopy, setOnClickCopy] = useState<boolean>(false);
 

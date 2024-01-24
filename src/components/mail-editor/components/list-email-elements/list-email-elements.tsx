@@ -1,12 +1,15 @@
 import React from 'react';
 import {Reorder} from 'framer-motion';
 import {BaseEmailElement, EmptyElement, MailData} from '../../../../types/types';
-import {Item} from './components/item';
+import Item from './components/item';
 import {Accordion, Button} from 'react-bootstrap';
 import {removeItem} from './components/array-utils';
 import {PlusSquareFill} from 'react-bootstrap-icons';
 
-export default function ListEmailElements(props: { mailData: MailData, setMailData: React.Dispatch<React.SetStateAction<MailData>> }): React.JSX.Element {
+export default function ListEmailElements(props: {
+  mailData: MailData,
+  setMailData: React.Dispatch<React.SetStateAction<MailData>>
+}): React.JSX.Element {
 
   const removeTab = (element: BaseEmailElement) => {
     props.setMailData({...props.mailData, elements: removeItem(props.mailData.elements, element)});
@@ -22,7 +25,7 @@ export default function ListEmailElements(props: { mailData: MailData, setMailDa
       id={`accordion`}
       style={{width: '100%', cursor: 'default', border: 'none'}}>
       <Reorder.Group
-        axis="y"
+        axis='y'
         onReorder={(value) => {
           props.setMailData({...props.mailData, elements: value})
         }}
@@ -36,14 +39,14 @@ export default function ListEmailElements(props: { mailData: MailData, setMailDa
         }}
         layoutScroll
       >
-        {props.mailData.elements.map((element, index) => (
-          <Item key={element.ElementKey} index={index} element={element} removeTab={removeTab} mailData={props.mailData}
+        {props.mailData.elements.map((element) => (
+          <Item key={element.ElementKey} element={element} removeTab={removeTab} mailData={props.mailData}
                 setMailData={props.setMailData}/>
         ))}
         <Button
           className={'border-0 my-5 text-center fs-1 fw-bold px-4'}
           style={{backgroundColor: 'transparent', color: '#dedede'}}
-          size="lg"
+          size='lg'
           onClick={() => {
             addTab()
           }}

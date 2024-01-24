@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {BaseEmailElement, MailData} from '../../../../../types/types';
 import {animate, MotionValue, Reorder, useMotionValue} from 'framer-motion';
 import {Accordion} from 'react-bootstrap';
-import {GripVertical, Trash, TrashFill} from 'react-bootstrap-icons';
+import {GripVertical, Trash} from 'react-bootstrap-icons';
 import EditorElement from '../../editor-element/editor-element';
 
 const inactiveShadow = '0px 0px 0px rgba(0,0,0,0.8)';
@@ -31,15 +31,12 @@ function useRaisedShadow(value: MotionValue<number>) {
   return boxShadow;
 }
 
-type Props = {
-  element: BaseEmailElement;
-  removeTab: (element: BaseEmailElement) => void;
-  mailData: MailData;
-  setMailData: React.Dispatch<React.SetStateAction<MailData>>;
-  index: number;
-}
-
-export const Item = ({index, element, removeTab, mailData, setMailData}: Props) => {
+export default function Item(props: {
+  element: BaseEmailElement,
+  removeTab: (element: BaseEmailElement) => void,
+  mailData: MailData,
+  setMailData: React.Dispatch<React.SetStateAction<MailData>>
+}) : JSX.Element {
   const y = useMotionValue(0);
   const boxShadow = useRaisedShadow(y);
 
@@ -49,8 +46,8 @@ export const Item = ({index, element, removeTab, mailData, setMailData}: Props) 
 
     <Reorder.Item
       dragListener={dragListener}
-      value={element}
-      id={element.ElementKey}
+      value={props.element}
+      id={props.element.ElementKey}
       className='list-item d-flex flex-row justify-content-between'
       style={{boxShadow, y}}
     >
@@ -59,20 +56,20 @@ export const Item = ({index, element, removeTab, mailData, setMailData}: Props) 
       <Accordion.Item onMouseEnter={() => setDragListener(false)}
                       onMouseLeave={() => setDragListener(true)}
                       style={{width: '100%', border:'none'}}
-                      eventKey={`accordion-${element.ElementKey}`}>
+                      eventKey={`accordion-${props.element.ElementKey}`}>
         <Accordion.Header className='d-flex flex-row justify-content-between'>
-          <span>{element.Name}</span>
+          <span>{props.element.Name}</span>
         </Accordion.Header>
         <Accordion.Body style={{border:'none'}}>
-          <EditorElement element={element} mailData={mailData} setMailData={setMailData}/>
+          <EditorElement element={props.element} mailData={props.mailData} setMailData={props.setMailData}/>
         </Accordion.Body>
       </Accordion.Item>
 
       <Trash className='trash-icon'
-                 style={{backgroundColor: 'transparent', color: '#b0b0b0', cursor: 'pointer'}}
-                 onClick={() => {
-                   removeTab(element)
-                 }}/>
+             style={{backgroundColor: 'transparent', color: '#b0b0b0', cursor: 'pointer'}}
+             onClick={() => {
+               props.removeTab(props.element)
+             }}/>
     </Reorder.Item>
   );
 };

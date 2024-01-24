@@ -1,6 +1,11 @@
 import {ButtonAlign} from '../../../../types/types';
 
-export default function ButtonCustom(props: { buttonUrl: string, buttonText: string, buttonAlign: ButtonAlign, is_builtLetter: boolean }): JSX.Element {
+export default function ButtonCustom(props: {
+  buttonUrl: string,
+  buttonText: string,
+  buttonAlign: ButtonAlign,
+  is_builtLetter: boolean
+}): JSX.Element {
   return (
     <table width='100%' style={{
       borderCollapse: 'collapse',
@@ -14,12 +19,14 @@ export default function ButtonCustom(props: { buttonUrl: string, buttonText: str
     }}>
       <tbody>
       <tr style={{margin: 0, padding: 0}}>
-        <td width="100%" style={{margin: 0, padding: 0, verticalAlign: 'middle', textAlign: `${props.buttonAlign === ButtonAlign.Left ? 'left' 
-                                                                                                : props.buttonAlign === ButtonAlign.Center ? 'center' 
-                                                                                                    : 'right' }`}}>
+        <td width="100%" style={{
+          margin: 0, padding: 0, verticalAlign: 'middle', textAlign: `${props.buttonAlign === ButtonAlign.Left ? 'left'
+            : props.buttonAlign === ButtonAlign.Center ? 'center'
+              : 'right'}`
+        }}>
           <div style={{
             minWidth: '160px',
-            maxWidth:'300px',
+            maxWidth: '300px',
             display: 'inline-block',
             margin: 0,
             paddingTop: '8px',

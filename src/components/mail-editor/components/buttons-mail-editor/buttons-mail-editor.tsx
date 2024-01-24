@@ -39,13 +39,13 @@ function UploadFileModal(props: { setModalShow: React.Dispatch<React.SetStateAct
   }
 
   return (
-    <Modal className="modal-drop-area"
-           size="lg"
+    <Modal className='modal-drop-area'
+           size='lg'
            {...props}
-           aria-labelledby="contained-modal-title-vcenter"
+           aria-labelledby='contained-modal-title-vcenter'
            centered
     >
-      <Modal.Body className="modal-drop-area">
+      <Modal.Body className='modal-drop-area'>
         {drag
           ? <div
             onDragStart={e => {
@@ -58,7 +58,7 @@ function UploadFileModal(props: { setModalShow: React.Dispatch<React.SetStateAct
               dragStartHandler(e)
             }}
             onDrop={e => onDropHandler(e)}
-            className="drop-area">Отпустите файл, чтобы открыть его</div>
+            className='drop-area'>Отпустите файл, чтобы открыть его</div>
           : <div
             onDragStart={e => {
               dragStartHandler(e)
@@ -69,7 +69,7 @@ function UploadFileModal(props: { setModalShow: React.Dispatch<React.SetStateAct
             onDragOver={e => {
               dragStartHandler(e)
             }}
-            className="drop-area">Перетащите файл, чтобы загрузить его</div>
+            className='drop-area'>Перетащите файл, чтобы загрузить его</div>
         }
       </Modal.Body>
     </Modal>
@@ -94,11 +94,11 @@ export default function ButtonsMailEditor(props: { mailData: MailData, setMailDa
 
   return (
     <>
-      <div className="text-end">
+      <div className='text-end'>
         <Button
-          variant="outline-primary"
-          size="lg"
-          className="me-3"
+          variant='outline-primary'
+          size='lg'
+          className='me-3'
           onClick={() => {
             setModalShow(true);
           }}
@@ -110,8 +110,8 @@ export default function ButtonsMailEditor(props: { mailData: MailData, setMailDa
         </Button>
 
         <Button
-          variant="primary"
-          size="lg"
+          variant='primary'
+          size='lg'
           onClick={() => {
             downloadFile(MailSerializer.Serialize(props.mailData))
           }}

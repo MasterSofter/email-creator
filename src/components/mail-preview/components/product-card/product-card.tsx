@@ -1,9 +1,21 @@
 import Badge from '../badge/badge';
 import {BadgeVariants} from '../../../../types/types';
 
-export default function ProductCard(props: { title: string, text: string, imageUrl: string, buttonUrl: string, buttonText: string, metroName: string, metroImageUrl: string, age: string, amountOfDays: string, periods: Array<string>, is_builtLetter: boolean }): JSX.Element {
+export default function ProductCard(props: {
+  title: string,
+  text: string,
+  imageUrl: string,
+  buttonUrl: string,
+  buttonText: string,
+  metroName: string,
+  metroImageUrl: string,
+  age: string,
+  amountOfDays: string,
+  periods: Array<string>,
+  is_builtLetter: boolean
+}): JSX.Element {
   return (
-    <table border={0} cellSpacing={0} cellPadding={0} width="100%" style={{
+    <table border={0} cellSpacing={0} cellPadding={0} width='100%' style={{
       borderCollapse: 'collapse',
       padding: 0,
       minWidth: '375px',
@@ -17,11 +29,11 @@ export default function ProductCard(props: { title: string, text: string, imageU
       <tr style={{margin: 0, padding: 0}}>
         <td style={{margin: 0, padding: 0}}>
           <table
-            align="center"
+            align='center'
             border={0}
             cellSpacing={0}
             cellPadding={0}
-            role="presentation"
+            role='presentation'
             style={{
               padding: '0px',
               margin: '0px',
@@ -32,16 +44,16 @@ export default function ProductCard(props: { title: string, text: string, imageU
           >
             <tbody>
             <tr style={{margin: 0, padding: 0}}>
-              <td align="center" style={{
+              <td align='center' style={{
                 margin: 0,
                 padding: 0
               }}>
                 <table
-                  align="center"
+                  align='center'
                   border={0}
                   cellSpacing={0}
                   cellPadding={0}
-                  role="presentation"
+                  role='presentation'
                   style={{
                     margin: '0',
                     padding: '0',
@@ -68,20 +80,21 @@ export default function ProductCard(props: { title: string, text: string, imageU
                       }}>
                         <tbody>
                         <tr style={{margin: 0, padding: 0}}>
-                          <td width="100%" style={{verticalAlign: 'middle'}}>
+                          <td width='100%' style={{verticalAlign: 'middle'}}>
                               <span style={{display: 'inline-block', width: '100%'}}>
                                 <img style={{width: '100%', borderRadius: '20px'}}
                                      src={props.imageUrl.length > 0
                                        ? props.imageUrl
                                        : (props.is_builtLetter
                                          ? 'https://dev.mai.ru/services/email-creator-tr/images/_item-image.png'
-                                         : process.env.PUBLIC_URL + '/images/_item-image.png')}/>
+                                         : process.env.PUBLIC_URL + '/images/_item-image.png')}
+                                     alt='card image'/>
                               </span>
                           </td>
                         </tr>
 
                         <tr style={{margin: 0, padding: 0}}>
-                          <td width="100%" style={{verticalAlign: 'middle', textAlign: 'center'}}>
+                          <td width='100%' style={{verticalAlign: 'middle', textAlign: 'center'}}>
                             <div style={{
                               width: '100%',
                               display: 'inline-block',
@@ -96,10 +109,10 @@ export default function ProductCard(props: { title: string, text: string, imageU
                               backgroundColor: '#0F01FD'
                             }}>
                                 <span>
-                                  <a href={props.buttonUrl} target="_blank"
+                                  <a href={props.buttonUrl} target='_blank' rel='noreferrer'
                                      style={{textDecoration: 'none', color: 'white'}}>
-                                        <span>{props.buttonText}</span>
-                                      </a>
+                                    <span>{props.buttonText}</span>
+                                  </a>
                                 </span>
                             </div>
                           </td>
@@ -113,9 +126,9 @@ export default function ProductCard(props: { title: string, text: string, imageU
                         {
                           (props.age || props.amountOfDays || props.metroImageUrl) &&
                           <tr style={{margin: 0, padding: 0}}>
-                              <td width="100%" height="20%" style={{verticalAlign: 'top'}}>
+                              <td width='100%' height='20%' style={{verticalAlign: 'top'}}>
                                   <div style={{display: 'inline-block', width: '100%'}}>
-                                      <table align="left" style={{margin: 0, padding: 0}}>
+                                      <table align='left' style={{margin: 0, padding: 0}}>
                                           <tbody>
                                           <tr>
                                             {props.age &&
@@ -164,7 +177,7 @@ export default function ProductCard(props: { title: string, text: string, imageU
                           </tr>
                         }
                         <tr style={{margin: 0, padding: 0}}>
-                          <td width="100%"
+                          <td width='100%'
                               height={props.periods[0] && (props.age || props.amountOfDays || props.metroImageUrl) ? '60%'
                                 : ((!props.age && !props.amountOfDays && !props.metroImageUrl) && props.periods[0]
                                   || (!props.periods[0] && (props.age || props.amountOfDays || props.metroImageUrl))) ? '90%'
@@ -203,7 +216,7 @@ export default function ProductCard(props: { title: string, text: string, imageU
                         <tr style={{margin: 0, padding: 0}}>
                           {
                             props.periods[0] &&
-                            <td width="100%" height="20%" style={{verticalAlign: 'bottom'}}>
+                            <td width='100%' height='20%' style={{verticalAlign: 'bottom'}}>
                                 <div style={{display: 'inline-block', height: '24px', width: '100%'}}>
                                     <table>
                                         <tbody>
@@ -217,11 +230,11 @@ export default function ProductCard(props: { title: string, text: string, imageU
                                               textAlign: 'left'
                                             }}>
                                                 <table
-                                                    align="center"
+                                                    align='center'
                                                     border={0}
                                                     cellSpacing={0}
                                                     cellPadding={0}
-                                                    role="presentation"
+                                                    role='presentation'
                                                     style={{
                                                       margin: '0px',
                                                       padding: '0px',
@@ -252,7 +265,8 @@ export default function ProductCard(props: { title: string, text: string, imageU
                                                                 }}
                                                                 src={props.is_builtLetter
                                                                   ? 'https://dev.mai.ru/services/email-creator-tr/images/_clock.png'
-                                                                  : process.env.PUBLIC_URL + '/images/_clock.png'}/>
+                                                                  : process.env.PUBLIC_URL + '/images/_clock.png'}
+                                                                alt='clock'/>
                                                         </td>
                                                         <td style={{
                                                           margin: 0,
@@ -284,11 +298,11 @@ export default function ProductCard(props: { title: string, text: string, imageU
                                               textAlign: 'left'
                                             }}>
                                                 <table
-                                                    align="center"
+                                                    align='center'
                                                     border={0}
                                                     cellSpacing={0}
                                                     cellPadding={0}
-                                                    role="presentation"
+                                                    role='presentation'
                                                     style={{
                                                       margin: '0px',
                                                       padding: '0px',
@@ -317,7 +331,8 @@ export default function ProductCard(props: { title: string, text: string, imageU
                                                                 }}
                                                                 src={props.is_builtLetter
                                                                   ? 'https://dev.mai.ru/services/email-creator-tr/images/_clock.png'
-                                                                  : process.env.PUBLIC_URL + '/images/_clock.png'}/>
+                                                                  : process.env.PUBLIC_URL + '/images/_clock.png'}
+                                                                alt='clock'/>
                                                         </td>
                                                         <td style={{
                                                           margin: 0,
@@ -361,6 +376,5 @@ export default function ProductCard(props: { title: string, text: string, imageU
       </tr>
       </tbody>
     </table>
-
   );
 }

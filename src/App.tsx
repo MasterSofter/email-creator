@@ -22,12 +22,17 @@ const initialItems = [
     BadgesElement.Default(),
     TitleElement.Default(),
     ParagraphElement.Default(),
+    ButtonElement.Default(),
     ProductCardElement.Default(),
-    HighlightedParagraphElement.Default(),
-    ButtonElement.Default()
+    HighlightedParagraphElement.Default()
 ];
 
-const VERSION : number = 0;
+/*
+    Версия структуры письма - файла JSON, который сериализуется при сохранении
+    Когда в дальнейшем будут добавлены новые элементы письма или изменены существующие - нужно поставить новую версию
+    и обеспечить поддержку старых и новых файлов JSON.
+*/
+const VERSION: number = 0;
 
 export default function App(): React.JSX.Element {
     const mail = useRef<null | HTMLDivElement>(null);
