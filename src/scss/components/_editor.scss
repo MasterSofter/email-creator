@@ -1,20 +1,20 @@
 /*------------------------------------
-            Editor
+      Editor
 ------------------------------------*/
 
-.col-editor{
+.col-editor {
   margin-left: 10px;
   max-width: 35%;
   max-height: 100%;
   box-sizing: border-box;
 }
 
-.list{
+.list {
   position: relative;
   width: 300px;
 }
 
-.list-item{
+.list-item {
   margin: 10px auto;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -27,6 +27,7 @@
   align-items: center;
   flex-shrink: 0;
   cursor: grab;
+  border-radius: 8px;
 }
 
 .list,
@@ -35,18 +36,18 @@
   padding-left: 0;
   padding-right: 0;
   font-family: "Poppins", sans-serif;
-  font-weight : 600;
-  font-size : 18px;
-  align-items:start !important;
+  font-weight: 600;
+  font-size: 18px;
+  align-items: start !important;
 }
 
-.trash-icon{
+.trash-icon {
   width: 42px;
   height: 42px;
   padding: 10px 12px 2px 2px;
 }
 
-.grip-vertical-icon{
+.grip-vertical-icon {
   width: 42px;
   height: 42px;
   padding: 10px 6px 2px 4px;
@@ -92,11 +93,13 @@
 .accordion-button:not(.collapsed) {
   color: #212529;
 }
-.accordion-body{
+
+.accordion-body {
   padding-left: 6% !important;
   padding-right: 6% !important;
 }
-.accordion-collapse{
+
+.accordion-collapse {
   margin-left: -10% !important;
   margin-right: -10% !important;
   cursor: default;
