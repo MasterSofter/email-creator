@@ -1,8 +1,8 @@
 /*------------------------------------
-            Mail Preview
+      Mail Preview
 ------------------------------------*/
 
-.col-preview{
+.col-preview {
   max-height: 100%;
   max-width: 64%;
 }
@@ -28,31 +28,31 @@
   @include border-bottom-radius($device-browser-border-radius / 2);
 }
 
-.device-browser-frame-left-col{
+.device-browser-frame-left-col {
   height: $device-browser-frame-height;
   width: $device-browser-frame-left-col-width;
 
 }
 
-.device-browser-frame-left-col-bar{
+.device-browser-frame-left-col-bar {
   height: $device-browser-frame-left-col-bar-height;
   width: $device-browser-frame-left-col-bar-width;
   background: $device-browser-frame-left-col-bar-bg-color;
-  margin-left: 1rem ;
+  margin-left: 1rem;
   margin-bottom: 1.6rem;
   border-radius: 30px;
 }
 
-.device-browser-frame-middle-col{
+.device-browser-frame-middle-col {
   min-height: $device-browser-frame-height;
   width: $device-browser-frame-middle-col-width;
 }
 
-.device-browser-frame-middle-col-top{
+.device-browser-frame-middle-col-top {
   height: $device-browser-frame-middle-col-top-height;
 }
 
-.device-browser-frame-middle-col-top-bar{
+.device-browser-frame-middle-col-top-bar {
   margin-top: 0.5rem;
   height: $device-browser-frame-middle-col-top-bar-height;
   width: $device-browser-frame-middle-col-top-bar-width;
@@ -60,14 +60,14 @@
   border-radius: 30px;
 }
 
-.device-browser-frame-middle-col-letter{
+.device-browser-frame-middle-col-letter {
   background: $device-browser-bg-color;
   height: 100%;
   overflow-y: auto;
   border-radius: 30px;
 }
 
-.device-browser-frame-right-col{
+.device-browser-frame-right-col {
   height: $device-browser-frame-height;
   width: $device-browser-frame-right-col-width;
 }

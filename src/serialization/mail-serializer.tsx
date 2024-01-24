@@ -1,4 +1,4 @@
-import {EmailElements, MailData,} from '../types/types';
+import {EmailElements, MailData,} from "../types/types";
 import {
   BadgesDeserializator,
   BigImageDeserializator,
@@ -9,7 +9,7 @@ import {
   ParagraphDeserializator,
   ProductCardDeserializator,
   TitleDeserializator
-} from './deserializatiors';
+} from "./deserializatiors";
 
 export class MailSerializer {
   public static Serialize(mailData: MailData): string {
@@ -23,12 +23,12 @@ export class MailSerializer {
       case 0:
         return this.DeserializeVer0(obj);
       default :
-        throw new Error('Неизвестная версия файла!');
+        throw new Error("Неизвестная версия файла!");
     }
   }
 
   private static DeserializeVer0(obj: any): MailData {
-    let mailData: MailData = new MailData(obj['version'], null);
+    let mailData: MailData = new MailData(obj["version"], null);
 
     let mapTypes: Map<EmailElements, IDeserializator> = new Map<EmailElements, IDeserializator>();
     mapTypes.set(EmailElements.Empty, new EmptyDeserializator());
@@ -41,10 +41,10 @@ export class MailSerializer {
     mapTypes.set(EmailElements.Button, new ButtonDeserializator());
 
     obj.elements.map((item: any) => {
-      let ser = mapTypes.get(item['id']);
+      let ser = mapTypes.get(item["id"]);
       if (ser !== undefined)
         mailData.elements.push(ser.deserialize(item));
-    })
+    });
 
     return mailData;
   }

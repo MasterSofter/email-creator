@@ -1,11 +1,10 @@
-import {Button} from 'react-bootstrap';
-import React, {useEffect, useState} from 'react';
-import {Clipboard, Download} from 'react-bootstrap-icons';
+import {Button} from "react-bootstrap";
+import React, {useEffect, useState} from "react";
+import {Clipboard, Download} from "react-bootstrap-icons";
 
 const nodeToString = (node: HTMLDivElement): string => {
-  const tmpNode = document.createElement('div');
+  const tmpNode = document.createElement("div");
   tmpNode.appendChild(node.cloneNode(true));
-
   return tmpNode.innerHTML;
 };
 
@@ -17,9 +16,9 @@ export const copyToClipboard = (html: null | HTMLDivElement): void => {
 export const downloadFile = (html: null | HTMLDivElement): void => {
   if (html) {
     const file = new Blob([new Uint8Array([0xEF, 0xBB, 0xBF]), nodeToString(html)],
-      {type: 'text/html;charset=utf-8'});
+      {type: "text/html;charset=utf-8"});
 
-    const element = document.createElement('a');
+    const element = document.createElement("a");
     element.href = URL.createObjectURL(file);
     element.download = `${new Date().getTime().toString()}.html`;
     document.body.appendChild(element);
@@ -34,7 +33,7 @@ type Props = {
 }
 
 export default function SaveButtonsHtml({mail, set_is_BuiltLetter}: Props): JSX.Element {
-  const [onClickDownload, setOnClickDownload] = useState<boolean>(false)
+  const [onClickDownload, setOnClickDownload] = useState<boolean>(false);
   const [onClickCopy, setOnClickCopy] = useState<boolean>(false);
 
   useEffect(() => {
@@ -53,24 +52,24 @@ export default function SaveButtonsHtml({mail, set_is_BuiltLetter}: Props): JSX.
     }
   }, [onClickCopy]);
 
-  return (<div className='text-end'>
+  return (<div className="text-end">
     <Button
-      variant='outline-primary'
-      size='lg'
-      className='me-3'
+      variant="outline-primary"
+      size="lg"
+      className="me-3"
       onClick={() => {
         set_is_BuiltLetter(true);
         setOnClickCopy(true);
       }}
     >
-      <div className={'d-flex flex-row justify-content-between align-items-center'}>
-        <Clipboard className={'me-2'}/>
+      <div className="d-flex flex-row justify-content-between align-items-center">
+        <Clipboard className="me-2"/>
         <span>Скопировать</span>
       </div>
     </Button>
     <Button
-      variant='primary'
-      size='lg'
+      variant="primary"
+      size="lg"
       onClick={() => {
         set_is_BuiltLetter(true);
         setOnClickDownload(true);

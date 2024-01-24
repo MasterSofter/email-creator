@@ -1,8 +1,8 @@
-import {v4 as uuidv4} from 'uuid';
+import {v4 as uuidv4} from "uuid";
 
 export const Stations = [
-  {name: 'м. Молодежная', imageUrl: '_metro-molodeznaya.png'},
-  {name: 'м. Войковская', imageUrl: '_metro-voykovskaya.png'}];
+  {name: "м. Молодежная", imageUrl: "_metro-molodeznaya.png"},
+  {name: "м. Войковская", imageUrl: "_metro-voykovskaya.png"}];
 
 export enum ButtonAlign {
   Left,
@@ -36,14 +36,14 @@ export class BaseEmailElement {
   protected name: string;
   protected id: EmailElements;
 
-  protected constructor(name: string, id: EmailElements, index : string) {
+  protected constructor(name: string, id: EmailElements, index: string) {
     this.name = name;
     this.id = id;
     this.index = index;
   }
 
   public get Name() {
-    return this.name
+    return this.name;
   };
 
   public get ElementKey(): string {
@@ -55,31 +55,27 @@ export class BaseEmailElement {
   }
 
   public get ID() {
-    return this.id
+    return this.id;
   }
 }
 
 export class EmptyElement extends BaseEmailElement {
-  public static Default(index : string | undefined = undefined) : EmptyElement {
-    return new EmptyElement(index !== undefined ? index : uuidv4());
+  public constructor(index: string) {
+    super("Пустой элемент", EmailElements.Empty, index);
   }
 
-  public constructor(index : string) {
-    super('Пустой элемент', EmailElements.Empty, index);
+  public static Default(index: string | undefined = undefined): EmptyElement {
+    return new EmptyElement(index !== undefined ? index : uuidv4());
   }
 }
 
 export class ButtonElement extends BaseEmailElement {
-  buttonText : string;
-  buttonUrl : string;
-  buttonAlign : ButtonAlign;
+  buttonText: string;
+  buttonUrl: string;
+  buttonAlign: ButtonAlign;
 
-  public static Default(index : string | undefined = undefined) : ButtonElement {
-    return new ButtonElement('Записаться', '', ButtonAlign.Center, index !== undefined ? index : uuidv4());
-  }
-
-  public constructor(buttonText: string, buttonUrl: string, buttonAlign: ButtonAlign, index : string) {
-    super('Кнопка', EmailElements.Button, index);
+  public constructor(buttonText: string, buttonUrl: string, buttonAlign: ButtonAlign, index: string) {
+    super("Кнопка", EmailElements.Button, index);
     this.buttonText = buttonText;
     this.buttonUrl = buttonUrl;
     this.buttonAlign = buttonAlign;
@@ -108,31 +104,17 @@ export class ButtonElement extends BaseEmailElement {
   public set ButtonUrl(value: string) {
     this.buttonUrl = value;
   }
+
+  public static Default(index: string | undefined = undefined): ButtonElement {
+    return new ButtonElement("Записаться", "", ButtonAlign.Center, index !== undefined ? index : uuidv4());
+  }
 }
 
 export class HighlightedParagraphElement extends BaseEmailElement {
   text: string;
 
-  public static Default(index : string | undefined = undefined) : HighlightedParagraphElement {
-    let text = '<div class="paragraph">' +
-      '<p><b>🔥 Чем предстоит заниматься?</b></p>' +
-      '<br>' +
-      '<p>Учеников ждёт множество интересных заданий ' +
-      'по программированию, созданию алгоритмов ' +
-      'разной сложности, изучение графов, таблиц' +
-      'и работа с данными.</p>' +
-      '<br>' +
-      '<p><b>✅ В чём польза курса?</b></p>' +
-      '<br>' +
-      '<p>Возможность учиться у ведущий преподавателей МАИ, сотрудников ФИПИ' +
-      ' и специалистов ОГЭ и ЕГЭ с многолетним опытом.</p>' +
-      '</div>';
-
-    return new HighlightedParagraphElement(text, index !== undefined ? index : uuidv4());
-  }
-
-  public constructor(text: string, index : string) {
-    super('Выделенный параграф', EmailElements.HighlightedParagraph, index);
+  public constructor(text: string, index: string) {
+    super("Выделенный параграф", EmailElements.HighlightedParagraph, index);
     this.text = text;
   }
 
@@ -143,48 +125,50 @@ export class HighlightedParagraphElement extends BaseEmailElement {
   public set Text(value: string) {
     this.text = value;
   }
+
+  public static Default(index: string | undefined = undefined): HighlightedParagraphElement {
+    let text = "<div class=\"paragraph\">" +
+      "<p><b>🔥 Чем предстоит заниматься?</b></p>" +
+      "<br>" +
+      "<p>Учеников ждёт множество интересных заданий " +
+      "по программированию, созданию алгоритмов " +
+      "разной сложности, изучение графов, таблиц" +
+      "и работа с данными.</p>" +
+      "<br>" +
+      "<p><b>✅ В чём польза курса?</b></p>" +
+      "<br>" +
+      "<p>Возможность учиться у ведущий преподавателей МАИ, сотрудников ФИПИ" +
+      " и специалистов ОГЭ и ЕГЭ с многолетним опытом.</p>" +
+      "</div>";
+
+    return new HighlightedParagraphElement(text, index !== undefined ? index : uuidv4());
+  }
 }
 
 export class ProductCardElement extends BaseEmailElement {
   title: string;
   text: string;
   imageUrl: string;
-  buttonUrl : string;
-  buttonText : string;
+  buttonUrl: string;
+  buttonText: string;
   age: string;
   amountOfDays: string;
   metroStation: { name: string, imageUrl: string } | null;
   periods: Array<string>;
 
-  public static Default(index : string | undefined = undefined) : ProductCardElement {
-    let initVal = {
-      title : 'Minecraft-каникулы',
-      text : 'Ребята создадут и анимируют объекты для своих игровых миров, на самом популярном языке программирования!',
-      imageUrl : '',
-      buttonUrl : '',
-      buttonText : 'Записаться',
-      age : '8-17 лет',
-      amountOfDays : '5 дней',
-      metroStation : Stations[0],
-      periods : ['30 окт — 3 ноя', '20 — 24 ноя']
-    }
-
-    return new ProductCardElement(initVal, index !== undefined ? index : uuidv4());
-  }
-
   public constructor(initVal: {
     title: string,
     text: string,
     imageUrl: string,
-    buttonUrl : string,
-    buttonText : string,
+    buttonUrl: string,
+    buttonText: string,
     age: string,
     amountOfDays: string,
     metroStation: { name: string, imageUrl: string } | null,
     periods: Array<string>
-  }, index : string) {
+  }, index: string) {
 
-    super('Карточка товара', EmailElements.ProductCard, index);
+    super("Карточка товара", EmailElements.ProductCard, index);
 
     this.title = initVal.title;
     this.text = initVal.text;
@@ -237,7 +221,6 @@ export class ProductCardElement extends BaseEmailElement {
     this.buttonText = value;
   }
 
-
   public get Age() {
     return this.age;
   }
@@ -254,7 +237,7 @@ export class ProductCardElement extends BaseEmailElement {
     this.amountOfDays = value;
   }
 
-  public get MetroStation() : { name: string, imageUrl: string } | null {
+  public get MetroStation(): { name: string, imageUrl: string } | null {
     return this.metroStation;
   }
 
@@ -269,16 +252,29 @@ export class ProductCardElement extends BaseEmailElement {
   public set Periods(value: Array<string>) {
     this.periods = value;
   }
+
+  public static Default(index: string | undefined = undefined): ProductCardElement {
+    let initVal = {
+      title: "Minecraft-каникулы",
+      text: "Ребята создадут и анимируют объекты для своих игровых миров, на самом популярном языке программирования!",
+      imageUrl: "",
+      buttonUrl: "",
+      buttonText: "Записаться",
+      age: "8-17 лет",
+      amountOfDays: "5 дней",
+      metroStation: Stations[0],
+      periods: ["30 окт — 3 ноя", "20 — 24 ноя"]
+    };
+
+    return new ProductCardElement(initVal, index !== undefined ? index : uuidv4());
+  }
 }
 
 export class TitleElement extends BaseEmailElement {
-  title: string = 'Привет ✨';
+  title: string = "Привет ✨";
 
-  public static Default(index : string | undefined = undefined) : TitleElement {
-    return new TitleElement('Привет ✨', index !== undefined ? index : uuidv4());
-  }
-  public constructor(title: string, index : string) {
-    super('Заголовок', EmailElements.Title, index);
+  public constructor(title: string, index: string) {
+    super("Заголовок", EmailElements.Title, index);
 
     this.title = title;
   }
@@ -290,21 +286,18 @@ export class TitleElement extends BaseEmailElement {
   public set Title(value: string) {
     this.title = value;
   }
+
+  public static Default(index: string | undefined = undefined): TitleElement {
+    return new TitleElement("Привет ✨", index !== undefined ? index : uuidv4());
+  }
 }
 
 export class BigImageElement extends BaseEmailElement {
-  imageUrl: string = '';
-  address : string = ''
+  imageUrl: string = "";
+  address: string = "";
 
-  public static Default(index : string | undefined = undefined) : BigImageElement {
-    let imageUrl: string = '';
-    let address : string = ''
-
-    return new BigImageElement(address, imageUrl, index !== undefined ? index : uuidv4());
-  }
-
-  public constructor(address: string, imageUrl: string, index : string) {
-    super('Большая картинка', EmailElements.BigImage, index);
+  public constructor(address: string, imageUrl: string, index: string) {
+    super("Большая картинка", EmailElements.BigImage, index);
     this.imageUrl = imageUrl;
     this.address = address;
   }
@@ -324,23 +317,21 @@ export class BigImageElement extends BaseEmailElement {
   public set Address(value: string) {
     this.address = value;
   }
+
+  public static Default(index: string | undefined = undefined): BigImageElement {
+    let imageUrl: string = "";
+    let address: string = "";
+
+    return new BigImageElement(address, imageUrl, index !== undefined ? index : uuidv4());
+  }
 }
 
 
 export class BadgesElement extends BaseEmailElement {
   badges: Array<{ variant: BadgeVariants, text: string }>;
 
-  public static Default(index : string | undefined = undefined) : BadgesElement {
-    let badges: Array<{ variant: BadgeVariants, text: string }> = new Array<{ variant: BadgeVariants, text: string }>(
-      {variant: BadgeVariants.SolidPink, text: '8-12 лет'},
-      {variant: BadgeVariants.OutlinePink, text: 'Продлёнка!'},
-      {variant: BadgeVariants.SolidBlack, text: 'Предложение доступно до 30 декабря'});
-
-    return new BadgesElement(badges, index !== undefined ? index : uuidv4());
-  }
-
-  public constructor(badges: Array<{ variant: BadgeVariants, text: string }>, index : string) {
-    super('Бейджи', EmailElements.Badges, index);
+  public constructor(badges: Array<{ variant: BadgeVariants, text: string }>, index: string) {
+    super("Бейджи", EmailElements.Badges, index);
     this.badges = badges;
   }
 
@@ -351,22 +342,24 @@ export class BadgesElement extends BaseEmailElement {
   public set Badges(value: Array<{ variant: BadgeVariants, text: string }>) {
     this.badges = value;
   }
+
+  public static Default(index: string | undefined = undefined): BadgesElement {
+    let badges: Array<{ variant: BadgeVariants, text: string }> = new Array<{ variant: BadgeVariants, text: string }>(
+      {variant: BadgeVariants.SolidPink, text: "8-12 лет"},
+      {variant: BadgeVariants.OutlinePink, text: "Продлёнка!"},
+      {variant: BadgeVariants.SolidBlack, text: "Предложение доступно до 30 декабря"});
+
+    return new BadgesElement(badges, index !== undefined ? index : uuidv4());
+  }
 }
 
 
 export class ParagraphElement extends BaseEmailElement {
-  text: string = 'Как создавать шедевры с помощью Midjorney, вы узнаете в другом месте. ' +
-    'А мы расскажем, с чего вообще началось генеративное искусство и кто научил нейросети «рисовать».';
+  text: string = "Как создавать шедевры с помощью Midjorney, вы узнаете в другом месте. " +
+    "А мы расскажем, с чего вообще началось генеративное искусство и кто научил нейросети «рисовать».";
 
-  public static Default(index : string | undefined = undefined) : ParagraphElement {
-    let text: string = 'Как создавать шедевры с помощью Midjorney, вы узнаете в другом месте. ' +
-      'А мы расскажем, с чего вообще началось генеративное искусство и кто научил нейросети «рисовать».'
-
-    return new ParagraphElement(text, index !== undefined ? index : uuidv4());
-  }
-
-  public constructor(text: string, index : string) {
-    super('Параграф', EmailElements.Paragraph, index);
+  public constructor(text: string, index: string) {
+    super("Параграф", EmailElements.Paragraph, index);
     this.text = text;
   }
 
@@ -376,6 +369,13 @@ export class ParagraphElement extends BaseEmailElement {
 
   public set Text(value: string) {
     this.text = value;
+  }
+
+  public static Default(index: string | undefined = undefined): ParagraphElement {
+    let text: string = "Как создавать шедевры с помощью Midjorney, вы узнаете в другом месте. " +
+      "А мы расскажем, с чего вообще началось генеративное искусство и кто научил нейросети «рисовать».";
+
+    return new ParagraphElement(text, index !== undefined ? index : uuidv4());
   }
 }
 

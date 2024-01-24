@@ -1,6 +1,6 @@
-import React from 'react';
-import {FormControl, FormGroup, FormLabel} from 'react-bootstrap';
-import {BigImageElement, MailData} from '../../../../types/types';
+import React from "react";
+import {FormControl, FormGroup, FormLabel} from "react-bootstrap";
+import {BigImageElement, MailData} from "../../../../types/types";
 
 export default function BigImageInput(props: {
   element: BigImageElement,
@@ -9,13 +9,13 @@ export default function BigImageInput(props: {
 }): JSX.Element {
   return (
     <div>
-      <FormGroup className={'mb-3'}>
-        <FormLabel className={'fw-semibold'}>URL изображения</FormLabel>
+      <FormGroup className="mb-3">
+        <FormLabel className="fw-semibold">URL изображения</FormLabel>
         <FormControl
           value={props.element.ImageUrl}
-          type='text'
-          name='image'
-          id='imageInput'
+          type="text"
+          name="image"
+          id="imageInput"
           onChange={(value) => {
             props.element.ImageUrl = value.currentTarget.value;
             props.setMailData({...props.mailData, elements: props.mailData.elements});
@@ -24,12 +24,12 @@ export default function BigImageInput(props: {
       </FormGroup>
 
       <FormGroup>
-        <FormLabel className={'fw-semibold'}>URL адрес ссылки</FormLabel>
+        <FormLabel className="fw-semibold">URL адрес ссылки</FormLabel>
         <FormControl
           value={props.element.Address}
-          type='text'
-          name='image'
-          id='imageInput'
+          type="text"
+          name="image"
+          id="imageInput"
           onChange={(value) => {
             props.element.Address = value.currentTarget.value;
             props.setMailData({...props.mailData, elements: props.mailData.elements});

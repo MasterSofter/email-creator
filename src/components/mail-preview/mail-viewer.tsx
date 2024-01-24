@@ -1,5 +1,5 @@
-import Logo from './components/logo/logo';
-import Title from './components/title/title';
+import Logo from "./components/logo/logo";
+import Title from "./components/title/title";
 import {
   BadgesElement,
   BigImageElement,
@@ -9,33 +9,33 @@ import {
   ParagraphElement,
   ProductCardElement,
   TitleElement
-} from '../../types/types';
-import BigImage from './components/bigimage/bigimage';
-import Paragraph from './components/paragraph/paragraph';
-import ProductCard from './components/product-card/product-card';
-import HighlightedParagraph from './components/highlighted-paragraph/highlighted-paragraph';
-import Footer from './components/footer/footer';
-import Badges from './components/badges/badges';
-import ButtonCustom from './components/button-custom/button-custom';
+} from "../../types/types";
+import BigImage from "./components/bigimage/bigimage";
+import Paragraph from "./components/paragraph/paragraph";
+import ProductCard from "./components/product-card/product-card";
+import HighlightedParagraph from "./components/highlighted-paragraph/highlighted-paragraph";
+import Footer from "./components/footer/footer";
+import Badges from "./components/badges/badges";
+import ButtonCustom from "./components/button-custom/button-custom";
 
 export default function MailViewer(props: {
   mailData: MailData,
   is_builtLetter: boolean,
 }): JSX.Element {
   return (
-    <table width='100%' cellSpacing={0} cellPadding={0} border={0} style={{
-      borderCollapse: 'collapse',
-      fontFamily: 'Helvetica, sans-serif, Arial',
-      color: 'black',
-      fontSize: '14px'
+    <table width="100%" cellSpacing={0} cellPadding={0} border={0} style={{
+      borderCollapse: "collapse",
+      fontFamily: "Helvetica, sans-serif, Arial",
+      color: "black",
+      fontSize: "14px"
     }}>
       <tbody>
-      <tr style={{verticalAlign: 'top'}}>
+      <tr style={{verticalAlign: "top"}}>
         <td>
-          <table width='100%' align='center' cellSpacing='0' cellPadding='0' border={0}
-                 style={{borderCollapse: 'collapse', minWidth: '375px', maxWidth: '450px', width: '100%'}}>
+          <table width="100%" align="center" cellSpacing="0" cellPadding="0" border={0}
+                 style={{borderCollapse: "collapse", minWidth: "375px", maxWidth: "450px", width: "100%"}}>
             <tbody>
-            <tr style={{verticalAlign: 'top'}}>
+            <tr style={{verticalAlign: "top"}}>
               <td>
                 <Logo is_builtLetter={props.is_builtLetter}/>
                 {
@@ -46,9 +46,11 @@ export default function MailViewer(props: {
                         ? <BigImage key={key} address={element.Address} imageUrl={element.ImageUrl}
                                     is_builtLetter={props.is_builtLetter}/>
                         : element instanceof (BadgesElement)
-                          ? <Badges key={key} is_builtLetter={props.is_builtLetter} badges={element.Badges}/>
+                          ? <Badges key={key} is_builtLetter={props.is_builtLetter}
+                                    badges={element.Badges}/>
                           : element instanceof (ParagraphElement)
-                            ? <Paragraph key={key} is_builtLetter={props.is_builtLetter} text={element.Text}/>
+                            ? <Paragraph key={key} is_builtLetter={props.is_builtLetter}
+                                         text={element.Text}/>
                             : element instanceof (ProductCardElement)
                               ? <ProductCard key={key}
                                              text={element.Text}
@@ -58,12 +60,13 @@ export default function MailViewer(props: {
                                              imageUrl={element.ImageUrl}
                                              age={element.Age}
                                              amountOfDays={element.AmountOfDays}
-                                             metroName={element.MetroStation ? element.MetroStation.name : 'метро'}
-                                             metroImageUrl={element.MetroStation ? element.MetroStation.imageUrl : ''}
+                                             metroName={element.MetroStation ? element.MetroStation.name : "метро"}
+                                             metroImageUrl={element.MetroStation ? element.MetroStation.imageUrl : ""}
                                              periods={element.Periods}
                                              is_builtLetter={props.is_builtLetter}
                               /> : element instanceof (HighlightedParagraphElement)
-                                ? <HighlightedParagraph key={key} is_builtLetter={props.is_builtLetter}
+                                ? <HighlightedParagraph key={key}
+                                                        is_builtLetter={props.is_builtLetter}
                                                         text={element.Text}/>
                                 : element instanceof (ButtonElement)
                                   ? <ButtonCustom key={key}

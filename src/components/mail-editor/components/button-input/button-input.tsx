@@ -1,7 +1,7 @@
-import {ButtonAlign, ButtonElement, MailData} from '../../../../types/types';
-import React from 'react';
-import {FormControl, FormGroup, FormLabel} from 'react-bootstrap';
-import {Justify, JustifyLeft, JustifyRight} from 'react-bootstrap-icons';
+import {ButtonAlign, ButtonElement, MailData} from "../../../../types/types";
+import React from "react";
+import {FormControl, FormGroup, FormLabel} from "react-bootstrap";
+import {Justify, JustifyLeft, JustifyRight} from "react-bootstrap-icons";
 
 export default function ButtonInput(props: {
   element: ButtonElement,
@@ -40,21 +40,21 @@ export default function ButtonInput(props: {
         </div>
 
         <div>
-          <div style={{display: 'inline-block', marginTop: '35px'}}>
+          <div style={{display: "inline-block", marginTop: "35px"}}>
             <JustifyLeft onClick={(event) => {
               props.element.ButtonAlign = ButtonAlign.Left;
               props.setMailData({...props.mailData, elements: props.mailData.elements});
-            }} className={`justify-btn me-4 ${props.element.ButtonAlign === ButtonAlign.Left ? 'selected' : ''}`} size="40" />
+            }} className={`justify-btn me-4 ${props.element.ButtonAlign === ButtonAlign.Left ? "selected" : ""}`} size="40"/>
 
             <Justify onClick={(event) => {
               props.element.ButtonAlign = ButtonAlign.Center;
               props.setMailData({...props.mailData, elements: props.mailData.elements});
-            }} className={`justify-btn me-4 ${props.element.ButtonAlign === ButtonAlign.Center ? 'selected' : ''}`} size="40"/>
+            }} className={`justify-btn me-4 ${props.element.ButtonAlign === ButtonAlign.Center ? "selected" : ""}`} size="40"/>
 
             <JustifyRight onClick={(event) => {
               props.element.ButtonAlign = ButtonAlign.Right;
               props.setMailData({...props.mailData, elements: props.mailData.elements});
-            }} className={`justify-btn me-4 ${props.element.ButtonAlign === ButtonAlign.Right ? 'selected' : ''}`} size="40"/>
+            }} className={`justify-btn me-4 ${props.element.ButtonAlign === ButtonAlign.Right ? "selected" : ""}`} size="40"/>
           </div>
         </div>
       </div>
