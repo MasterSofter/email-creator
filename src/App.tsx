@@ -41,14 +41,14 @@ export default function App(): React.JSX.Element {
 
     return (
       <Container style={{height: '100vh', width: '100vw', maxWidth: '100wv'}} fluid>
-          <Row style={{}}>
+          <Row>
               <NavBarHead is_builtLetter={is_builtLetter}/>
           </Row>
-          <Row className="pt-4" style={{height: '94vh'}}>
-              <div className="col-editor">
+          <Row className="pt-4 d-flex" style={{height: '94vh'}}>
+              <div className="col col-xl-4" style={{minWidth:'38rem'}}>
                   <MailEditor mailData={mailData} setMailData={setMailData}/>
               </div>
-              <div className="col-preview">
+              <div className="col" style={{minWidth:'38rem'}}>
                   <MailPreview mail={mail} is_builtLetter={is_builtLetter} set_is_BuiltLetter={set_is_BuiltLetter}
                                mailData={mailData} setMailData={setMailData}/>
               </div>

@@ -45,7 +45,6 @@
 
 .device-browser-frame-middle-col{
   min-height: $device-browser-frame-height;
-  height: auto;
   width: $device-browser-frame-middle-col-width;
 }
 
@@ -63,7 +62,7 @@
 
 .device-browser-frame-middle-col-letter{
   background: $device-browser-bg-color;
-  height: $device-browser-frame-middle-col-letter-height;
+  height: 100%;
   overflow-y: auto;
   border-radius: 30px;
 }

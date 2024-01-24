@@ -28,27 +28,11 @@ export default function MailPreview(props: {
             <div className='device-browser-header-browser-bar'>mail.mai.ru</div>
           </div>
           <div className='device-browser-frame d-flex flex-row text-center'>
-            <div className='device-browser-frame-left-col'>
-              <div className='py-1'/>
-              <div className='device-browser-frame-left-col-bar py-5'/>
-              <div className='py-3'/>
-              <div className='device-browser-frame-left-col-bar'/>
-              <div className='device-browser-frame-left-col-bar'/>
-              <div className='device-browser-frame-left-col-bar'/>
-              <div className='device-browser-frame-left-col-bar'/>
-              <div className='device-browser-frame-left-col-bar'/>
-              <div className='device-browser-frame-left-col-bar'/>
-              <div className='device-browser-frame-left-col-bar'/>
-            </div>
             <div className={'device-browser-frame-middle-col d-flex flex-column'}>
-              <div className='device-browser-frame-middle-col-top'>
-                <div className='device-browser-frame-middle-col-top-bar'/>
-              </div>
-              <div ref={props.mail} className='device-browser-frame-middle-col-letter'>
+              <div ref={props.mail} className='device-browser-frame-middle-col-letter mt-4 mb-3 mx-5'>
                 <MailViewer mailData={props.mailData} is_builtLetter={props.is_builtLetter}/>
               </div>
             </div>
-            <div className='device-browser-frame-right-col'/>
           </div>
         </figure>
       </CardBody>
