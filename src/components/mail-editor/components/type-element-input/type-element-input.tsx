@@ -5,7 +5,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import {
   BadgesElement,
   BaseEmailElement,
-  BigImageElement,
+  BigImageElement, ButtonElement,
   HighlightedParagraphElement,
   MailData,
   ParagraphElement,
@@ -18,7 +18,7 @@ export default function TypeElementInput(props: {
   mailData: MailData,
   setMailData: React.Dispatch<React.SetStateAction<MailData>>
 }): JSX.Element {
-  const types: string[] = ["Заголовок", "Параграф", "Баольшая картинка", "Карточка товара", "Выделенный параграф", "Бейджи"];
+  const types: string[] = ["Заголовок", "Параграф", "Баольшая картинка", "Карточка товара", "Выделенный параграф", "Бейджи", "Кнопка"];
 
   return (
     <FormGroup className="mb-3">
@@ -55,6 +55,10 @@ export default function TypeElementInput(props: {
                     }
                     case "Выделенный параграф" : {
                       props.mailData.elements[indexElement] = HighlightedParagraphElement.Default(props.mailData.elements[indexElement].index);
+                      break;
+                    }
+                    case "Кнопка" : {
+                      props.mailData.elements[indexElement] = ButtonElement.Default(props.mailData.elements[indexElement].index);
                       break;
                     }
                   }
