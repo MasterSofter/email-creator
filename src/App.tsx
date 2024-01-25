@@ -40,15 +40,15 @@ export default function App(): React.JSX.Element {
   const [isBuiltMail, setIsBuiltMail] = useState<boolean>(false);
 
   return (
-    <Container style={{height: "100vh", width: "100vw", maxWidth: "100wv"}} fluid>
-      <Row>
+    <Container className="overflow-auto h-100 w-100" fluid>
+      <Row className="mb-4">
         <NavBarHead is_builtLetter={isBuiltMail}/>
       </Row>
-      <Row className="pt-4 d-flex" style={{height: "94vh"}}>
-        <div className="col col-xl-4" style={{minWidth: "38rem"}}>
+      <Row>
+        <div className="col-editor col-xl-4 mb-5 mb-xl-0">
           <MailEditor mailData={mailData} setMailData={setMailData}/>
         </div>
-        <div className="col" style={{minWidth: "38rem"}}>
+        <div className="col col-mail-preview">
           <MailPreview mail={mail} is_builtLetter={isBuiltMail} set_is_BuiltLetter={setIsBuiltMail}
                        mailData={mailData} setMailData={setMailData}/>
         </div>

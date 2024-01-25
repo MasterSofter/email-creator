@@ -2,18 +2,6 @@
       Editor
 ------------------------------------*/
 
-.col-editor {
-  margin-left: 10px;
-  max-width: 35%;
-  max-height: 100%;
-  box-sizing: border-box;
-}
-
-.list {
-  position: relative;
-  width: 300px;
-}
-
 .list-item {
   margin: 10px auto;
   padding-top: 4px;
@@ -32,6 +20,7 @@
 
 .list,
 .list-item {
+  position: relative;
   list-style: none;
   padding-left: 0;
   padding-right: 0;
